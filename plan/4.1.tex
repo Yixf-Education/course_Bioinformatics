@@ -14,11 +14,11 @@
 %职称
 \zhicheng{讲师}
 %教学日期（格式：XXXX年XX月XX日XX时-XX时）
-\riqi{2014年3月21日8时-10时}
+\riqi{2014年10月11日13:30-15:20}
 %授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
-\duixiang{生物医学工程学院2011级生信班（本）}
+\duixiang{生物医学工程与技术学院2011级生医班（本）}
 %听课人数
-\renshu{27}
+\renshu{55}
 %授课方式
 \fangshi{理论讲授}
 %学时数
@@ -34,22 +34,22 @@
 
 \mudi{
 \begin{itemize}
-  \item 掌握限制性核酸内切酶的命名规则及II型限制酶特点；CpG岛的概念及其识别依据和判别标准。
+  \item 掌握限制性核酸内切酶的命名规则及II型限制酶特点；CpG岛的概念及其识别依据和判别标准；重复序列的概念及分类。
   \item 熟悉DNA序列分析的常见内容；ORF分析中相位的概念；原核和真核基因启动子的结构。
-  \item 了解DNA携带的两类遗传信息；DNA序列分析相关的数据库和工具；ORF和CDS的定义与区别。
-  \item 自学DNA序列分析数据库和工具的使用方法。
+  \item 了解DNA携带的两类遗传信息；DNA序列分析相关的数据库和工具；ORF和CDS的定义与区别；重复序列相关的数据库和分析工具。
+  \item 自学DNA序列分析数据库和工具的使用方法；重复序列相关数据库和分析工具的使用方法。
 \end{itemize}
 }
 
 \fenpei{
 \begin{itemize}
-  \item （5'）引言与导入：回顾中心法则，阐释核酸序列携带的两类遗传信息。
-  \item （30'）DNA组份分析与序列转换：回顾Chargaff法则，讲解GC含量的定义与计算，介绍组份分析和序列转换的原理和思路，讨论解决问题的基本策略。
+  \item （5'）引言与导入：介绍中心法则，阐释核酸序列携带的两类遗传信息。
+  \item （20'）DNA组份分析与序列转换：介绍Chargaff法则，讲解GC含量的定义与计算，介绍组份分析和序列转换的原理和思路。
   \item （15'）限制性核酸内切酶位点分析：讲解限制性核酸内切酶的概念、命名规则和II型限制酶的特征，介绍常用的数据库与分析工具。
   \item （10'）开放阅读框分析：讲解相位的概念以及ORF与CDS的定义和区别，介绍常用的ORF分析工具。
-  \item （10'）启动子分析：讲解启动子与转录因子的基本概念，回顾原核基因和真核基因启动子的结构，介绍相关数据库与工具。
+  \item （15'）启动子分析：讲解启动子与转录因子的基本概念，介绍原核基因和真核基因启动子的结构，介绍相关数据库与工具。
   \item （15'）CpG岛识别：讲解CpG岛的概念、识别依据和判别标准，介绍识别CpG岛的计算工具。
-  \item （10'）EMBOSS简介：介绍EMBOSS软件包及其中常用的程序。
+  \item （15'）重复序列分析：讲解重复序列的概念、分类及特点，介绍常用数据库与分析工具。
   \item （5'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
 \end{itemize}
 }
@@ -80,6 +80,8 @@
   转录因子结合位点（TFBS）
 
   CpG岛（CpG island）
+
+  重复序列（repetitive/repeated sequence）
   \end{multicols}
   \vspace*{-10pt}
 }
@@ -95,11 +97,11 @@
   \vspace*{-10pt}
   \begin{multicols}{2}
   \begin{itemize}
-    \item 简述DNA携带的两类遗传信息及常见的分析内容。
+    \item 简述DNA的两类信息及常见分析内容。
     \item 简述限制酶的命名规则及II型的主要特点。
     \item 简述ORF与CDS的定义和区别。
     \item 简述CpG岛的概念、识别依据和判别标准。
-    \item 论述分析任务属性和解决问题的基本策略。
+    \item 简述重复序列依重复次数和组织形式的分类。
   \end{itemize}
   \end{multicols}
   \vspace*{-10pt}
@@ -144,7 +146,7 @@
 
 \vspace*{0.2cm}
 \noindent
-二、DNA组份分析与序列转换（30分钟）
+二、DNA组份分析与序列转换（20分钟）
 
 \textcolor{red}{以Chargaff法则引申出序列组份分析、序列转换的内容与原理。}
 \begin{enumerate}
@@ -178,11 +180,6 @@
       \item DNA/RNA：[左] 5' $\Longrightarrow$ 3' [右]
       \item 多肽/蛋白质：[左] N端（氨基端）$\Longrightarrow$ C端（羧基端） [右]
     \end{itemize}
-  \item 分析解决问题的策略
-    \begin{itemize}
-      \item 以计算GC含量为例\textcolor{red}{（使用简单例子易于学生理解）}
-      \item 任务属性决定解决策略\textcolor{red}{（使用序列长短、数目多少的实例进行讲解）}
-    \end{itemize}
 \end{enumerate}
 
 \vspace*{0.2cm}
@@ -193,7 +190,7 @@
     \begin{itemize}
 \parpic[fr]{\includegraphics[width=7cm]{ecori.png}}
       \item 定义：识别DNA特异序列、并在识别位点或其周围切割双链DNA的内切酶
-      \item 命名规则\textcolor{red}{（以\textit{Eco}RI为例）}
+      \item \textcolor{red}{\textbf{【重点】}}命名规则\textcolor{red}{（以\textit{Eco}RI为例）}
         \begin{itemize}
           \item 属名的第一个字母
           \item 种名的前两个字母
@@ -233,7 +230,7 @@
 \begin{enumerate}
 \parpic[fr]{\includegraphics[width=9cm,height=4cm]{orf.png}}
   \item ORF：开放阅读框
-  \item frame：相位\textcolor{red}{（通过示意图加深理解）}
+  \item \textcolor{red}{\textbf{【难点】}}frame：相位\textcolor{red}{（通过示意图加深理解）}
   \item CDS：编码序列
   \item ORF vs. CDS：理论预测 vs. 实验证实
   \item 分析工具：ORF Finder
@@ -241,7 +238,7 @@
 
 \vspace*{0.2cm}
 \noindent
-五、启动子分析（10分钟）
+五、启动子分析（15分钟）
 \begin{enumerate}
   \item 转录调控
     \begin{itemize}
@@ -301,7 +298,7 @@
       \item CpG保持或高于正常概率的基因组区段
       \item 一般位于基因（尤其是看家基因）的5'端区域，长度约300～3000bp；大多数未甲基化
     \end{itemize}
-  \item 识别依据与判别标准\textcolor{red}{（提醒学生判别标准不是唯一的）}
+  \item \textcolor{red}{\textbf{【重点】}}识别依据与判别标准\textcolor{red}{（提醒学生判别标准不是唯一的）}
     \begin{itemize}
       \item GC含量：50\% $\rightarrow$ 55\%
       \item CpG岛的长度：200bp $\rightarrow$ 500bp
@@ -313,51 +310,66 @@
 
 \vspace*{0.2cm}
 \noindent
-七、EMBOSS简介（10分钟）
+七、重复序列分析（15分钟）
 \begin{enumerate}
-  \item EMBOSS简介
+  \item 基本概念：重复序列是指真核生物基因组中重复出现的核苷酸序列。
+  \item 分类\textcolor{red}{（引导学生思考不同分类标准之间的关系）}
     \begin{itemize}
-      \item 开源、免费的序列分析软件包，整合了目前可以获得的大部分序列分析软件
-      \item 可以将系列分析工作进行无缝整合，弥补了许多软件功能分散、分析效率低下的缺陷
+      \item 重复次数\textcolor{red}{（对每一类别都给出实例，帮助学生理解记忆）}
+	\begin{itemize}
+	  \item 低度重复序列：2～10个拷贝，如酵母tRNA基因
+	  \item 中度重复序列：重复几十～几千次，长度约300bp，如rRNA基因
+	  \item 高度重复序列：重复几百万次，少于10个核苷酸残基，如卫星DNA
+	\end{itemize}
+      \item 组织形式
+	\begin{itemize}
+	  \item 串联重复序列：成簇存在于染色体的特定区域
+	    \begin{itemize}
+	      \item 卫星DNA：5～200bp，几百万个拷贝，大多集中在着丝粒部位
+	      \item 小卫星：10～100bp的基本单位，总长不超过20kb，重复次数高度变异，靠近端粒的位置
+	      \item 微卫星：2～10bp，长度50～100bp，STR遗传多态性，常见于内含子
+	    \end{itemize}
+	  \item 散在重复序列：分散于染色体的各位点上
+	    \begin{itemize}
+	      \item 短散在重复序列（SINE）：500bp以下，拷贝数达10万以上；非自主转座的反转录转座子；来源于RNA聚合酶III的转录产物；如Alu——300bp，100万个拷贝
+	      \item 长散在重复序列（LINE）：1000bp以上，上万份拷贝；可以自主转座的反转录转座子；来源于RNA聚合酶II的转录产物；如L1——6100bp，3500个拷贝
+	    \end{itemize}
+	\end{itemize}
     \end{itemize}
-  \item 使用界面
+  \item 相关资源
     \begin{itemize}
-      \item 操作系统：Linux，Mac，\textcolor{darkgray}{Windows}
-      \item JEMBOSS：java界面
-      \item EMBOSS Explorer：web界面
+ \parpic[fr]{\includegraphics[width=6.3cm]{repeat.png}}
+      \item Repbase：真核生物DNA重复序列数据库
+      \item L1Base：L1数据库
+      \item STRBase：STR数据库
+      \item RepeatMasker：通过与已知重复序列数据库进行比对，识别、分类和屏蔽重复序列；提供四个搜索引擎
+	\begin{itemize}
+	  \item Cross\_match：速度慢、精度高
+	  \item ABBlast：速度快、精度略低
+	  \item RMBlast：NCBI Blast的兼容版
+	  \item HMMER：只适用于人类基因组序列
+	\end{itemize}
     \end{itemize}
-  \item 主要程序
-    \begin{itemize}
-      \item 最重要的程序。Wossname：根据关键字查找程序；Showdb：显示所有整合的数据库。
-      \item 序列编辑。Revseq：将序列反转并互补；Seqret：序列格式转换。
-      \item 两个序列相似性图形表达。Dottup：精确匹配；Dotmatcher：近似匹配。
-      \item 双序列比对。Needle：全局比对；Water：局部比对。
-      \item 多序列比对。Emma：clustalW。
-      \item 寻找SNP。Deffseq：仅限于双序列比对中。
-      \item 其他。Plotorf，Getorf：翻译；Iep：等电点预测；Tmap：跨膜区预测；Pepinfo：蛋白质性质；Patmatmotifs：Motif搜索。
-    \end{itemize}
-  \item 使用实例：\textcolor{red}{以使用EMBOSS识别CpG岛的实例操作加深学生对CpG岛识别依据和标准的理解，同时熟悉EMBOSS的使用方法}
 \end{enumerate}
+
+
+\otherTail
+\newpage
+\otherHeader
+
 
 \vspace*{0.2cm}
 \noindent
 八、总结与答疑（5分钟）
-\begin{enumerate}
-  \item 知识点
-    \begin{itemize}
-      \item DNA序列基本信息分析：Chargaff法则，GC含量，序列转换
-      \item 限制性核酸内切酶位点分析：命名规则，II型核酸酶的特点
-      \item 开放阅读框分析：相位，ORF和CDS的区别
-      \item 启动子分析：原核基因和真核基因的启动子结构
-      \item CpG岛识别：概念、识别依据及判别标准
-    \end{itemize}
-  \item 技能
-    \begin{itemize}
-      \item 任务属性决定解决方案
-      \item 寻找最合适的方法
-      \item 先易后难，由浅入深
-    \end{itemize}
-\end{enumerate}
+\begin{itemize}
+  \item DNA序列基本信息分析：Chargaff法则，GC含量，序列转换
+  \item 限制性核酸内切酶位点分析：命名规则，II型核酸酶的特点
+  \item 开放阅读框分析：相位，ORF和CDS的区别
+  \item 启动子分析：原核基因和真核基因的启动子结构
+  \item CpG岛识别：概念、识别依据及判别标准
+  \item 重复序列：分类
+\end{itemize}
+
 
 
 \otherTail
