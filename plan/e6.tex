@@ -1,0 +1,188 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%实验名称
+\shiyan{实验六\ DNA序列的基本信息及特征分析}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2015年4月29日13:30-16:30}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程学院2012级生信班（本）}
+%实验人数
+\renshu{27}
+%实验类型
+\leixing{验证型}
+%实验分组
+\fenzu{一人一机}
+%学时数
+\xueshi{3}
+%教材版本
+\jiaocai{生物信息学实验讲义（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 学习并掌握使用NCBI查询核酸序列的方法。
+  \item 学习并掌握EMBOSS的基本使用方法。
+  \item 掌握ORF的性质及其分析方法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （15'）查询核酸序列：简单介绍NCBI数据库，讲解并演示Nucleotide数据库的使用。
+  \item （15'）EMBOSS简介：介绍EMBOSS软件软件包，讲解并演示compseq等工具的使用方法。
+  \item （10'）序列组份分析：回顾序列组份分析的主要内容。
+  \item （10'）开放阅读框分析：回顾ORF的定义、相位的概念和最长ORF法。
+  \item （100'）实验操作：对人类CD9基因序列进行组分分析，对大肠杆菌基因组序列进行ORF分析。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 实验材料：人类CD9基因，大肠杆菌基因组。
+  \item 主要仪器：联网的计算机。
+  \item 分析工具：NCBI，EMBOSS。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：NCBI数据库和EMBOSS软件包的使用。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 如何使用NCBI查询并下载核酸序列？
+  \item EMBOSS中进行序列组份分析的程序有哪些？
+  \item getorf和ORF Finder的分析结果有何异同？
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item NCBI
+  \item EMBOSS
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、查询核酸序列（15分钟）
+\begin{enumerate}
+  \item NCBI数据库\textcolor{red}{（包含多个子数据库）}
+    \begin{itemize}
+      \item GenBank: The NIH genetic sequence database, an annotated collection of all publicly available DNA sequences.
+      \item \textcolor{red}{Gene}: A searchable database of genes, focusing on genomes that have been completely sequenced and that have an active research community to contribute gene-specific data. Information includes nomenclature, chromosomal localization, gene products and their attributes (e.g., protein interactions), associated markers, phenotypes, interactions, and links to citations, sequences, variation details, maps, expression reports, homologs, protein domain content, and external databases.
+      \item Genome: Contains sequence and map data from the whole genomes of over 1000 organisms. 
+      \item \textcolor{red}{Nucleotide Database}: A collection of nucleotide sequences from several sources, including GenBank, RefSeq, the Third Party Annotation (TPA) database, and PDB. Searching the Nucleotide Database will yield available results from each of its component databases.
+      \item  Protein Database: A database that includes protein sequence records from a variety of sources, including GenPept, RefSeq, Swiss-Prot, PIR, PRF, and PDB.
+      \item  PubMed: A database of citations and abstracts for biomedical literature from MEDLINE and additional life science journals. 
+      \item  Reference Sequence (RefSeq): A collection of curated, non-redundant genomic DNA, transcript (RNA), and protein sequences produced by NCBI.
+    \end{itemize}
+  \item Nucleotide Database
+    \begin{itemize}
+      \item 查询：\textcolor{red}{ID}，如AY422198；基因名，如CD9
+      \item 下载：选择需要的格式，如\textcolor{red}{FASTA}
+    \end{itemize}
+\end{enumerate}
+
+\vspace*{0.2cm}
+\noindent
+二、EMBOSS简介（15分钟）
+\begin{enumerate}
+  \item EMBOSS简介
+  \begin{itemize}
+    \item 开源、免费的序列分析软件包，整合了目前可以获得的大部分序列分析软件
+    \item 可以将系列分析工作进行无缝整合，弥补了许多软件功能分散、分析效率低下的缺陷
+  \end{itemize}
+  \item 使用界面
+  \begin{itemize}
+    \item 操作系统：Linux，Mac，\textcolor{darkgray}{Windows}
+    \item JEMBOSS：java界面
+    \item \textcolor{red}{EMBOSS Explorer}：web界面
+  \end{itemize}
+  \item 主要程序
+  \begin{itemize}
+    \item 最重要的程序。\textcolor{red}{wossname}：根据关键字查找程序；showdb：显示所有整合的数据库。
+    \item 序列编辑。\textcolor{red}{revseq}：将序列反转并互补；seqret：序列格式转换。
+    \item 两个序列相似性图形表达。dottup：精确匹配；dotmatcher：近似匹配。
+    \item 双序列比对。needle：全局比对；water：局部比对。
+    \item 多序列比对。emma：clustalW。
+    \item 寻找SNP。deffseq：仅限于双序列比对中。
+    \item 其他。plotorf，\textcolor{red}{getorf}：翻译；iep：等电点预测；tmap：跨膜区预测；pepinfo：蛋白质性质；patmatmotifs：Motif搜索。
+  \end{itemize}
+\end{enumerate}
+
+\vspace*{0.2cm}
+\noindent
+三、序列组分分析（10分钟）
+\begin{enumerate}
+  \item 碱基组成分析：长度，碱基数目及其比例，GC含量
+  \item 序列转换：反向序列，互补序列，反向互补序列
+\end{enumerate}
+
+
+\otherTail
+\newpage
+\otherHeader
+
+
+\parpic[fr]{\includegraphics[width=6.5cm]{orf.png}}
+\noindent
+四、开放阅读框分析（10分钟）
+\begin{enumerate}
+  \item ORF：给定的阅读框架中不包含终止密码子的一串序列
+  \item 相位：六相位（+1, +2, +3, -1, -2, -3）
+  \item 预测方法：最长ORF法\textcolor{red}{（适用于原核生物）}
+\end{enumerate}
+
+
+\vspace*{0.2cm}
+\noindent
+五、实验操作（100分钟）
+\begin{enumerate}
+  \item 人类CD9基因的序列组分分析
+    \begin{itemize}
+      \item 获取序列：NCBI的Nucleotide数据库，AY422198，FASTA格式
+      \item 打开EMBOSS：EMBOSS Explorer
+      \item 碱基组分分析：compseq\textcolor{red}{（注意修改参数）}
+      \item 计算GC含量：geecee
+      \item 序列转换：revseq\textcolor{red}{（调整参数即可分别获得反向序列、互补序列和反向互补序列）}
+    \end{itemize}
+  \item 大肠杆菌基因组序列的ORF分析
+    \begin{itemize}
+      \item 获取序列：NCBI的Nucleotide数据库，U00096，FASTA格式
+      \item 截取序列：EMBOSS，extractseq，1-3000bp\textcolor{red}{（仅使用部分序列进行练习）}
+      \item ORF预测：EMBOSS，getorf\textcolor{red}{（注意选择合适的参数）}
+      \item 结果分析：和NCBI的ORF Finder的结果进行比较
+    \end{itemize}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}
+

@@ -1,0 +1,43 @@
+\begin{document}
+
+%\includeonlyframes{current}
+
+\logo{\includegraphics[height=0.08\textwidth]{tijmu.png}}
+
+% 在每个Section前都会加入的Frame
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    %\frametitle{Outline}
+    \frametitle{教学提纲}
+    \setcounter{tocdepth}{2}
+    \begin{multicols}{2}
+      %\tableofcontents[currentsection,currentsubsection]
+      \tableofcontents[currentsection]
+    \end{multicols}
+  \end{frame}
+}
+% 在每个Subsection前都会加入的Frame
+%\AtBeginSubsection[]
+%{
+  %\begin{frame}<beamer>
+%%\begin{frame}<handout:0>
+%% handout:0 表示只在手稿中出现
+    %\frametitle{Outline}
+    %\setcounter{tocdepth}{2}
+    %\tableofcontents[currentsection,currentsubsection]
+%% 显示在目录中加亮的当前章节
+  %\end{frame}
+%}
+
+\begin{frame}[plain]
+  \begin{center}
+    {\Huge 生物信息学\\}
+    \vspace{1cm}
+    {\LARGE 天津医科大学\\}
+    %\vspace{0.2cm}
+    {\LARGE 生物医学工程学院\\}
+    \vspace{1cm}
+    {\large 2014-2015学年下学期（春）\\ 2012级生信班}
+  \end{center}
+\end{frame}

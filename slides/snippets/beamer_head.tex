@@ -1,0 +1,178 @@
+\documentclass[table]{beamer}
+%[]中可以使用draft、handout、screen、transparency、trancompress、compress等参数
+
+%指定beamer的模式与主题
+\mode<presentation>
+{
+  \usetheme{Madrid}
+%\usetheme{Boadilla}
+%\usecolortheme{default}
+%\usecolortheme{orchid}
+%\usecolortheme{whale}
+%\usefonttheme{professionalfonts}
+}
+
+%\usetheme{Madrid}
+%这里还可以选择别的主题：Bergen, Boadilla, Madrid, AnnArbor, CambridgeUS, Pittsburgh, Rochester, Warsaw, ...
+%有导航栏的Antibes, JuanLesPins, Montpellier, ...
+%有内容的Berkeley, PaloAlto, Goettingen, Marburg, Hannover, ...
+%有最小导航栏的Berlin, Ilmenau, Dresden, Darmstadt, Frankfurt, Singapore, Szeged, ...
+%有章和节表单的Copenhagen, Luebeck, Malmoe, Warsaw, ...
+
+%\usecolortheme{default}
+%设置内部颜色主题(这些主题一般改变block里的颜色);这个主题一般选择动物来命名
+%这里还可以选择别的颜色主题,如默认的和有特别目的的颜色主题default,structure,sidebartab,全颜色主题albatross,beetle,crane,dove,fly,seagull,wolverine,beaver
+
+%\usecolortheme{orchid}
+%设置外部颜色主题(这些主题一般改变title里的颜色);这个主题一般选择植物来命名
+%这里还可以选择别的颜色主题,如默认的和有特别目的的颜色主题lily,orchid,rose
+
+%\usecolortheme{whale}
+%设置字体主题;这个主题一般选择海洋动物来命名
+%这里还可以选择别的颜色主题,如默认的和有特别目的的颜色主题whale,seahorse,dolphin
+
+%\usefonttheme{professionalfonts}
+%类似的还可以定义structurebold,structuresmallcapsserif,professionalfonts
+
+
+% 控制 beamer 的风格,可以根据自己的爱好修改
+%\usepackage{beamerthemesplit} %使用 split 风格
+%\usepackage{beamerthemeshadow} %使用 shadow 风格
+%\usepackage[width=2cm,dark,tab]{beamerthemesidebar}
+
+
+% 设定英文字体
+%\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+% 设定中文字体
+\usepackage[BoldFont,SlantFont,CJKchecksingle,CJKnumber]{xeCJK}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+\setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{WenQuanYi Micro Hei}
+\setCJKsansfont{Adobe Heiti Std}
+\setCJKmonofont{Adobe Fangsong Std}
+\punctstyle{hangmobanjiao}
+
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+\usepackage{setspace}
+\usepackage{colortbl,xcolor}
+\usepackage{hyperref}
+%\hypersetup{xetex,bookmarksnumbered=true,bookmarksopen=true,pdfborder=1,breaklinks,colorlinks,linkcolor=blue,filecolor=black,urlcolor=cyan,citecolor=green}
+\hypersetup{xetex,bookmarksnumbered=true,bookmarksopen=true,pdfborder=1,breaklinks,colorlinks,linkcolor=cyan,filecolor=black,urlcolor=blue,citecolor=green}
+
+% 插入图片
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+% 图文混排
+%\usepackage{picins}
+\usepackage{floatflt}
+
+% 可能用到的包
+\usepackage{amsmath,amssymb}
+%插入多媒体
+%\usepackage{media9}
+%\usepackage{movie15}
+\usepackage{multimedia}
+\usepackage{multicol}
+\usepackage{multirow}
+
+% 定义一些自选的模板，包括背景、图标、导航条和页脚等，修改要慎重
+% 设置背景渐变由10%的红变成10%的结构颜色
+%\beamertemplateshadingbackground{red!10}{structure!10}
+%\beamertemplatesolidbackgroundcolor{white!90!blue}
+% 使所有隐藏的文本完全透明、动态，而且动态的范围很小
+\beamertemplatetransparentcovereddynamic
+% 使itemize环境中变成小球，这是一种视觉效果
+\beamertemplateballitem
+% 为所有已编号的部分设置一个章节目录，并且编号显示成小球
+\beamertemplatenumberedballsectiontoc
+% 将每一页的要素的要素名设成加粗字体
+\beamertemplateboldpartpage
+
+% item逐步显示时,使已经出现的item、正在显示的item、将要出现的item呈现不同颜色
+\def\hilite<#1>{
+ \temporal<#1>{\color{gray}}{\color{blue}}
+    {\color{blue!25}}
+}
+
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+%五角星
+\usepackage{MnSymbol}
+
+%去除图表标题中的figure等
+\usepackage{caption}
+\captionsetup{labelformat=empty,labelsep=none}
+
+\usepackage{tabu}
+\usepackage{multirow}
+%表格自动换行
+\usepackage{tabularx} 
+
+% 千分号
+%\usepackage{textcomp}
+
+%罗马数字
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+%分栏
+\usepackage{multicol}
+
+%\usepackage{enumitem}
+\usepackage{enumerate}
+
+%键盘
+\usepackage{keystroke}
+
+%插入源代码
+\usepackage{listings}
+\lstset{
+  language=bash,                  % 程序语言名称：TeX, Perl, R, sh, bash, Awk
+  basicstyle=\normalsize\tt,      %\tt指monospace字体族，程序源代码使用此族字体表示更加美观
+  numbers=left,                   % 行号位置(左侧)
+  numberstyle=\small,             % 行号字体的字号
+  stepnumber=1,                   % 行号的显示步长
+  numbersep=5pt,                  % 行号与代码间距
+  backgroundcolor=\color{white},  % 背景色;需要 \usepackage{color}
+  showspaces=false,               % 不显示空格
+  showstringspaces=false,         % 不显示代码字符串中的空格标记
+  showtabs=false,                 % 不显示 TAB
+  tabsize=4, 
+  frame=shadowbox,                % 把代码用带有阴影的框圈起来
+  captionpos=b,                   % 标题位置
+  breaklines=true,                % 对过长的代码自动断行
+  breakatwhitespace=false,        % 断行只在空格处
+  extendedchars=false,            % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+  %escapeinside={\%*}{*},         % 跳脱字符，添加注释，暂时离开 listings 
+  %escapeinside=``,
+  commentstyle=\color{red!50!green!50!blue!50}\tt,  %浅灰色的注释
+  rulesepcolor=\color{red!20!green!20!blue!20},     %代码块边框为淡青色
+  keywordstyle=\color{blue!70}\bfseries\tt,         %代码关键字的颜色为蓝色，粗体
+  identifierstyle=\tt,
+  stringstyle=\tt,                % 代码字符串的特殊格式
+  keepspaces=true,
+  breakindent=1em,
+  %breakindent=22pt,
+  %breakindent=4em,
+  breakautoindent=true,
+  flexiblecolumns=true,
+  aboveskip=1em,                  %代码块边框
+  xleftmargin=2em,
+  xrightmargin=2em
+}
+
+%\setbeamercolor{alerted text}{fg=magenta}
+\setbeamercolor{bgcolor}{fg=yellow,bg=cyan}
+%\setbeamercolor{itemize/enumerate body}{fg=green}

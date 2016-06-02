@@ -1,0 +1,467 @@
+\section{引言}
+\begin{frame}
+  \frametitle{引言}
+  \begin{block}{前期准备工作}
+    \begin{itemize}
+      \item 组装版本
+      \item 坐标系统
+      \item 常用格式
+      \item 逻辑运算
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{后续功能注释}
+    \begin{itemize}
+      \item 变异位点的注释
+      \item 基因集富集分析
+      \item 制作序列标识
+      \item \ldots
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{变异位点的注释}
+\begin{frame}
+  \frametitle{变异位点的注释 | SNP}
+    \begin{center}
+      \includegraphics[width=9cm]{snp.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{SNP注释}}
+    \begin{center}
+      \includegraphics[width=11cm]{anno.png}
+      \vspace{0.5cm}
+      \includegraphics[width=11cm]{anno2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | 注释工具}
+  \begin{itemize}
+    \item SNVs的注释：SeattleSeq Annotation、variant tools、SnpEff
+    \item 非同义多态性的功能注释：SIFT、PolyPhen-2、SNPs3D
+    \item indels的功能注释：PROVEAN
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SeattleSeq Annotation}
+    \begin{center}
+      \includegraphics[width=12cm]{seattleseqannotation.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SeattleSeq Annotation}
+    \begin{center}
+      \includegraphics[width=12cm]{ssa1.png}
+      \vspace{0.5cm}
+      \includegraphics[width=12cm]{ssa2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SIFT}
+    \begin{center}
+      \includegraphics[width=12cm]{siftannotation.png}
+    \end{center}
+\end{frame}
+
+\section{基因集富集分析}
+\begin{frame}
+  \frametitle{富集分析 | 基因集}
+    \begin{center}
+      \includegraphics[width=12cm]{geneset.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | 数据库与分析工具}
+  \begin{block}{数据库}
+  \begin{description}
+    \item[GO] Gene Ontology
+    \item[KEGG] Kyoto Encyclopedia of Genes and Genomes
+  \end{description}
+  \end{block}
+  \pause
+  \begin{block}{分析工具}
+  \begin{description}
+    \item[DAVID] Database for Annotation, Visualization and Integrated Discovery
+  \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | \alert{GO}}
+  \begin{block}{三个方面}
+    \begin{itemize}
+      \item biological process，BP，生物学过程
+      \item molecular function，MF，分子功能
+      \item cellular component，CC，细胞组份
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{两大关系}
+    \begin{itemize}
+      \item is\_a: for simple, hierarchical connections between terms 
+      \item part\_of: for describing how the components of a living system fit together
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=12cm]{go.diag.png}
+    \end{center}
+\end{frame}
+\note{
+The structure of GO can be described in terms of a graph, where each GO term is a node, and the relationships between the terms are edges between the nodes. GO is loosely hierarchical, with 'child' terms being more specialized than their 'parent' terms, but unlike a strict hierarchy, a term may have more than one parent term (note that the parent/child model does not hold true for all types of relation). For example, the biological process term hexose biosynthetic process has two parents, hexose metabolic process and monosaccharide biosynthetic process. This is because biosynthetic process is a subtype of metabolic process and a hexose is a subtype of monosaccharide.
+
+In the diagram, relations between the terms are represented by the colored arrows; the letter in the box midway along each arrow is the relationship type. Note that the terms get more specialized going down the graph, with the most general terms—the root nodes, cellular component, biological process and molecular function—at the top of the graph. Terms may have more than one parent, and they may be connected to parent terms via different relations. The GO relations documentation describes these relations in greater detail. 
+}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=11cm]{go1.jpg}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=7cm]{go.bp.1.jpg}
+      \includegraphics[width=5.5cm]{go.bp.2.jpg}
+    \end{center}
+\end{frame}
+\note{
+In the GO biological process ontology, the process of M phase is comprised of parts, such as prophase, anaphase, etc. One of the inferred part\_of relationships, between telophase and cell cycle, is indicated.  Four worm (\textit{C. elegans}) genes have been annotated to the anaphase process, and are indicated here. Counts of worm genes annotated to each node are indicated in parentheses. Transitive relationships allow annotations to child nodes to be propagated [up] to the parent nodes.  Is\_a relationships are represented by red (round [i]) arrows, part\_of relationships by blue (square [p]) arrows, and develops\_from by green (diamond [D]) arrows. Inferred relationships are indicated by dotted lines.
+}
+\note{
+Logicians view an ontology as a graph of information, with terms (concepts) as nodes of the graph and relationships as the links that connect the terms. Many relationships are directed, meaning that they are only true in one direction (e.g., a nucleus is part of a cell, but a cell is not part of a nucleus); because of this, ontologies are often hierarchical in structure. The relationships used in an ontology are not predetermined, so any real-world relationship can be logically defined and used to connect terms and reflect reality. This makes ontologies a flexible framework for modeling many different kinds of data.
+
+There are two basic relationship types used by many ontologies: is\_a and part\_of.
+
+The is\_a relationship allows for simple, hierarchical connections between terms. Consider a section of the ZFA, representing the terms "heart," "gills," and "brain". These terms are all connected to the term "organ," and in turn to the term "anatomical structure," through an is\_a hierarchy. Thus, a search for "all mutants that affect zebrafish organs" could follow the is\_a relationships to return results for any mutants manifesting phenotypes in the heart, gills, or brain.
+
+The part\_of relationship is used for describing how the components of a living system fit together. This can signify physical parts, such as those found in the ZFA, where the brain is divided into the hindbrain, the forebrain, and so on. Note that each part of the brain can be further divided with the subparts related via a part\_of relationship—for instance, the cerebellum is part\_of the hindbrain, which is part\_of the whole brain. A part\_of relationship can also apply to processes, such as those modeled by the GO biological process ontology. For instance, in that ontology, prophase, anaphase, metaphase, and telophase are all part\_of the mitotic cell cycle.
+}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=10cm]{go.3.png}
+    \end{center}
+\end{frame}
+\note{
+This diagram shows a small portion of the Biological Process ontology.  Terms at the top represent broader, more general concepts, while terms lower down represent more specific concepts. When referring to the structure between terms, a term that has terms below it is referred to as a parent term, while those terms below it are referred to as child terms. Note that each term will be a parent with respect to the terms below it and a child with respect to terms above it. There are two different relationship types between terms: is\_a and part\_of. Note that the Gene Ontologies themselves contain only information about terms in the ontology and their relationships to other terms. They do not contain gene products of any specific organism.
+}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=7cm]{go2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | KEGG}
+    \begin{center}
+      \includegraphics[width=12cm]{kegg.01.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | KEGG}
+    \begin{center}
+      \includegraphics[width=10cm]{kegg.02.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID}
+  \begin{itemize}
+    \item Gene Name Batch Viewer
+    \item Gene ID Conversion Tool
+    \item Gene Functional Classification Tool
+    \item Functional Annotation Tool
+    \begin{itemize}
+      \item Functional Annotation Clustering
+      \item \alert{Functional Annotation Chart}：富集分析
+      \item Functional Annotation Table
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID | \alert{结果解析}}
+  \begin{center}
+    \includegraphics[width=12cm,height=8cm]{david.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID | 工具选择}
+  \begin{center}
+    \includegraphics[width=11cm]{david2.png}
+  \end{center}
+\end{frame}
+
+\section{序列标识}
+\begin{frame}
+  \frametitle{\alert{序列标识}}
+  \begin{center}
+    \includegraphics[width=10cm,height=3cm]{logo.png}
+  \end{center}
+  \pause
+  \begin{block}{序列标识（sequence logo）}
+    \begin{itemize}
+      \item 数据：多序列比对信息
+      \item 横轴：序列坐标位置
+      \item 纵轴：比特，计量单位
+      \item 总高度：保守性
+      \item 相对高度：相对频率
+      \item 制作工具：WebLogo, enoLOGOS，Skylign
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 剪接}
+  \begin{center}
+    \includegraphics[width=12cm]{gtag.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 实例}
+  \begin{center}
+    \includegraphics[width=10cm]{donor.png}
+    \vspace{0.5cm}
+    \includegraphics[width=10cm]{acceptor.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 实例 | 真实数据}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabular}{cc|cc}
+      \hline
+      \rowcolor{blue!50} \multicolumn{2}{c|}{Donor Sites(\%)} & \multicolumn{2}{c}{Acceptor Site(\%)}\\
+      \hline
+      GT & 98.797 & AG & 99.714\\
+      GC & 0.920 & AC & 0.120\\
+      AT & 0.143 & TG & 0.032\\
+      GA & 0.028 & AT & 0.024\\
+      GG & 0.025 & GG & 0.022\\
+      CT & 0.018 & AA & 0.019\\
+      TT & 0.016 & CG & 0.010\\
+      CC & 0.011 & CC & 0.010\\
+      TG & 0.007 & TT & 0.009\\
+      AG & 0.007 & CT & 0.008\\
+      TA & 0.006 & CA & 0.008\\
+      AC & 0.006 & GC & 0.007\\
+      CA & 0.006 & TA & 0.006\\
+      TC & 0.004 & TC & 0.004\\
+      AA & 0.004 & GT & 0.004\\
+      CG & 0.002 & GA & 0.003\\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\section{box plot}
+\begin{frame}
+  \frametitle{box plot | 实例}
+  \begin{center}
+    \includegraphics[width=8cm]{bp0.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 简介}
+  \begin{block}{历史}
+  \begin{itemize}
+    \item box plot, boxplot, Box-whisker Plot
+    \item 箱线图、箱须图、盒须图、盒式图、盒状图，因形状如箱子而得名
+    \item 1977年由美国着名统计学家约翰\textbullet 图基（John Tukey）发明
+  \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{简介}
+  \begin{itemize}
+    \item 显示一组数据分散情况的统计图
+    \item 显示最大值、最小值、中位数、下四分位数和上四分位数
+  \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{优缺点}
+  \begin{itemize}
+    \item 可以粗略地看出数据是否具有有对称性、分布的离散程度
+    \item 适合用于几个样本的比较
+    \item 不能提供关于数据分布偏态和尾重程度的精确度量
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 相关概念}
+  \begin{itemize}[<+-|alert@+>]
+    \item 最小值min，最大值max
+    \item 中位数median
+    \item 下四分位数Q1，上四分位数Q3
+    \item 四分位数差IQR（interquartile range），$IQR = Q3-Q1$
+    \item 内限：$Q3 + 1.5IQR$，$Q1 - 1.5IQR$
+    \item 外限：$Q3 + 3IQR$，$Q1 - 3IQR$
+    \item 异常值（outliers）：处于内限以外的数据
+    \item 温和的异常值（mild outliers）：在内限与外限之间的异常值
+    \item 极端的异常值（extreme outliers）：在外限以外的异常值
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 绘图步骤}
+  \begin{itemize}[<+-|alert@+>]
+  \item 绘制数轴。
+  \item 计算上四分位数（Q3），中位数，下四分位数（Q1）。
+  \item 计算四分位数差（IQR）。
+  \item 绘制箱线图的矩形，上限为Q3，下限为Q1。在矩形内部中位数的位置画一条横线（中位线）。
+  \item 在$Q3 + 1.5IQR$和$Q1 - 1.5IQR$处画两条与中位线一样的线段，这两条线段为异常值截断点，称为内限；在$Q3 + 3IQR$和$Q1 - 3IQR$处画两条线段,称为外限。\textcolor{blue}{\textit{（注意：统计软件绘制的箱线图一般都没有标出内限和外限。)}}
+  \item 在非异常值的数据中，最靠近上边缘和下边缘（即内限）的两个数值处画横线，作为箱线图的触须。
+  \item 从矩形的两端向外各画一条线段直到不是异常值的最远点（即上一步的触须），表示该批数据正常值的分布区间。
+  \item 温和的异常值用空心圆表示；极端的异常值用实心点（一说用星号*）表示。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | \alert{图解}}
+  \begin{center}
+    \includegraphics[width=10cm]{bp1.png}
+  \end{center}
+  \vspace{0.3cm}
+  最小值（min）=0.5；下四分位数（Q1）=7；中位数（Med）=8.5；\\
+  上四分位数（Q3）=9；最大值（max）=10；平均值=8；\\
+  四分位数差（interquartile range，四分位间距）=Q3−Q1=2。
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | \alert{图解}}
+  \begin{center}
+    \includegraphics[width=10cm]{bp2.jpg}
+    \vspace{1cm}
+    \includegraphics[width=11cm]{bp3.jpg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{box plot | \alert{图解}}
+  \begin{center}
+    \includegraphics[width=2.5cm]{bp4.png}
+    \hspace{1.5cm}
+    \includegraphics[width=3cm]{bp5.png}
+    \vspace{0.8cm}
+    \includegraphics[width=8cm]{bp6.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 变体}
+  \begin{center}
+    \includegraphics[width=8cm]{bp7.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 变体}
+  \begin{center}
+    \includegraphics[width=12cm]{bp8.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{box plot | 工具}
+  \begin{itemize}
+    \item BoxPlotR
+    \item Plotly
+    \item ECplot
+    \item Galaxy（“Graph/Display Data”工具集中的Boxplot）
+    \item R
+    \item \ldots
+  \end{itemize}
+\end{frame}
+
+\section{解析图表}
+\begin{frame}
+  \frametitle{解析图表 | 基本策略}
+  \begin{block}{表格}
+    \begin{itemize}
+      \item 行、列的含义
+      \item 缩写的含义
+      \item 数值的含义
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{图片}
+    \begin{itemize}
+      \item 生成图片的数据
+      \item 横、纵轴的含义
+      \item 图片包含的元素
+      \item 图片元素属性的含义
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{解析图表 | 图形的语法}
+\begin{itemize}
+  \item 数据（data）：我们想要可视化的对象。
+  \item 几何对象（geom）：用以呈现数据、在图中实际看到的图形元素（点、线、条形、多边形等）。
+  \item 图形属性（aes）：几何对象的视觉属性（位置、颜色、形状、大小和线条类型）。
+  \item 映射（mapping）：从数据中的变量对应到图形属性。
+  \item 统计变换（stats）：对数据进行的某种汇总（将数据分组计数以创建直方图）。
+  \item 标度（scale）：控制着数据空间的值到图形属性空间的值的映射（用颜色、大小或形状来表示不同的取值）。
+  \item 坐标系（coord）：描述了数据是如何映射到图形所在的平面的，它同时提供了看图所需的坐标轴和网格线。
+  \item 引导元素（guide）：向看图者展示了如何将视觉属性映射回数据空间（坐标轴上的刻度线和标签、图例）。
+  \item 分面（facet）：描述了如何将数据分解为各个子集，以及如何对子集作图并联合进行展示。分面也叫做条件作图或网格作图。
+  \item 位置调整：控制着图形对象的重叠。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{解析图表 | 图形的语法 | ggplot2}
+  \begin{center}
+    \includegraphics[width=11cm]{ggplot2.01.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{解析图表 | 其他}
+  \begin{center}
+    \includegraphics[width=11cm,height=9cm]{learnCode.jpg}
+  \end{center}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{block}{知识点——基因组功能的高级注释}
+    \begin{itemize}
+      \item 变异位点的注释——用途，注释内容，注释工具
+      \item 基因集富集分析——功能，分析工具
+      \item 序列标识——含义，制作工具
+      \item box plot——理解，绘制
+    \end{itemize}
+  \end{block}
+  \begin{block}{技能——解析图表}
+    \begin{itemize}
+      \item 表——行列，缩写，数值
+      \item 图——数据，横纵轴，图元素，元素属性
+    \end{itemize}
+  \end{block}
+\end{frame}

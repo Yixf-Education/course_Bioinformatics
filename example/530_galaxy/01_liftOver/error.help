@@ -1,0 +1,11 @@
+Deleted in new:
+	Sequence intersects no chains
+Partially deleted in new:
+	Sequence insufficiently intersects one chain
+Split in new:
+	Sequence insufficiently intersects multiple chains
+Duplicated in new:
+	Sequence sufficiently intersects multiple chains
+Boundary problem:
+	Missing start or end base in an exon
+
