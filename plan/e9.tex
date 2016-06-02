@@ -1,0 +1,188 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%实验名称
+\shiyan{实验九\ 制作人类基因剪接位点的GT-AG序列标识}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2015年11月23日13:30-16:30}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+%实验人数
+\renshu{28}
+%实验类型
+\leixing{验证型}
+%实验分组
+\fenzu{一人一机}
+%学时数
+\xueshi{3}
+%教材版本
+\jiaocai{生物信息学实验讲义（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 掌握剪接位点的GT-AG法则。
+  \item 掌握序列标识的含义。
+  \item 掌握Galaxy的基本使用方法。
+  \item 掌握WebLogo的基本使用方法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （10'）GT-AG法则：回顾真核生物基因剪接位点的GT-AG法则。
+  \item （10'）序列标识：回顾序列标识的含义。
+  \item （10'）WebLogo简介：简单介绍WebLogo的作用及使用方法。
+  \item （120'）实验操作：制作人类基因组中22号染色体上基因剪接位点的GT-AG序列标识。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 实验材料：人类基因组（hg19）中22号染色体（chr22）上基因的剪接位点。
+  \item 主要仪器：联网的计算机。
+  \item 分析工具：Galaxy，WebLogo。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 难点：序列标识的含义；解决策略：通过实例进行讲解。
+  \item 重点：Galaxy和WebLogo的使用；解决策略：根据资料进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 真核生物基因剪接位点的GT-AG法则指的是什么？
+  \item 序列标识的含义是什么？
+  \item 如何制作序列标识？
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Galaxy
+  \item WebLogo 
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、GT-AG法则（10分钟）
+
+大多数真核基因的剪接位点都遵循“GT-AG法则”：5'-GT $\cdots$ AG-3'。\textcolor{red}{（注意：剪接位点的供体位点和受体位点都在内含子上！）}
+\begin{itemize}
+  \item 内含子DNA序列5'端起始的两个核苷酸是供体位点的GT
+  \item 内含子DNA序列3'端最后的两个核苷酸是受体位点的AG
+  \item GT和AG这两个碱基序列具有高度保守性和广泛存在性
+  \item A-G-[cut]-G-U-R-A-G-U (donor site) \ldots intron sequence \ldots Y-U-R-A-C (branch sequence 20-50 nucleotides upstream of acceptor site) \ldots Y-rich-N-C-A-G-[cut]-G (acceptor site)
+\end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=15cm]{splicingM.jpg}
+\end{figure}
+
+\vspace*{0.2cm}
+\noindent
+二、序列标识（10分钟）
+
+序列标识（sequence logo）是基于DNA、RNA和蛋白质的多序列比对信息，把多序列的保守性信息通过图形表示出来。它依次绘出基序中各个位置上出现的碱基，每个位置上所有碱基的累积可反映出改位置上碱基的一致性，每个碱基字母的大小与碱基在该位置上出现的频率成正比。
+\begin{itemize}
+\parpic[fr]{\includegraphics[width=10cm,height=4cm]{logo.png}}
+  \item 数据：多序列比对信息
+  \item 横轴：序列坐标位置
+  \item 纵轴：比特，计量单位 
+  \item 总高度：保守性
+  \item 相对高度：相对频率
+  \item 制作工具：WebLogo
+\end{itemize}
+
+\vspace*{0.2cm}
+\noindent
+三、WebLogo简介（10分钟）
+
+WebLogo is a web based application designed to make the generation of sequence logos easy and painless. WebLogo has featured in over 2000 scientific publications.
+
+\parpic[fr]{\includegraphics[width=10cm]{weblogo.png}}
+A sequence logo is a graphical representation of an amino acid or nucleic acid multiple sequence alignment developed by Tom Schneider and Mike Stephens. Each logo consists of stacks of symbols, one stack for each position in the sequence. The overall height of the stack indicates the sequence conservation at that position, while the height of symbols within the stack indicates the relative frequency of each amino or nucleic acid at that position. In general, a sequence logo provides a richer and more precise description of, for example, a binding site, than would a consensus sequence.
+
+\otherTail
+\newpage
+\otherHeader
+
+\noindent
+四、实验操作（120分钟）
+
+制作人类基因组（hg19）中22号染色体（chr22）上基因剪接位点的GT-AG序列标识。
+
+\begin{enumerate}
+  \item 获取数据\textcolor{red}{（选择正确的格式，把结果导出到Galaxy中）}
+    \begin{itemize}
+      \item 内含子数据：Get Data，UCSC Main，hg19，chr22，RefSeq Genes，Introns，BED格式
+    \end{itemize}
+  \item 提取剪接位点的信息\textcolor{red}{（比较并理解供体位点和受体位点的参数设置）}
+    \begin{itemize}
+      \item 32bp = 上游15bp + 供体/受体位点2bp + 下游15bp
+      \item 供体位点的信息：Operate on Genomic Intervals，Get flanks，BED格式
+      \item 受体位点的信息：Operate on Genomic Intervals，Get flanks，BED格式
+    \end{itemize}
+  \item 获取剪接位点的序列
+    \begin{itemize}
+      \item 供体位点的序列：基于供体位点的信息，Fetch Sequences，Extract Genomic DNA，FASTA格式
+      \item 受体位点的序列：基于受体位点的信息，Fetch Sequences，Extract Genomic DNA，FASTA格式
+    \end{itemize}
+  \item 多序列比对
+    \begin{itemize}
+      \item 提取的序列已经是根据坐标比对好的序列，没有必要再单独进行多序列比对了
+      \item 尝试进行多序列比对（Multiple Alignments，ClustalW，FASTA格式），比较比对前后的结果\textcolor{red}{（如果出错，请查找出错原因，并尝试进行修正）} \end{itemize}
+      \item 制作序列标识\textcolor{red}{（比较集成到Galaxy中的WebLogo和网页版的WebLogo的具体参数）}
+    \begin{itemize}
+      \item 集成到Galaxy中的WebLogo\textcolor{red}{（调整标题、图片格式等参数）}
+	\begin{itemize}
+	  \item 供体位点的序列标识：基于供体位点的序列，Motif Tools，Sequence Logo
+	  \item 受体位点的序列标识：基于受体位点的序列，Motif Tools，Sequence Logo
+	\end{itemize}
+      \item 网页版的WebLogo\textcolor{red}{（调整图片格式、First position number、标题等参数）}
+	\begin{itemize}
+	  \item 下载剪接位点的序列
+	  \item 供体位点的序列标识：上传供体位点的序列
+	  \item 受体位点的序列标识：上传受体位点的序列
+	\end{itemize}
+    \end{itemize}
+  \item 尝试制作同一物种或其他真核物种的不同染色体或全基因组基因的剪接位点的序列标识\textcolor{red}{（提示：使用工作流简化重复操作）}
+\end{enumerate}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=15cm]{flow.logo.png}
+\end{figure}
+
+
+\otherTail
+
+
+\end{document}
+
