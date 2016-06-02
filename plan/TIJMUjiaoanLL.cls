@@ -2,7 +2,7 @@
 %Title: 天津医科大学（TIJMU）理论课教案
 %Version: 2013-09-17
 %Old Version: 2013-07-03
-%By: 伊现富(Yixf) 
+%By: 伊现富(Yixf)
 %Email: yixf1986@gmail.com
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \LoadClass[12pt,a4paper]{article}
@@ -36,6 +36,15 @@
 \@afterindenttrue
 \makeatother
 \setlength{\parindent}{2em}
+
+%插入图片
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+%图文混排
+%\usepackage{wrapfig}
+%\usepackage{picinpar}
+\usepackage{picins}
+\usepackage{floatflt}
 
 %获取总页数
 \RequirePackage{lastpage}

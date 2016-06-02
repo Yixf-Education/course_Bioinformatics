@@ -1,0 +1,184 @@
+\documentclass[table]{beamer}
+\input{beamer_head_xelatex}
+\setbeamercolor{bgcolor}{fg=yellow,bg=cyan}
+
+\begin{document}
+
+%\includeonlyframes{current}
+
+\logo{\includegraphics[height=0.08\textwidth]{tijmu.png}}
+
+% 在每个Section前都会加入的Frame
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    %\frametitle{Outline}
+    \frametitle{教学提纲}
+    \setcounter{tocdepth}{2}
+    \begin{multicols}{2}
+      %\tableofcontents[currentsection,currentsubsection]
+      \tableofcontents[currentsection]
+    \end{multicols}
+  \end{frame}
+}
+% 在每个Subsection前都会加入的Frame
+%\AtBeginSubsection[]
+%{
+  %\begin{frame}<beamer>
+%%\begin{frame}<handout:0>
+%% handout:0 表示只在手稿中出现
+    %\frametitle{Outline}
+    %\setcounter{tocdepth}{2}
+    %\tableofcontents[currentsection,currentsubsection]
+%% 显示在目录中加亮的当前章节
+  %\end{frame}
+%}
+
+\begin{frame}[plain]
+  \begin{center}
+    {\Huge 生物信息学\\}
+    \vspace{1cm}
+    {\LARGE 天津医科大学\\}
+    %\vspace{0.2cm}
+    {\LARGE 生物医学工程学院\\}
+    \vspace{1cm}
+    {\large 2013-2014学年下学期（春）\\ 2011级生信班}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{课堂纪律}
+  \begin{alertblock}{不迟到早退、不缺勤走神}
+  约束不明，申令不熟，将之罪也；既已明而不如法者，吏士之罪也。
+  \end{alertblock}
+  \pause
+  \begin{itemize}[<+-|alert@+>]
+    \item 只有正式上课前的请假有效
+    \item 提前5分钟到教室，严禁迟到
+    \item 上课期间手机关机或调成震动
+    \item 上课期间离开教室先举手示意
+    \item 课上有疑问的话先举手后提问
+    \item 上课期间严禁交头接耳，大声喧哗
+    \item 随机点名,缺勤扣分如下：1、3、6
+    \item 缺勤三次或三次以上者，平时成绩为0
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{自我介绍}
+    \begin{description}
+      \item[姓\qquad 名]伊现富（Yi Xianfu）
+      \item[本\qquad 科]山东大学
+      \item[硕\qquad 博]中国科学院
+      \item[工作邮箱]yixfbio@gmail.com
+      \item[生活邮箱]yixf1986@gmail.com
+      \item[手\qquad 机]15620610763
+      \item[个人博客]http://yixf.name
+      \item[网络昵称]yixf
+    \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{邮箱网盘}
+    \begin{enumerate}
+      \item 126邮箱
+        \begin{itemize}
+          \item 账号：bioinfo\_TIJMU@126.com
+          \item 密码：\texttt{C\&563f\&nzx!s}
+        \end{itemize}
+      \item \alert{百度云网盘}
+        \begin{itemize}
+	  \item \alert{账号：bioinfo\_TIJMU@126.com}
+	  \item \alert{密码：\texttt{566\&Us3Rp6\#C}}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{授课规律}
+  \begin{block}{每次课}
+    \begin{itemize}
+      \item 课前5分钟播放相关视频
+      \item 课堂中不点名，但随机提问
+      \item 授课内容以讲义为主、幻灯片为辅
+      \item 讲授需要掌握的知识点和必备的技能
+      \item 讲义中给出参考资料与课外阅读材料
+      \item 幻灯片图多字少，以讲解为主
+      \item 开始有回顾和引言，最后有总结和答疑
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{每一章}
+    \begin{itemize}
+      \item 复习思考题：知识点与技能
+      \item 共享幻灯片、讲义等所有授课资料
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  \begin{block}{问题}
+  \begin{enumerate}[<+-|alert@+>]
+    \item 与他人交流信息的方式有哪些？
+    \item 与他人共享资料的方法有哪些？
+    \item 从哪些方面可以提高密码的强健度？
+    \item 如果方便安全地管理众多的密码？
+  \end{enumerate}
+  \end{block}
+  \pause
+  \begin{block}{提示}
+    \begin{enumerate}
+      \item 电话、短信、邮件、面谈……
+      \item U盘、邮箱、网盘……
+      \item 唯一、复杂、勤换……
+      \item KeePassX、LastPass……
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{小测验}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{block}{生物信息学}
+      \begin{enumerate}[(A)]
+        \item bioinformatics
+        \item bioinfomatic
+        \item bioinformatix
+      \end{enumerate}
+    \end{block}
+    \pause
+    \column{0.3\textwidth}
+    \begin{block}{数据库}
+      \begin{enumerate}[(A)]
+        \item databas
+        \item datbase
+        \item database
+      \end{enumerate}
+    \end{block}
+  \end{columns}
+  \pause
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{序列比对}
+      \begin{enumerate}[(A)]
+        \item pairwise alignment
+        \item multiple sequence alignment
+        \item global alignment
+        \item local alignment
+      \end{enumerate}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\section*{Acknowledgements}
+\begin{frame}
+  \frametitle{Powered by}
+  \begin{center}
+    \includegraphics[width=9cm]{power.png}
+  \end{center}
+\end{frame}
+
+\end{document}
+

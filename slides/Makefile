@@ -5,7 +5,7 @@ PDFC = xelatex
 READER = evince
 
 TARGET = car.pdf
-OUTGROWTH = *.out *.log *.aux *.nav  *.snm *.toc
+OUTGROWTH = *.out *.log *.aux *.nav *.snm *.toc
 SOURCE = car.tex
 
 $(TARGET): $(SOURCE)

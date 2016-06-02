@@ -1,0 +1,206 @@
+\documentclass{TIJMUjiaoanLL}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%课程内容
+\neirong{4.2 基因组结构注释分析之基因识别}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2014年5月21日8时-9时}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程学院2011级生信班（本）}
+%听课人数
+\renshu{27}
+%授课方式
+\fangshi{理论讲授}
+%学时数
+\xueshi{2}
+%教材版本
+\jiaocai{生物信息学（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 掌握基因识别的方法。
+  \item 熟悉原核基因和真核基因的结构特点。
+  \item 了解基因识别的分析工具。
+  \item 自学基因识别分析工具的使用方法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （3'）引言与导入：回顾中心法则，阐释核酸序列携带的两类遗传信息。
+  \item （15'）基因识别：介绍基因和基因识别的基本概念，回顾原核基因和真核基因的结构特点并进行比较，讲解基因识别的主要方法与策略，介绍基因识别的常用工具。
+  \item （2'）总结与答疑：总结授课内容中的知识点，解答学生疑问。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点：原核基因和真核基因的结构特点。
+  \item 难点：基因预测中“信号”特征和“内容”特征的区别。
+  \item 解决策略：通过示意图和实例帮助学生理解，通过对比加深记忆。
+\end{itemize}
+}
+
+\waiyu{
+%\vspace*{-10pt}
+%\begin{multicols}{2}
+
+基因识别（gene prediction/finding）
+
+间接识别法（extrinsic approach）
+
+从头计算法（\textit{ab initio} approach）
+%\end{multicols}
+%\vspace*{-10pt}
+}
+
+\fuzhu{
+\begin{itemize}
+  \item 多媒体：原核基因和真核基因的结构，基因识别的策略。
+  \item 板书：查找数据库和分析工具的主要策略。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 比较原核基因和真核基因结构的异同。
+  \item 简述基因识别的三大类方法。
+  \item 比较基因预测中的信号与内容。
+  \item 论述基因识别的主要策略。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item 朱玉贤，李毅，郑晓峰。现代分子生物学（第3版），高等教育出版社，2007。
+  \item 李霞，李亦学，廖飞。生物信息学，人民卫生出版社，2010。
+  \item 王明怡，杨益，吴平。生物信息学（中译本，第2版），科学出版社，2004。
+  \item 维基百科。
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、引言与导入（3分钟）
+\begin{enumerate}
+  \item 分子生物学的中心法则：DNA转录成RNA，RNA翻译成蛋白质。
+  \begin{itemize}
+\parpic[fr]{\includegraphics[width=8cm,height=3.2cm]{dogma.jpg}}
+    \item DNA：携带最原始的决定个体性状的遗传信息
+    \item RNA：参与遗传信息的表达和调控
+    \item 蛋白质：执行特定的生物功能从而决定最终的表型
+  \end{itemize}
+  \item DNA携带两类遗传信息
+  \begin{itemize}
+    \item 功能序列：具有功能活性的DNA序列，遗传的基本单位
+    \item 调控信息：特定的DNA区域，能被功能性蛋白质分子特异地识别结合
+  \end{itemize}
+\end{enumerate}
+
+\vspace*{0.2cm}
+\noindent
+二、基因识别（15分钟）
+
+\textcolor{red}{在介绍基本概念的基础上，通过比较原核基因和真核基因的异同，讲解基因识别的主要策略及各种方法在原核和真核基因识别中的具体应用。}
+
+\begin{enumerate}
+  \item 基本概念
+    \begin{itemize}
+ \parpic[fr]{\includegraphics[width=6.5cm,height=2cm]{geneP.jpg}}
+      \item 基因：产生一条多肽链或功能RNA所需的全部核苷酸序列\textcolor{red}{（强调既包括编码区，也包括非编码区）}
+      \item 基因识别：识别DNA序列上具有生物学特征的片段
+    \end{itemize}
+  \item 基因结构\textcolor{red}{（教学重点：通过示意图形象化展示、比较原核和真核的基因结构）}
+    \begin{itemize}
+ \parpic[fr]{\includegraphics[width=6.5cm]{geneE.jpg}}
+      \item 共同点：都包括编码区和非编码区
+      \item 原核基因：连续基因
+      \item 真核基因：不连续性
+    \end{itemize}
+  \item 识别方法
+    \begin{itemize}
+      \item 间接识别法：mRNA/蛋白质序列 $\Rightarrow$ DNA序列
+      \item 从头预测法：基因预测，基于“信号”和“内容”两类特征
+      \item 比较基因组学的方法：比较相关物种的DNA序列
+    \end{itemize}
+  \item 基因预测\textcolor{red}{（教学难点：通过实例讲解并比较“信号”和“内容”）}
+    \begin{itemize}
+      \item “信号”和“内容”
+	\begin{itemize}
+ \parpic[fr]{\includegraphics[width=8cm]{signal.jpg}}
+      \item 共同点：都包括编码区和非编码区
+	  \item 信号：不连续的局部序列模体，一般都有一致性序列；如启动子，剪接供体和受体位点，起始和终止密码子，polyA位点
+	  \item 内容：不同长度的扩展序列，没有一致性序列，但具有把自己与周围DNA区分开来的保守特征；如密码子使用偏好性，双联密码子出现频率，基因组等值区
+	\end{itemize}
+      \item 原核基因
+	\begin{itemize}
+	  \item 信号：启动子序列，转录因子结合位点
+	  \item 内容：连续的开放阅读框，统计学特征
+	  \item 总结：信号容易识别，内容容易判别，预测能达到相对较高的精度
+	\end{itemize}
+    \end{itemize}
+
+
+\otherTail
+\newpage
+\otherHeader
+
+
+    \begin{itemize}
+      \item 真核基因
+       \begin{itemize}
+ \parpic[fr]{\includegraphics[width=8cm]{genefind.png}}
+        \item 信号：启动子区特征序列，供体和受体位点，起始和终止密码子，polyA序列；确定外显子的边界,识别编码区域
+        \item 内容：密码子使用偏好性，双联密码子出现频率，基因组等值区；区分外显子、内含子和基因间区域
+        \item 总结：信号复杂，内容难判别，预测相当有挑战性；联合信号和内容检测以及同源性搜索，提高识别效率
+       \end{itemize}
+    \end{itemize}
+  \item 识别策略
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=17cm]{gp.jpg}
+    \end{figure}
+  \item 识别工具\textcolor{red}{（强调分析工具的适用范围）}
+    \begin{itemize}
+      \item 识别原核基因：GeneMarkS, Glimmer
+      \item 识别真核基因：GENSCAN
+    \end{itemize}
+\end{enumerate}
+
+\vspace*{0.2cm}
+\noindent
+三、总结与答疑（2分钟）
+\begin{itemize}
+  \item 原核和真核的基因结构，基因识别方法
+  \item 基因识别方法
+  \item 基因预测中的信号与内容
+  \item 基因识别策略
+\end{itemize}
+
+
+\otherTail
+
+\end{document}
+

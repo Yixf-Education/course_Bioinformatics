@@ -1,0 +1,264 @@
+\documentclass[table]{beamer}
+\input{beamer_head_xelatex}
+\setbeamercolor{bgcolor}{fg=yellow,bg=cyan}
+
+\begin{document}
+
+%\includeonlyframes{current}
+
+\logo{\includegraphics[height=0.08\textwidth]{tijmu.png}}
+\title[基因识别]{基因识别}
+\author[Yixf]{伊现富（Yi Xianfu）}
+\institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程学院}
+\date{2014年5月23日}
+
+
+% 在每个Section前都会加入的Frame
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    %\frametitle{Outline}
+    \frametitle{教学提纲}
+    \setcounter{tocdepth}{2}
+    \begin{multicols}{2}
+      %\tableofcontents[currentsection,currentsubsection]
+      \tableofcontents[currentsection]
+    \end{multicols}
+  \end{frame}
+}
+% 在每个Subsection前都会加入的Frame
+%\AtBeginSubsection[]
+%{
+  %\begin{frame}<beamer>
+%%\begin{frame}<handout:0>
+%% handout:0 表示只在手稿中出现
+    %\frametitle{Outline}
+    %\setcounter{tocdepth}{2}
+    %\tableofcontents[currentsection,currentsubsection]
+%% 显示在目录中加亮的当前章节
+  %\end{frame}
+%}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}[plain]
+  \frametitle{教学提纲}
+  \setcounter{tocdepth}{2}
+  \begin{multicols}{2}
+  \tableofcontents
+  \end{multicols}
+\end{frame}
+
+\section{引言}
+\begin{frame}
+  \frametitle{引言 | 中心法则}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{dogma.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | 遗传信息}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{info.jpg}
+  \end{figure}
+\end{frame}
+
+\section{基因识别}
+\subsection{基本概念}
+\begin{frame}
+  \frametitle{基因识别 | 基因与基因识别}
+  \begin{block}{基因（gene）}
+    产生一条多肽链或功能RNA所需的全部核苷酸序列。一段具有特定功能和结构的连续的DNA片段，携带着遗传信息，是编码蛋白质或RNA分子遗传信息、控制性状的基本遗传单位。\\
+    一个完整的基因，不仅包括编码区，还包括5'末端和3'末端长度不等的特异性序列。
+  \end{block}
+  \pause
+  \begin{block}{基因识别（gene prediction，gene finding）}
+    使用生物学实验或计算机等手段识别DNA序列上的具有生物学特征的片段。
+  \end{block}
+\end{frame}
+
+\subsection{基因结构}
+\begin{frame}
+  \frametitle{基因识别 | 基因结构}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{geneP.jpg}
+    \\
+    \includegraphics[width=10cm]{geneE.jpg}
+  \end{figure}
+\end{frame}
+
+\subsection{识别方法}
+\begin{frame}
+  \frametitle{基因识别 | 方法}
+  \begin{enumerate}
+    \item 间接识别法（Extrinsic Approach）：利用已知的mRNA或蛋白质序列为线索在DNA序列中搜寻所对应的片段
+    \item 从头计算法（\textit{Ab Initio} Approach）：基因预测，基于基因的两种类型的特征：
+      \begin{itemize}
+        \item “信号”：由一些特殊的序列构成，通常预示着周围存在着一个基因
+        \item “内容”：蛋白质编码基因所具有的某些统计学特征
+      \end{itemize}
+    \item 比较基因组学的方法：自然选择的力量使得基因和DNA序列上具有生物学功能的片段较其他部分有较慢的变异速率，在前者的变异更有可能对生物体的生存产生负面影响，因而难以得到保存
+  \end{enumerate}
+\end{frame}
+
+\subsection{基因预测}
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 信号 \& 内容}
+  \begin{block}{信号}
+    \begin{itemize}
+      \item 不连续的局部序列模体，一般都有一致性序列（consensus sequence）
+      \item 启动子，剪接供体和受体位点，起始和终止密码子，polyA位点
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{内容}
+    \begin{itemize}
+      \item 不同长度的扩展序列，没有一致性序列，但具有把自己与周围DNA区分开来的保守特征
+      \item 密码子使用偏好性（codon usage bias），双联密码子出现频率，基因组等值区（isochore）
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 信号}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{signal.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 内容 | 密码子使用偏好性}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{cu2.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 原核基因}
+  \begin{block}{信号}
+    启动子序列（Pribnow盒），转录因子结合位点
+  \end{block}
+  \begin{block}{内容}
+    连续的开放阅读框，统计学特征
+  \end{block}
+  \pause
+  \begin{block}{总结}
+    信号容易识别，内容容易判别，预测能达到相对较高的精度
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 真核基因}
+  \begin{block}{信号}
+    启动子（TATA box，CAAT box，GC box），供体和受体位点，起始和终止密码子，polyA信号序列
+  \end{block}
+  \begin{block}{内容}
+    密码子使用偏好性，双联密码子出现频率，基因组等值区
+  \end{block}
+  \pause
+  \begin{block}{总结}
+    \begin{itemize}
+      \item 综合信号信息确定外显子的边界，识别编码区域
+      \item 通过内容统计值区分外显子、内含子和基因间区域
+      \item 信号复杂，内容难判别，预测相当有挑战性
+      \item 联合信号和内容检测以及同源性搜索，提高识别效率
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 真核基因}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{genfind.png}
+  \end{figure}
+\end{frame}
+
+\subsection{识别策略}
+\begin{frame}
+  \frametitle{基因识别 | 策略}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11.5cm]{gp.jpg}
+  \end{figure}
+\end{frame}
+
+\note{
+\textbf{Gene-finding strategies.} Given a genome DNA sequence, information on the location of genes and transcripts can be obtained from different sources: conservation with one or more informant genomes (1); intrinsic signals involved in gene specification, such as start and stop codons and splice sites (2); the statistical properties of coding sequences (3); and, most importantly, known transcript sequences (either full-length cDNAs or partial ESTs) and protein sequences (4). Over the past two decades, a plethora of programs and strategies has been developed to combine these sources of information to obtain reliable gene predictions. The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models [59]), to produce gene predictions (6). These programs are often referred to as ab initio or de novo gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes. If related genome sequences are available, the intrinsic information can be combined with patterns of genomic sequence conservation using programs often referred to as comparative (or dual- or multi-genome) gene finders (5). With these programs, maximum resolution is achieved when the compared genomes are at a phylogenetic distance such that there is maximum separation between the conservation in coding and noncoding regions. To increase resolution, programs have been developed that use multiple informant genomes. The most sophisticated use an underlying phylogenetic tree to appropriately weight sequence conservation depending on evolutionary distance. If cDNA and EST sequences are available, these often take priority over other sources of information. The initial map of the transcript or protein sequences onto the genome, which can be obtained using a variety of tools, including sequence-similarity searches, is refined using more sophisticated 'splice alignment' algorithms, whose explicit splice-site models allow more precise alignment across gaps corresponding to introns (8). Alternatively, cDNA and protein information can be fed into an ab initio gene-finder algorithm to give information on the exons included in the prediction (7). Often, cDNA and protein evidence is only partial; in such cases, the initial reliable gene and transcript set may be extended with more hypothetical models derived from ab initio or comparative gene finders, or from the genome mapping of cDNA and protein sequences from other species. Pipelines have been derived that automate this multi-step process (9). More recently, programs have been developed that combine the output of many individual gene finders (10). The underlying assumption in these 'combiners' is that consensus across programs increases the likelihood of the predictions. Thus, predictions are weighted according to the particular features of the program producing them. The most general frameworks allow the integration of a great variety of types of predictions - not only gene predictions, but also predictions of individual sites and exons. Despite all the developments in computational gene finding, the most reliable and complete gene annotations are still obtained after the initial alignments of cDNA and proteins onto the genome sequence are inspected manually to establish the exon boundaries of genes and transcripts (11). This is the task carried out by the HAVANA team at the Sanger Institute. The initial manual annotation can be refined even further by subsequent experimental verification of those transcript models lacking sufficiently strong evidence, as in the GENCODE project (12). Examples of gene-prediction programs (with references and URLs) corresponding to each strategy outlined here are provided in Additional data file 1.
+}
+
+\subsection{识别工具}
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{gps0.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{gps1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{block}{工具列表}
+    \begin{itemize}
+      \item \href{http://en.wikipedia.org/wiki/List\_of\_gene\_prediction\_software}{List of gene prediction software(Wikipedia)}
+      \item \href{http://www.nature.com/nrg/journal/v3/n9/box/nrg890\_BX2.html}{Computational prediction of eukaryotic protein-coding genes, Box 2, Useful internet resources}
+    \end{itemize}
+  \end{block}
+  \begin{block}{常见工具}
+    \begin{itemize}
+      \item GeneMarkS：迭代隐马尔科夫模型
+      \item Glimmer：插入式马尔科夫模型
+      \item GENSCAN：广义隐马尔科夫模型
+      \item GRAIL：人工神经网路
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{itemize}
+    \item 原核和真核的基因结构
+    \item 基因识别的方法
+    \item 基因预测中的信号 vs. 内容
+    \item 基因识别的策略
+  \end{itemize}
+\end{frame}
+
+\section{复习思考题}
+\begin{frame}
+  \frametitle{复习思考题}
+  \begin{enumerate}
+    \item 比较原核和真核的基因结构。
+    \item 简述基因识别的三大类方法。
+    \item 比较基因预测中的信号与内容。
+    \item 论述基因识别的主要策略。
+  \end{enumerate}
+\end{frame}
+
+\section*{Acknowledgements}
+\begin{frame}
+  \frametitle{Powered by}
+  \begin{center}
+    \includegraphics[width=9cm]{power.png}
+  \end{center}
+\end{frame}
+
+\end{document}
+

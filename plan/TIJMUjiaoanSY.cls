@@ -36,6 +36,15 @@
 \makeatother
 \setlength{\parindent}{2em}
 
+%插入图片
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+%图文混排
+%\usepackage{wrapfig}
+%\usepackage{picinpar}
+\usepackage{picins}
+\usepackage{floatflt}
+
 %获取总页数
 \RequirePackage{lastpage}
 

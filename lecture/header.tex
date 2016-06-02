@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,landscape,twoside]{book}
+%\documentclass[11pt,a4paper,twoside]{book}
 
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
@@ -27,7 +27,8 @@
 
 \linespread{1.2}
 
-\usepackage[top=1.5cm,bottom=1.5cm,left=1.5cm,right=5cm,marginparwidth=4.7cm,marginparsep=0.3cm]{geometry}
+%\usepackage[top=1.5cm,bottom=1.5cm,left=1.5cm,right=5cm,marginparwidth=4.7cm,marginparsep=0.3cm]{geometry}
+\usepackage[a4paper,top=2.5cm,bottom=1.5cm,left=3cm,right=1.5cm,marginparwidth=4.7cm,marginparsep=0.3cm]{geometry}
 
 \usepackage{titlesec}
 \titleformat{\chapter}{\centering\LARGE\bfseries}{第 \thechapter 章}{1em}{}
@@ -72,77 +73,11 @@
 \usepackage{enumitem}
 \setlist{nosep}
 
-% auto adjust the marginals
-\usepackage{marginfix}
-
-
 %可以添加多姿多彩的边注
 \usepackage{todonotes}
-\newcommand{\checkpoint}[1]{\todo[linecolor=green!70!white,backgroundcolor=blue!20!white,bordercolor=red,noline,size=\large]{#1}}
+\newcommand{\checkpoint}[1]{\todo[linecolor=green!70!white,backgroundcolor=blue!20!white,bordercolor=red,inline,size=\large]{#1}}
 \newcommand{\question}[1]{\todo[inline,backgroundcolor=yellow!50!gray]{\textbf{提问：}#1}}
-\newcommand{\slide}[1]{\todo[color=green!40,noline]{#1}}
-%\newcommand{\slide}[1]{\todo[color=green!40]{#1}}
-
-%在正文和边注间添加分割线
-\usepackage{lipsum}
-\usepackage{eso-pic}
-\usepackage{ifthen}
-\usepackage{tikz}
-
-\def\bottommargin{\paperheight - \topmargin - \textheight - \headheight - \headsep - 1in - \voffset}
-\def\toptotalheight{\paperheight - \topmargin - \headheight - \headsep - 1in - \voffset}
-\def\leftlength{\evensidemargin - 0.5*\marginparsep + 1in + \hoffset}
-\def\rightlength{\paperwidth - \evensidemargin + 0.5*\marginparsep - 1in - \hoffset} 
-
-\makeatletter
-\newcommand{\nomarginbar}{\let\ESO@HookIIBG\@empty}
-\makeatother
-
-\newcommand{\thisisfullsize}{\path (0,0) --  (\paperwidth,\paperheight);}
-
-\newcommand\LeftBar{%
-  \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-      \vfill
-      \centering
-      \begin{tikzpicture}
-        \thisisfullsize
-        \draw[line width=1pt] (\leftlength,\bottommargin) -- (\leftlength,\toptotalheight);
-      \end{tikzpicture}
-      \vfill
-}}}
-
-\newcommand\RightBar{ 
-  \put(0,0){
-    \parbox[b][\paperheight]{\paperwidth}{
-      \vfill
-      \centering
-      \begin{tikzpicture}
-        \thisisfullsize
-        \draw[line width=1pt] (\rightlength,\bottommargin) -- (\rightlength,\toptotalheight);
-      \end{tikzpicture}
-      \vfill
-}}}
-
-%%% Use this in two-side documents
-\AtBeginShipout{
-  \ifthenelse{\isodd{\value{page}}}
-  {\AddToShipoutPictureBG*{\LeftBar}
-  }
-  {\AddToShipoutPictureBG*{\RightBar}
-  }
-}
-
-% %%% Use this in one-side documents
-% \AtBeginShipout{%
-%   \AddToShipoutPictureBG*{\RightBar}%
-% }
-
-%%% Use this anyway (to take care of the first page of the document)
-\AtBeginDocument{
-\AddToShipoutPictureBG*{\RightBar}
-}
-
+\newcommand{\slide}[1]{\todo[color=green!40,inline]{#1}}
 
 %设置颜色的快捷命令
 \newcommand{\red}{\textcolor{red}}
@@ -154,3 +89,20 @@
 \newcommand{\rmnum}[1]{\romannumeral #1}
 \newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
+
+%文本框
+\usepackage{fancybox}
+
+%符号图
+%\Cross conflict in bbding and marvosym
+\usepackage{marvosym}
+\usepackage{savesym}
+\savesymbol{Cross}
+\usepackage{bbding}
+\restoresymbol{bb}{Cross} 
+
+%分栏，对照
+%\usepackage{multicol}
+\usepackage{parallel}
+\usepackage{paracol}
+
