@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>The Elements of Bioinformatics</title>
+<meta name="description" content="An interactive periodic table of common bioinformatics tools and their alternatives.">
+<link rel="stylesheet" type="text/css" href="elements.css">
+</head>
+<body>
+<div id="header">
+<h1>
+<a href="http://www.eaglegenomics.com/"><img class='new-logo' src="new-logo.jpg" height="100" width="200" alt="Eagle Genomics logo."></a>The Elements of Bioinformatics</h1>
+</div>
+<div id="content">
+<div id="explanation">
+<h2>Make a Suggestion</h2>
+<p>Use this form to suggest changes to the entry for ChEBI (label "Cb"). The placeholder text provided shows the existing values. Only values you replace or edit will be sent to us when you click Submit.</p><form method='post' action='elements-suggest.php'><p>
+  <input name='label' type='hidden' value='Cb'/>
+  Your name: <input name='username' type='text'/><br/>
+  Your email address: <input name='email' type='text'/><br/>
+  Tool name: <input name='name' type='text' placeholder='ChEBI'/><br/>
+  Description:<br/><textarea name='about' rows='10' cols='60' placeholder='Chemical Entities of Biological Interest (ChEBI) is a freely available dictionary of molecular entities focused on ‘small’ chemical compounds. The term ‘molecular entity’ refers to any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer, etc., identifiable as a separately distinguishable entity. The molecular entities in question are either products of nature or synthetic products used to intervene in the processes of living organisms.'></textarea><br/>
+  Author(s): <input name='author' type='text' placeholder='Hastings, J., de Matos, P., Dekker, A., Ennis, M., Harsha, B., Kale, N., Muthukrishnan, V., Owen, G., Turner, S., Williams, M., and Steinbeck, C.'/><br/>
+  DOI: <input name='doi' type='text' placeholder='10.1093/nar/gks1146'/><br/>
+  Publication: <input name='publication' type='text' placeholder=''/><br/>
+  Licence: <input name='licence' type='text' placeholder='Free'/><br/>
+  OS: <input name='os' type='text' placeholder='Online'/><br/>
+  Website URL: <input name='link' type='text' placeholder='http://www.ebi.ac.uk/chebi/'/><br/>
+  Logo URL: <input name='logo' type='text' placeholder='http://www.ebi.ac.uk/chebi/images/ChEBI_logo.png'/><br/>
+  Year published: <input name='year' type='text' placeholder='10'/><br/>
+  <input type='submit'/></p>
+  </form>
+</div>
+</div>
+<div id="footer">
+<!--
+<p class="contact"><a href="flyers.pdf"><img src="flyers.png" alt="Eagle brochures."></a><a href="elements-about.html">About</a> | <a href="index.html">View table</a> | <a href="elements-72dpi.pdf" alt="72dpi PDF of the Bioinformatics Elements.">PDF (web)</a> | <a href="elements-1200dpi.pdf" alt="1200dpi PDF of the Bioinformatics Elements.">PDF (print)</a> | <a href="elements.rdf">RDF</a> | <a href="elements.xml">XML</a></p>
+-->
+<p class="contact"><a href="elements-about.html">About</a> | <a href="index.html">View table</a></p>
+<p class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license"><img alt="Creative Commons License." src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a> ImpactStory data is not under Eagle&apos;s control. Table, design, and underlying data published under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.<br/>
+<a href="http://dx.doi.org/10.6084/m9.figshare.726124">doi:10.6084/m9.figshare.726124</a>. Copyright &#169; Eagle Genomics Ltd 2012-2014. No responsibility is assumed for the accuracy of information.<br/>
+Eagle Genomics is a company registered in England and Wales. company no. 6587071.</p>
+</div>
+</body>
+</html>
