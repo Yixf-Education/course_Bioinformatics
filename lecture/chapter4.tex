@@ -202,7 +202,7 @@ Count occurrence statistics typically use sliding overlapping windows to analyze
 
 Sliding window analysis is a commonly used method for studying the properties of molecular sequences: data are plotted as moving averages of a particular criterion, such as the number of nucleotide changes, for a window of a certain length slid along a sequence or sequence alignment.
 
-A sliding window of length N is a common algorithm in sequence analysis.\footnote{此部分内容摘抄自\href{https://nsaunders.wordpress.com/2006/10/11/sliding-windows-with-bioperl/}{Sliding windows with (Bio)perl}。} Let’s imagine that we have a sequence of length L. For instance if L=5, our sequence might be “ABCDE”. How many windows of size N can we make? Well, if N=1 we have 5 (A, B, C, D, E). N=2 gives 4 (AB, BC, CD and DE). N=3 gives 3 (ABC, BCD, CDE) and so on, up to N=5 which gives 1 (ABCDE). You might see a pattern there. The number of windows with size N for a sequence of length L is (L-N)+1.
+A sliding window of length N is a common algorithm in sequence analysis.\footnote{此部分内容摘抄自 \href{https://nsaunders.wordpress.com/2006/10/11/sliding-windows-with-bioperl/}{Sliding windows with (Bio)perl}。} Let’s imagine that we have a sequence of length L. For instance if L=5, our sequence might be “ABCDE”. How many windows of size N can we make? Well, if N=1 we have 5 (A, B, C, D, E). N=2 gives 4 (AB, BC, CD and DE). N=3 gives 3 (ABC, BCD, CDE) and so on, up to N=5 which gives 1 (ABCDE). You might see a pattern there. The number of windows with size N for a sequence of length L is (L-N)+1.
 
 The sliding window technique is a widely used algorithmic primitive. For example, the sliding window approach has been used to improve the spatial resolution of predicted binding sites using ChIP-Seq data, as well as to analyze sequence polymorphisms that can aid in understanding evolutionary forces and chromosomal functional significance.
 
@@ -492,13 +492,14 @@ emission_probability = {
 }
 \end{lstlisting}
 
-在这段代码中，起始状态概率start\_probability表示病人第一次到访时医生认为其所处的HMM状态，他唯一知道的是病人倾向于是健康的。这里用到的特定概率分布不是均衡的，如平衡概率大约是\verb|{'Healthy': 0.57, 'Fever': 0.43}|。状态转换概率transition\_probability表示潜在的马尔可夫链中健康状态的变化。在这个例子中，当天健康的病人仅有30\%的机会第二天会发烧。输出概率emission\_probability表示每天病人感觉的可能性。假如他是健康的，50\%会感觉正常。如果他发烧了，有60\%的可能感觉到头晕。
+在这段代码中，起始状态概率start\_probability表示病人第一次到访时医生认为其所处的HMM状态，他唯一知道的是病人倾向于是健康的。这里用到的特定概率分布不是均衡的，如平衡概率大约是
+\verb|{'Healthy': 0.57, 'Fever': 0.43}|。状态转换概率transition\_probability表示潜在的马尔可夫链中健康状态的变化。在这个例子中，当天健康的病人仅有30\%的机会第二天会发烧。输出概率emission\_probability表示每天病人感觉的可能性。假如他是健康的，50\%会感觉正常。如果他发烧了，有60\%的可能感觉到头晕。
 
 病人连续三天看医生，医生发现第一天他感觉正常，第二天感觉冷，第三天感觉头晕。于是医生产生了一个问题：怎样的健康状态序列最能够解释这些观察结果。维特比算法解答了这个问题。
 
-函数viterbi具有以下参数: obs为观察结果序列, 例如\verb|['normal', 'cold', 'dizzy']|；states为一组隐含状态；start\_p为起始状态概率；trans\_p为状态转换概率；而emit\_p为输出概率。
+函数viterbi具有以下参数: obs为观察结果序列, 例如 \verb|['normal', 'cold', 'dizzy']|；states为一组隐含状态；start\_p为起始状态概率；trans\_p为状态转换概率；而emit\_p为输出概率。
 
-维特比算法揭示了观察结果\verb|['normal', 'cold', 'dizzy']|最有可能由状态序列\verb|['Healthy', 'Healthy', 'Fever']|产生。 换句话说，对于观察到的活动，病人第一天感到正常，第二天感到冷时都是健康的，而第三天发烧了。
+维特比算法揭示了观察结果 \verb|['normal', 'cold', 'dizzy']|最有可能由状态序列 \verb|['Healthy', 'Healthy', 'Fever']|产生。 换句话说，对于观察到的活动，病人第一天感到正常，第二天感到冷时都是健康的，而第三天发烧了。
 }
 
 \hrule height 3pt
@@ -831,7 +832,7 @@ DNA转录生成RNA\footnote{RNA包括哪些种类？}。RNA既是携带遗传信
 
 选择性剪接数据资源根据数据来源分成两大类。一类是基于文献报道的数据库，通过收集、整理已有的实验数据和文献报道而建立。一类是基于EST数据的选择性剪接数据库，主要是通过采用EST序列数据与基因组或DNA、mRNA序列进行比对的方法，发现新的或已经存在的选择性剪接形式后建立的数据库或数据集。常用的选择性剪接数据库有ASTD和ASAP。ASTD（Alternative Splicing and Transcript Diversity database），选择性剪接和转录多样性数据库，由ASD（Alternative Splicing Database）和ATD（Alternate Transcript Diversity Project）合并而来，提供人、小鼠、大鼠、斑马鱼、线虫、果蝇等多个物种的选择性剪接数据，是目前常用的选择性剪接数据库。ASD由三个子数据库组成：AEDB（Alternative Exon Database），从文献中收集的经实验验证的人类选择性外显子（alternative exons）；AltExtron，由EST与全基因组序列比对得到的选择性剪接数据及选择性外显子和内含子；AltSplice（Alternative Splicing Database），收集了通过计算方法得到的选择性剪接事件及其模式。ATD试图通过创建人和小鼠的全长选择性剪接转录本，来揭示转录异构体的产生机制。ASAP（Alternative Splicing Annotation Project）\footnote{英语中ASAP是什么的缩写，有何含义？其他缩写名比较有趣的数据库或工具：TCGA——The Cancer Genome Atlas；TiGER——Tissue-specific Gene Expression and Regulation；DAVID——The Database for Annotation, Visualization and Integrated Discovery；GOLD——Genome Online Database；COSMIC——Catalogue of somatic mutations in cancer；GREAT——Genomic Regions Enrichment of Annotation Tool；……}是通过全基因组范围内比对EST数据得到的人和小鼠的选择性剪接数据库\footnote{ASAP网站已失效，提醒我们要注意数据库的更新日期。}。它提供基因的外显子、内含子结构、选择性剪接、组织特异性选择性剪接、选择性剪接产生的蛋白质异构体等信息。
 
-剪接位点的精确定位是确定真核生物基因结构的关键。生物信息学已开发出从头预测法、基于EST/cDNA序列比对法和基于RNA-seq数据识别等多种方法。从头预测法主要采用支持向量机、概率模型、隐马尔科夫模型、神经网络和二次判别分析法等技术预测剪接位点。选择性剪接过程的调控机制具有多样性，主要由剪接调节因子（splicing-regulatory element）和调节蛋白相互作用来进行调节。剪接调节因子主要由外显子剪接增强子（Exonic Splicing Enhancer，ESE）、外显子剪接沉默子（Exonic Splicing Silencer，ESS）、内含子剪接增强子（Intronic Spicing Enhancer，ISE）和内含子剪接沉默子（Intronic Splicing Silencer，ISS）。目前常用工具都结合剪接调节因子预测进行选择性剪接的分析。ESEfinder和RESCUE-ESE等用于外显子剪接增强子的预测。ASPicDB（Alternative Splicing Prediction Database）旨在提供人类基因选择性剪接模式的可靠注释和剪接异构体的功能注释，能够在基因、转录本、外显子、蛋白质或剪接位点水平上进行分析，提供两类蛋白质（球状蛋白和跨膜蛋白）及有关定位、PFAM结构域、信号肽（signal peptides）、跨膜片段和卷曲螺旋片段的信息。
+剪接位点的精确定位是确定真核生物基因结构的关键。生物信息学已开发出从头预测法、基于EST/cDNA序列比对法和基于RNA-seq数据识别等多种方法。从头预测法主要采用支持向量机、概率模型、隐马尔科夫模型、神经网络和二次判别分析法等技术预测剪接位点。选择性剪接过程的调控机制具有多样性，主要由剪接调节因子（splicing-regulatory element）和调节蛋白相互作用来进行调节。剪接调节因子主要有外显子剪接增强子（Exonic Splicing Enhancer，ESE）、外显子剪接沉默子（Exonic Splicing Silencer，ESS）、内含子剪接增强子（Intronic Spicing Enhancer，ISE）和内含子剪接沉默子（Intronic Splicing Silencer，ISS）。目前常用工具都结合剪接调节因子预测进行选择性剪接的分析。ESEfinder和RESCUE-ESE等用于外显子剪接增强子的预测。ASPicDB（Alternative Splicing Prediction Database）旨在提供人类基因选择性剪接模式的可靠注释和剪接异构体的功能注释，能够在基因、转录本、外显子、蛋白质或剪接位点水平上进行分析，提供两类蛋白质（球状蛋白和跨膜蛋白）及有关定位、PFAM结构域、信号肽（signal peptides）、跨膜片段和卷曲螺旋片段的信息。
 
 \section{miRNA及其靶基因预测}
 微RNA（microRNAs，miRNA，小分子RNA）归属小RNA范畴，是真核生物中广泛存在的一种长约20到24个核苷酸的内源性非编码单链RNA分子。miRNA通过RNA诱导沉默复合体（RISC）与靶基因的3'非翻译区（3' UTR）相结合，导致靶基因mRNA降解或者抑制其翻译，从而调节基因转录后的表达。miRNA在调控基因表达、细胞周期、生物体发育时序等方面起重要作用。\footnote{比较miRNA和siRNA。（miRNA与siRNA之间有许多相同之处：1.二者的长度都约在22nt左右。2.二者都依赖Dicer酶的加工，是Dicer的产物，所以具有Dicer产物的特点。3.二者生成都需要Argonaute家族蛋白存在。4.二者都是RISC组分，所以其功能界限变得不清晰，如二者在介导沉默机制上有重叠。5.miRNA和siRNA合成都是由双链的RNA或RNA前体形成的。miRNA与siRNA的不同点：1.根本区别是miRNA是内源的，是生物体的固有因素；而siRNA是人工体外合成的，通过转染进入人体内，是RNA干涉的中间产物。2.结构上，miRNA是单链RNA，而siRNA是双链RNA。3.Dicer酶对二者的加工过程不同，miRNA是不对称加工，miRNA仅是剪切pre-miRNA的一个侧臂，其他部分降解；而siRNA对称地来源于双链RNA的前体的两侧臂。4.在作用位置上，miRNA主要作用于靶标基因3′ UTR区，而siRNA可作用于mRNA的任何部位。5.在作用方式上，miRNA可抑制靶标基因的翻译，也可以导致靶标基因降解，即在翻译水平和转录后水平起作用，而siRNA只能导致靶标基因的降解，即为转录后水平调控。6.miRNA主要在发育过程中起作用，调节内源基因表达，而siRNA不参与生物生长，是RNAi的产物，原始作用是抑制转座子活性和病毒感染。）}

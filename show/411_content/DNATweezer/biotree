@@ -1,0 +1,232 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use 5.010;
+use Bio::TreeIO;
+use Bio::Tree::Tree;
+use Bio::Tree::Node;
+use Data::Dumper;
+use Getopt::Long qw(:config gnu_getopt);
+use Pod::Usage;
+
+my %opts;
+GetOptions(
+    \%opts,       "help|h",    "man|m",         "input|i=s",
+    "output|o=s", "length|l",  "text|t",        "otu|u",
+    "reroot|e=s", "getroot|g", "bootclean|b:f", "rmbl|r"
+) or pod2usage(2);
+
+pod2usage(1) if $opts{"help"};
+pod2usage( -exitstatus => 0, -verbose => 2 ) if $opts{"man"};
+
+pod2usage(1) if ( @ARGV < 1 );
+
+my $filename  = shift @ARGV;
+my $in_format = $opts{"input"} || 'newick';
+my $in        = Bio::TreeIO->new( -format => $in_format, -file => $filename );
+
+my $out_format = $opts{"output"} || 'newick';
+my $out = Bio::TreeIO->new( -format => $out_format );
+
+my $tree     = $in->next_tree();
+my @nodes    = $tree->get_nodes;
+my $rootnode = $tree->get_root_node;
+
+NOTREE: {
+    say $tree->total_branch_length()
+        if ( $opts{'length'} );
+
+    getroot()
+        if ( $opts{'getroot'} );
+
+    exit;
+}
+
+TREE: {
+    reroot()
+        if ( $opts{'reroot'} );
+
+    print_leaves_lengths()
+        if ( $opts{'otu'} );
+
+    bootclean()
+        if ( $opts{'bootclean'} );
+
+    remove_brlengths()
+        if ( $opts{'rmbl'} );
+
+    say $tree->as_text($out_format);
+
+    #    if ( $opts{'text'} );
+}
+
+################################################################################
+# Subroutines
+################################################################################
+sub getroot {
+    if ( !defined( $rootnode->id() ) ) {
+        say "Unrooted";
+    }
+    else {
+        say( join ':', $rootnode->id(), $rootnode->branch_length() );
+    }
+
+    exit;
+}
+
+sub reroot {
+    print "Before:\t", $tree->as_text($out_format), "\n";
+    my $outgroup_id = $opts{'reroot'};
+    my $outgroup    = $tree->find_node($outgroup_id);
+    my $newroot     = $outgroup->create_node_on_branch(
+        -FRACTION => 0.5,
+        -ANNOT    => { id => 'newroot' }
+    );
+    $tree->reroot($newroot);
+    print "After:\t";
+    $out->write_tree($tree);
+}
+
+sub print_leaves_lengths {
+    foreach my $nd (@nodes) {
+        if ( $nd->is_Leaf() ) {
+            print $nd->id(), "\t", $nd->branch_length(), "\n";
+        }
+    }
+}
+
+sub bootclean {
+    my $threshold = $opts{'bootclean'} // 0.5;
+    foreach my $nd (@nodes) {
+        next if ( $nd eq $rootnode );    # skip root node
+        if ( $nd->is_Leaf() ) {
+            $nd->bootstrap(1);
+        }
+        else {
+            $nd->bootstrap( $nd->id() );
+        }
+
+        if ( $nd->bootstrap() < $threshold ) {
+            my @desc     = $nd->get_all_Descendents();
+            my $ancestor = $nd->ancestor();
+            foreach my $desc (@desc) {
+                $ancestor->add_Descendent($desc);
+
+                # or
+                # $desc->ancestor($ancestor);
+            }
+
+            warn "Removing node ", $nd->id, ":", $nd->branch_length(), "\n";
+            $tree->remove_Node($nd);
+        }
+    }
+}
+
+sub remove_brlengths {
+    foreach my $node (@nodes) {
+        $node->branch_length(0)
+            if defined $node->branch_length;
+    }
+}
+
+## TODO Collapse nodes, remove nodes, add nodes
+
+################# POD Documentation ##################
+
+__END__
+
+=head1 NAME
+
+biotree - Fasta tools based on BioPerl
+
+=head1 SYNOPSIS
+
+B<biotree> [options] <sequence file>
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<--help, -h>
+
+Print a brief help message and exits.
+
+=item B<--man, -m>
+
+Print the manual page and exits.
+
+=item B<--input, -i> 'format'
+
+Input file format.
+
+=item B<--output, -o> 'format'
+
+Output file format.
+
+=item B<--length, -l>
+
+Print total branch length.
+
+=item B<--text, -t>
+
+DEPRECATED: Most options print trees anyway. Use -o newick instead if you want
+a newick tree.
+
+Return tree in newick output format.
+
+=item B<--otu, -u>
+
+Print leaf nodes with branch lengths.
+
+=item B<--reroot, -e> 'newroot'
+
+Reroot tree to specified node by creating new branch.
+
+=item B<--getroot, -g>
+
+Return root node. If tree is unrooted, return "Unrooted".
+
+=item B<--bootclean, -b> [threshold]
+
+Remove branches with a support value below 'threshold' and create polytomy.
+
+'threshold' is between 0 and 1. Default is 0.5 (50%).
+
+=item B<--rmbl, -r>
+
+Remove branch lengths from tree.
+
+=back
+
+=head1 DESCRIPTION
+
+B<biotree> will read a tree file and do reformating of branches
+and nodes.
+
+Trees can be in any format supported by Bio::TreeIO in BioPerl. However,
+tree-manipulations has not been tested on all possible formats, so behavior
+may be unexpected with some.
+
+Currently, tree-manipulations does not support multiple trees per file or
+the ability to read from standard input.
+
+=over 4
+
+=back
+
+=head1 REQUIRES
+
+Perl 5.004, Getopt::Long, Pod::Usage, BioPerl
+
+=head1 SEE ALSO
+
+  perl(1)
+
+=head1 AUTHOR
+
+Daniel Demesh at hunter.cuny.edu
+
+=cut
+
+##################### End ##########################

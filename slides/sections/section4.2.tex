@@ -287,7 +287,7 @@ intrinsic signals involved in gene specification, such as start and stop codons 
 the statistical properties of coding sequences (3);
 and, most importantly, known transcript sequences (either full-length cDNAs or partial ESTs) and protein sequences (4). 
 Over the past two decades, a plethora of programs and strategies has been developed to combine these sources of information to obtain reliable gene predictions.
-The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models), to produce gene predictions (6). These programs are often referred to as \textit{ab} initio or de novo gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes.
+The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models), to produce gene predictions (6). These programs are often referred to as \textit{ab} initio or \textit{de novo} gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes.
 If related genome sequences are available, the intrinsic information can be combined with patterns of genomic sequence conservation using programs often referred to as comparative (or dual- or multi-genome) gene finders (5). With these programs, maximum resolution is achieved when the compared genomes are at a phylogenetic distance such that there is maximum separation between the conservation in coding and noncoding regions. To increase resolution, programs have been developed that use multiple informant genomes. The most sophisticated use an underlying phylogenetic tree to appropriately weight sequence conservation depending on evolutionary distance.
 If cDNA and EST sequences are available, these often take priority over other sources of information. The initial map of the transcript or protein sequences onto the genome, which can be obtained using a variety of tools, including sequence-similarity searches, is refined using more sophisticated 'splice alignment' algorithms, whose explicit splice-site models allow more precise alignment across gaps corresponding to introns (8). 
 Alternatively, cDNA and protein information can be fed into an \textit{ab initio} gene-finder algorithm to give information on the exons included in the prediction (7). 
@@ -350,7 +350,7 @@ Examples of gene-prediction programs (with references and URLs) corresponding to
 \end{frame}
 
 \begin{frame}
-  \frametitle{基因识别 | GENSCAN | 结果 | 解读}
+  \frametitle{基因识别 | GENSCAN | 结果 | \alert{解读}}
   \begin{block}{Type}
     \begin{itemize}
       \item Init: initial exon; Intr: internal exon; Term: terminal exon

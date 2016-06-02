@@ -1,0 +1,120 @@
+#!/usr/bin/bash
+
+# Export family sequences:
+./extract-orth-orf.pl -f1 11
+
+# Alignment
+for f in fam_*.pep; 
+  do 
+  clustalw $f; 
+done
+
+# Align codons
+for f in fam_*.aln; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  align-cds.pl $f $id.seq > $id.aligned; 
+done
+
+# Simplify names
+for f in fam_*.aligned; 
+  do 
+  id=$(echo $f| cut -f1 -d'.'); 
+  sed 's/>\([^_]\+\)_.\+$/>\1/; s/>297/>L297/' $f > $id.aligned.fas; 
+done
+
+# Change to phylip, sequential
+
+for f in fam_*.aligned.fas; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  /home/weigang/weigang/StatTools/fasta2phylip.pl $f > $id.phy; 
+done
+
+# Remove node as needed (don't always work; manual)
+for f in fam_*.aligned.fas; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  ../../Exec/remove_node.pl common-tree.dnd $f > $id.dnd; 
+done
+
+# Run codoml, site model
+for f in fam_*.phy; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  cp $f tmp.site.phy; 
+  cp $id.dnd tmp.site.dnd; 
+  codeml ../site.ctl 2> $id.site.log; 
+  cp mlc $id.site.mlc; 
+  cp rst $id.site.rst; 
+done
+
+# Run codoml, branch-site model, speciation
+
+for f in fam_*.dnd; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  cat $f | sed 's/PBi/PBi #1/; s/PKo/PKo #1/; s/DN127/DN127 #1/; s/\((L297.\+N40))\)/\1 #1/; s/:0//' > $id.bs.dnd; 
+done
+
+Manual addition of needed for outside the sensu stricto group.
+Manual checking *.bs.dnd files:
+for f in fam_*.bs.dnd; do echo -ne "$f\t"; cat $f; done | less
+
+for f in fam_*.bs.dnd; 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  cp $id.phy tmp.bs.phy; 
+  cp $f tmp.bs.dnd; 
+  codeml ../bs-model.ctl 2> $id.site.log; 
+  cp mlc $id.bs.mlc; 
+  cp rst $id.bs.rst; 
+done
+
+# B31-specific BS model:
+for f in  $(ls fam_*.dnd | grep -v bs | tr -s ' ' | cut -f9 -d' '); 
+  do 
+  id=$(echo $f | cut -f1 -d'.'); 
+  cat $f | sed 's/B31/B31 #1/; s/:0//' > $id.B31.dnd; 
+done
+
+for f in fam_*.B31.dnd;
+  do
+  id=$(echo $f | cut -f1 -d'.');
+  cp $id.phy tmp.B31.phy;
+  cp $f tmp.B31.dnd;
+  codeml ../b31-model.ctl 2> $id.B31.log;
+  cp mlc $id.B31.mlc;
+  cp rst $id.B31.rst;
+done
+
+# Results to paml tables:
+Meta data tables:
+"paml_model": model id and descriptions;
+"paml_site_class": site class definitions;
+
+Results tables:
+"paml_model_result": likelihoods, parameters, kappa, tree length;
+"paml_omega"
+"paml_bayes"
+
+Parsing scripts:
+1. Parsing Site model:
+Usage:../../Exec/parse-paml.site-model.mcl.pl [-hrwb] <paml site-model mlc file>
+-h: print help
+-r: print to result table
+-w: print to omega table
+-b: print to bayes table 
+
+2. Parsing Branch-Site model:
+Usage:../../Exec/parse-paml.bs.mcl.pl [-hrwb] <paml branch-site mlc file>
+-h: print help
+-r: print to result table
+-w: print to omega table
+-b: print to bayes table (some may not have bayes block)
+
+3. sed to table:
+sed 's/^fam_\([0-9]\+\).\+.mlc/\1/'
+
+4. One alignment visualization script (of rst file from Site model):
+~/WillaimScripts/visual-rst.pl [options: -rfbwdp] <aa alignment in clustalw> <rst file>" 

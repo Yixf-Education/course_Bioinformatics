@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+
+	
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META http-equiv="Content-Script-Type" content="text/javascript">
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Expires" CONTENT="-1">
+	<TITLE>Table Browser	</TITLE>
+    <LINK rel='STYLESHEET' href='/style/HGStyle-v297.css' TYPE='text/css' />
+</HEAD>
+<BODY CLASS="hgTables cgi">
+<script type='text/javascript'>
+document.write("<center><div id='warnBox' style='display:none;'><CENTER><B id='warnHead'></B></CENTER><UL id='warnList'></UL><CENTER><button id='warnOK' onclick='hideWarnBox();return false;'></button></CENTER></div></center>");
+function showWarnBox() {document.getElementById('warnOK').innerHTML='&nbsp;OK&nbsp;';var warnBox=document.getElementById('warnBox');warnBox.style.display=''; warnBox.style.width='65%';document.getElementById('warnHead').innerHTML='Warning/Error(s):';window.scrollTo(0, 0);}
+function hideWarnBox() {var warnBox=document.getElementById('warnBox');warnBox.style.display='none';warnBox.innerHTML='';var endOfPage = document.body.innerHTML.substr(document.body.innerHTML.length-20);if(endOfPage.lastIndexOf('-- ERROR --') > 0) { history.back(); }}
+window.onunload = function(){}; // Trick to avoid FF back button issue.
+</script>
+
+<A NAME="TOP"></A>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+
+<noscript><div class='noscript'><div class='noscript-inner'><p><b>JavaScript is disabled in your web browser</b></p><p>You must have JavaScript enabled in your web browser to use the Genome Browser</p></div></div></noscript>
+<script type='text/javascript' SRC='/js/jquery-v297.js'></script>
+<script type='text/javascript' SRC='/js/jquery.plugins-v297.js'></script>
+<LINK rel='STYLESHEET' href='/style/nice_menu-v297.css' TYPE='text/css' />
+<div id="main-menu-whole">
+
+		<div id="main-menu"><div id="block-nice_menus-1" class="clear-block block block-nice_menus">
+
+	<div class="upcorner"></div>
+	<div class="blockbg">
+		<div class="blockcontent">
+						<div class="content">
+
+<ul class="nice-menu nice-menu-down sf-js-enabled" id="nice-menu-1">
+
+<li class="first even" id="home"><a href="/index.html" ><span id="home-link">Home</span></a></li> 
+
+<li id="genomes"><a href="/cgi-bin/hgGateway?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Genomes</a></li>
+<li id="genomeBrowser"><a href="/cgi-bin/hgTracks?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Genome Browser</a></li>
+
+<li class="menuparent" id="tools"><span>Tools</span>
+	<ul style="display: none; visibility: hidden;">
+	<li class="first"><a href="../cgi-bin/hgBlat?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI&command=start">Blat</a></li>
+	<li><a href="../cgi-bin/hgTables?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Table Browser</a></li>
+	<li><a href="../cgi-bin/hgVai?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Variant Annotation Integrator</a></li>
+	<li><a href="../cgi-bin/hgNear?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Gene Sorter</a></li>
+	<li><a href="../cgi-bin/hgGenome?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Genome Graphs</a></li>
+	<li><a href="../cgi-bin/hgPcr?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">In-Silico PCR</a></li>
+	<li><a href="../cgi-bin/hgLiftOver?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">LiftOver</a></li>
+	<li><a href="../cgi-bin/hgVisiGene?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">VisiGene</a></li>
+	<li class="last"><a href="../util.html">Other Utilities</a></li>
+	</ul>
+</li>
+<li class="menuparent" id="mirrors"><span>Mirrors</span>
+	<ul style="display: none; visibility: hidden;">
+	<li class="first"><a href="../mirror.html">Third Party Mirrors</a></li>
+	<li><a href="../admin/mirror.html">Mirroring Instructions</a></li>
+	<li id="geoMirrorMenu" class="noHighlight"><hr></li>
+<li id="server1" class="noHighlight">
+<img alt="X" width="16" height="16" style="float:left;" src="../images/greenChecksmCtr.png">
+US Server</li>
+<li id="server2">
+<img alt="X" width="16" height="16" style="float:left;visibility:hidden;" src="../images/greenChecksmCtr.png">
+<a href="http://genome-euro.ucsc.edu/cgi-bin/hgGateway?redirect=manual">European Server</a></li>
+
+	</ul>
+
+</li>
+<li class="menuparent" id="downloads"><span>Downloads</span>
+	<ul style="display: none; visibility: hidden;">
+	<li class="first"><a href="http://hgdownload.soe.ucsc.edu/downloads.html">Genome Data</a></li>
+	<li><a href="http://hgdownload.soe.ucsc.edu/downloads.html#source_downloads">Source Code</a></li>
+	<li><a href="http://hgdownload.soe.ucsc.edu/downloads.html#utilities_downloads">Utilities</a></li>
+	<li class="last"><a href="../goldenPath/help/ftp.html">FTP</a></li>
+	<li class="last"><a href="../goldenPath/help/mysql.html">MySQL Access</a></li>
+	</ul>
+</li>
+<li class="menuparent" id="myData"><span>My Data</span>
+	<ul style="display: none; visibility: hidden;">
+	<li><a href="../cgi-bin/hgSession?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI&hgS_doMainPage=1">Sessions</a></li>
+	<li><a href="../cgi-bin/hgHubConnect?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Track Hubs</a></li>
+	<li class="last"><a href="../cgi-bin/hgCustom?hgsid=369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI">Custom Tracks</a></li>
+	</ul>
+</li>
+
+<!-- OPTIONAL_VIEW_MENU -->
+
+<li class="menuparent" id="help"><span>Help</span><ul style="display: none; visibility: hidden;">
+<li><a href='../goldenPath/help/hgTablesHelp.html'>Help on Table Browser</a></li>
+<li><a href="../FAQ/">FAQs</a></li>
+<li><a href="../goldenPath/help/hgTracksHelp.html">Browser Documentation</a></li>
+<li><a href="../training.html">Training</a></li>
+<li><a href="../contacts.html">Mailing Lists</a></li>
+<li class="last"><a href="http://genomewiki.ucsc.edu/" target="_blank">GenomeWiki</a></li>
+</ul>
+</li>
+
+<li class="menuparent last" id="aboutUs"><span>About Us</span>
+	<ul style="display: none; visibility: hidden;">
+	<li class="first odd"><a href="../goldenPath/newsarch.html">News</a></li>
+	<li class="even"><a href="../goldenPath/pubs.html">Publications</a></li>
+	<li class="odd"><a href="../cite.html">Cite Us</a></li>
+	<li class="even"><a href="../goldenPath/credits.html">Credits</a></li>
+	<li class="odd"><a href="../goldenPath/releaseLog.html">Release Log</a></li>
+	<li class="even"><a href="../staff.html">Staff</a></li>
+	<li class="odd"><a href="../contacts.html">Contact Us</a></li>
+	<li class="even"><a href="../conditions.html">Conditions of Use</a></li>
+	<li class="odd"><a href="http://www.cbse.ucsc.edu/jobs" TARGET="_blank">Jobs</a></li>
+	<li class="even last"><a href="../license/">Licenses</a></li>
+</ul>
+</li>
+
+</ul>
+</div>
+		</div>
+	</div>
+	<div class="downcorner"></div>
+
+</div>
+</div><!-- end main-menu -->
+</div><!-- end main-menu-whole -->
+
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "nice_menus_options": { "delay": 800, "speed": 1 }, "thickbox": { "close": "Close", "next": "Next \x3e", "prev": "\x3c Prev", "esc_key": "or Esc Key", "next_close": "Next / Close on last", "image_count": "Image !current of !total" }, "custom_search": { "form_target": "_self", "solr": 0 } });
+//--><!]]>
+
+</script>
+
+<!-- +++++++++++++++++++++ CONTENT TABLES +++++++++++++++++++ -->
+<TR><TD COLSPAN=3>
+<div id=firstSection>      <!--outer table is for border purposes-->
+      <TABLE WIDTH='100%' BGCOLOR='#888888' BORDER='0' CELLSPACING='0' CELLPADDING='1'><TR><TD>
+    <TABLE BGCOLOR='#FFFEE8' WIDTH='100%'  BORDER='0' CELLSPACING='0' CELLPADDING='0'><TR><TD>
+     <div class='subheadingBar'><div class='windowSize' id='sectTtl'>
+Table Browser     </div></div>
+     <TABLE BGCOLOR='#FFFEE8' WIDTH='100%' CELLPADDING=0><TR><TH HEIGHT=10></TH></TR>
+     <TR><TD WIDTH=10>&nbsp;</TD><TD>
+
+
+Use this program to retrieve the data associated with a track in text format, to calculate intersections between tracks, and to retrieve DNA sequence covered by a track. For help in using this application see <A HREF="#Help">Using the Table Browser</A> for a description of the controls in this form, the <A HREF="../goldenPath/help/hgTablesHelp.html">User's Guide</A> for general information and sample queries, and the OpenHelix Table Browser <A HREF="http://www.openhelix.com/cgi/tutorialInfo.cgi?id=28" TARGET=_blank>tutorial</A> for a narrated presentation of the software features and usage. For more complex queries, you may want to use <A HREF="https://usegalaxy.org" target=_BLANK>Galaxy</A> or our <A HREF="../goldenPath/help/mysql.html">public MySQL server</A>. To examine the biological function of your set through annotation enrichments, send the data to <A HREF="http://great.stanford.edu">GREAT</A>. Refer to the <A HREF="../goldenPath/credits.html">Credits</A> page for the list of contributors and usage restrictions associated with these data. All tables can be downloaded in their entirety from the <A HREF="http://hgdownload.cse.ucsc.edu/downloads.html">Sequence and Annotation Downloads</A> page.<script type="text/javascript">
+function onSelectGreat() {
+document.getElementById('checkboxGalaxy').checked=false;
+document.getElementById('outBed').selected=true;
+return true;
+}
+</script>
+<FORM ACTION="/cgi-bin/hgTables" NAME="mainForm" METHOD=POST>
+<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI'>
+
+<SCRIPT>
+function setRadioCheck(varName, value) 
+{
+var len = document.mainForm.elements.length;
+var i = 0;
+for (i = 0; i < len; i++) 
+    {
+    if (document.mainForm.elements[i].name == varName) 
+	{
+	if (document.mainForm.elements[i].value == value)
+	    document.mainForm.elements[i].checked = true;
+	else
+	    document.mainForm.elements[i].checked = false;
+	}
+    }
+}
+
+function getKeyCode(e)
+{
+if (window.event) // IE
+    {
+    return e.keyCode;
+    }
+else 
+    {
+    return e.which;
+    }
+}
+
+function getKey(e)
+{
+return String.fromCharCode(getKeyCode(e));
+}
+
+function gotEnterKey(e)
+{
+return getKeyCode(e) == 13;
+}
+
+var submitted = false;
+
+function submitOnEnter(e,f)
+{
+if(gotEnterKey(e))
+   {
+   if (!submitted)
+      {
+      submitted = true;
+      f.submit();
+      }
+   return false;
+   }
+else
+   return true;
+}
+
+function noSubmitOnEnter(e)
+{
+return !gotEnterKey(e);
+}
+function pressOnEnter(e, button)
+{
+if (gotEnterKey(e))
+    {
+    button.click();
+    return false;
+    }
+else
+    {
+    return true;
+    }
+}
+
+</SCRIPT>
+<TABLE BORDER=0>
+<TR><TD><B>clade:</B>
+<SELECT NAME="clade" onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.hgta_table.value=document.mainForm.hgta_table.options[document.mainForm.hgta_table.selectedIndex].value;  document.hiddenForm.org.value=0; document.hiddenForm.db.value=0; document.hiddenForm.position.value='';document.hiddenForm.submit();">
+<OPTION SELECTED VALUE="mammal">Mammal</OPTION>
+<OPTION VALUE="vertebrate">Vertebrate</OPTION>
+<OPTION VALUE="deuterostome">Deuterostome</OPTION>
+<OPTION VALUE="insect">Insect</OPTION>
+<OPTION VALUE="worm">Nematode</OPTION>
+<OPTION VALUE="other">Other</OPTION>
+</SELECT>
+&nbsp;&nbsp;&nbsp;<B>genome:</B>
+<SELECT NAME="org" onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.org.value=document.mainForm.org.options[document.mainForm.org.selectedIndex].value; document.hiddenForm.hgta_table.value=document.mainForm.hgta_table.options[document.mainForm.hgta_table.selectedIndex].value;  document.hiddenForm.db.value=0; document.hiddenForm.position.value='';document.hiddenForm.submit();">
+<OPTION SELECTED VALUE="Human">Human</OPTION>
+<OPTION VALUE="Chimp">Chimp</OPTION>
+<OPTION VALUE="Gorilla">Gorilla</OPTION>
+<OPTION VALUE="Orangutan">Orangutan</OPTION>
+<OPTION VALUE="Gibbon">Gibbon</OPTION>
+<OPTION VALUE="Rhesus">Rhesus</OPTION>
+<OPTION VALUE="Baboon">Baboon</OPTION>
+<OPTION VALUE="Squirrel monkey">Squirrel monkey</OPTION>
+<OPTION VALUE="Marmoset">Marmoset</OPTION>
+<OPTION VALUE="Tarsier">Tarsier</OPTION>
+<OPTION VALUE="Mouse lemur">Mouse lemur</OPTION>
+<OPTION VALUE="Bushbaby">Bushbaby</OPTION>
+<OPTION VALUE="Tree shrew">Tree shrew</OPTION>
+<OPTION VALUE="Mouse">Mouse</OPTION>
+<OPTION VALUE="Rat">Rat</OPTION>
+<OPTION VALUE="Kangaroo rat">Kangaroo rat</OPTION>
+<OPTION VALUE="Naked mole-rat">Naked mole-rat</OPTION>
+<OPTION VALUE="Guinea pig">Guinea pig</OPTION>
+<OPTION VALUE="Rabbit">Rabbit</OPTION>
+<OPTION VALUE="Squirrel">Squirrel</OPTION>
+<OPTION VALUE="Pika">Pika</OPTION>
+<OPTION VALUE="Pig">Pig</OPTION>
+<OPTION VALUE="Alpaca">Alpaca</OPTION>
+<OPTION VALUE="Dolphin">Dolphin</OPTION>
+<OPTION VALUE="Sheep">Sheep</OPTION>
+<OPTION VALUE="Cow">Cow</OPTION>
+<OPTION VALUE="Horse">Horse</OPTION>
+<OPTION VALUE="White rhinoceros">White rhinoceros</OPTION>
+<OPTION VALUE="Cat">Cat</OPTION>
+<OPTION VALUE="Ferret ">Ferret </OPTION>
+<OPTION VALUE="Dog">Dog</OPTION>
+<OPTION VALUE="Panda">Panda</OPTION>
+<OPTION VALUE="Microbat">Microbat</OPTION>
+<OPTION VALUE="Megabat">Megabat</OPTION>
+<OPTION VALUE="Hedgehog">Hedgehog</OPTION>
+<OPTION VALUE="Shrew">Shrew</OPTION>
+<OPTION VALUE="Elephant">Elephant</OPTION>
+<OPTION VALUE="Rock hyrax">Rock hyrax</OPTION>
+<OPTION VALUE="Tenrec">Tenrec</OPTION>
+<OPTION VALUE="Manatee">Manatee</OPTION>
+<OPTION VALUE="Armadillo">Armadillo</OPTION>
+<OPTION VALUE="Sloth">Sloth</OPTION>
+<OPTION VALUE="Opossum">Opossum</OPTION>
+<OPTION VALUE="Tasmanian devil">Tasmanian devil</OPTION>
+<OPTION VALUE="Wallaby">Wallaby</OPTION>
+<OPTION VALUE="Platypus">Platypus</OPTION>
+</SELECT>
+&nbsp;&nbsp;&nbsp;<B>assembly:</B>
+<SELECT NAME="db" onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.db.value=document.mainForm.db.options[document.mainForm.db.selectedIndex].value; document.hiddenForm.hgta_table.value=document.mainForm.hgta_table.options[document.mainForm.hgta_table.selectedIndex].value;  document.hiddenForm.position.value='';document.hiddenForm.submit();">
+<OPTION VALUE="hg38">Dec. 2013 (GRCh38/hg38)</OPTION>
+<OPTION SELECTED VALUE="hg19">Feb. 2009 (GRCh37/hg19)</OPTION>
+<OPTION VALUE="hg18">Mar. 2006 (NCBI36/hg18)</OPTION>
+<OPTION VALUE="hg17">May 2004 (NCBI35/hg17)</OPTION>
+<OPTION VALUE="hg16">July 2003 (NCBI34/hg16)</OPTION>
+</SELECT>
+</TD></TR>
+<TR><TD><B>group:</B>
+<SELECT NAME=hgta_group onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.db.value=document.mainForm.db.options[document.mainForm.db.selectedIndex].value; document.hiddenForm.org.value=document.mainForm.org.options[document.mainForm.org.selectedIndex].value;  document.hiddenForm.hgta_table.value=0;document.hiddenForm.submit();">
+ <OPTION VALUE=user>Custom Tracks
+ <OPTION VALUE=map>Mapping and Sequencing
+ <OPTION VALUE=genes SELECTED>Genes and Gene Predictions
+ <OPTION VALUE=phenDis>Phenotype and Literature
+ <OPTION VALUE=rna>mRNA and EST
+ <OPTION VALUE=expression>Expression
+ <OPTION VALUE=regulation>Regulation
+ <OPTION VALUE=compGeno>Comparative Genomics
+ <OPTION VALUE=neandertal>Neandertal Assembly and Analysis
+ <OPTION VALUE=denisova>Denisova Assembly and Analysis
+ <OPTION VALUE=varRep>Variation
+ <OPTION VALUE=rep>Repeats
+ <OPTION VALUE=allTracks>All Tracks
+ <OPTION VALUE=allTables>All Tables
+</SELECT>
+&nbsp;&nbsp;&nbsp;<B>track:</B>
+<SELECT NAME="hgta_track" onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.db.value=document.mainForm.db.options[document.mainForm.db.selectedIndex].value; document.hiddenForm.org.value=document.mainForm.org.options[document.mainForm.org.selectedIndex].value;  document.hiddenForm.hgta_table.value=0;document.hiddenForm.submit();">
+ <OPTION VALUE="knownGene">UCSC Genes
+ <OPTION VALUE="refGene" SELECTED>RefSeq Genes
+ <OPTION VALUE="wgEncodeGencodeV19">GENCODE Genes V19
+ <OPTION VALUE="wgEncodeGencodeV17">GENCODE Genes V17
+ <OPTION VALUE="wgEncodeGencodeV14">GENCODE Genes V14
+ <OPTION VALUE="wgEncodeGencodeV7">GENCODE Genes V7
+ <OPTION VALUE="transMapAlnUcscGenes">TransMap UCSC
+ <OPTION VALUE="transMapAlnRefSeq">TransMap RefGene
+ <OPTION VALUE="transMapAlnMRna">TransMap mRNA
+ <OPTION VALUE="transMapAlnSplicedEst">TransMap ESTs
+ <OPTION VALUE="acembly">AceView Genes
+ <OPTION VALUE="ccdsGene">CCDS
+ <OPTION VALUE="ensGene">Ensembl Genes
+ <OPTION VALUE="evofold">EvoFold
+ <OPTION VALUE="exoniphy">Exoniphy
+ <OPTION VALUE="geneid">Geneid Genes
+ <OPTION VALUE="genscan">Genscan Genes
+ <OPTION VALUE="hinv70Composite">H-Inv 7.0
+ <OPTION VALUE="hgIkmc">IKMC Genes Mapped
+ <OPTION VALUE="lincRNAsAllCellTypeTopView">lincRNA RNA-Seq Reads
+ <OPTION VALUE="lincRNAsTranscripts">lincRNA Transcripts
+ <OPTION VALUE="lrgTranscriptAli">LRG Transcripts
+ <OPTION VALUE="mgcFullMrna">MGC Genes
+ <OPTION VALUE="nscanGene">N-SCAN
+ <OPTION VALUE="knownGeneOld6">Old UCSC Genes
+ <OPTION VALUE="orfeomeMrna">ORFeome Clones
+ <OPTION VALUE="xenoRefGene">Other RefSeq
+ <OPTION VALUE="ucscGenePfam">Pfam in UCSC Gene
+ <OPTION VALUE="ucscRetroAli5">Retroposed Genes
+ <OPTION VALUE="sgpGene">SGP Genes
+ <OPTION VALUE="sibGene">SIB Genes
+ <OPTION VALUE="wgRna">sno/miRNA
+ <OPTION VALUE="tRNAs">tRNA Genes
+ <OPTION VALUE="knownAlt">UCSC Alt Events
+ <OPTION VALUE="vegaGeneComposite">Vega Genes
+ <OPTION VALUE="pseudoYale60">Yale Pseudo60
+</SELECT>
+
+&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="manage custom tracks" onClick="document.customTrackForm.submit();return false;"> <INPUT TYPE="button" VALUE="track hubs" onClick="document.trackHubForm.submit();return false;"></TD></TR>
+<TR><TD><B>table: </B><SELECT NAME="hgta_table" onChange="document.hiddenForm.hgta_track.value=document.mainForm.hgta_track.options[document.mainForm.hgta_track.selectedIndex].value; document.hiddenForm.hgta_group.value=document.mainForm.hgta_group.options[document.mainForm.hgta_group.selectedIndex].value; document.hiddenForm.hgta_regionType.value=regionType; document.hiddenForm.position.value=document.mainForm.position.value; document.hiddenForm.hgta_outputType.value=document.mainForm.hgta_outputType.options[document.mainForm.hgta_outputType.selectedIndex].value; document.hiddenForm.hgta_outFileName.value=document.mainForm.hgta_outFileName.value; document.hiddenForm.clade.value=document.mainForm.clade.options[document.mainForm.clade.selectedIndex].value; document.hiddenForm.db.value=document.mainForm.db.options[document.mainForm.db.selectedIndex].value; document.hiddenForm.org.value=document.mainForm.org.options[document.mainForm.org.selectedIndex].value; document.hiddenForm.hgta_table.value=document.mainForm.hgta_table.options[document.mainForm.hgta_table.selectedIndex].value; document.hiddenForm.submit();">
+<OPTION VALUE="refGene" SELECTED>refGene
+<OPTION VALUE="all_est">Human ESTs (all_est)
+<OPTION VALUE="all_mrna">Human mRNAs (all_mrna)
+<OPTION VALUE="ccdsInfo">ccdsInfo
+<OPTION VALUE="gbCdnaInfo">gbCdnaInfo
+<OPTION VALUE="gbMiscDiff">gbMiscDiff
+<OPTION VALUE="gbSeq">gbSeq
+<OPTION VALUE="gbStatus">gbStatus
+<OPTION VALUE="gbWarn">gbWarn
+<OPTION VALUE="imageClone">imageClone
+<OPTION VALUE="kgXref">kgXref
+<OPTION VALUE="knownToRefSeq">knownToRefSeq
+<OPTION VALUE="mrnaOrientInfo">mrnaOrientInfo
+<OPTION VALUE="refFlat">refFlat
+<OPTION VALUE="refLink">refLink
+<OPTION VALUE="refSeqAli">refSeqAli
+<OPTION VALUE="refSeqStatus">refSeqStatus
+<OPTION VALUE="refSeqSummary">refSeqSummary
+<OPTION VALUE="seq">seq
+<OPTION VALUE="ucscRetroInfo5">ucscRetroInfo5
+<OPTION VALUE="xenoEst">Other ESTs (xenoEst)
+<OPTION VALUE="xenoMrna">Other mRNAs (xenoMrna)
+<OPTION VALUE="xenoRefGene">Other RefSeq (xenoRefGene)
+<OPTION VALUE="xenoRefSeqAli">xenoRefSeqAli
+</SELECT>
+&nbsp;<INPUT TYPE=SUBMIT NAME="hgta_doSchema" VALUE="describe table schema" ></TD></TR>
+<TR><TD><B>region:</B>
+<SCRIPT>
+var regionType='range';
+</SCRIPT>
+<INPUT TYPE=RADIO NAME="hgta_regionType" VALUE="genome" onClick="regionType='genome';">&nbsp;genome&nbsp;<INPUT TYPE=RADIO NAME="hgta_regionType" VALUE="encode" onClick="regionType='encode';">&nbsp;ENCODE Pilot regions&nbsp;<INPUT TYPE=RADIO NAME="hgta_regionType" VALUE="range" onClick="regionType='range';" CHECKED>&nbsp;position&nbsp;<INPUT TYPE=TEXT NAME="position" SIZE=26 VALUE="chrY:21151333-21157675" onFocus="setRadioCheck('hgta_regionType', 'range'); regionType='range'">
+<INPUT TYPE=SUBMIT NAME="hgta_doLookupPosition" VALUE="lookup" >&nbsp;<INPUT TYPE=SUBMIT NAME="hgta_doSetUserRegions" VALUE="define regions" ></TD></TR>
+<TR><TD><B>identifiers (names/accessions):</B>
+<INPUT TYPE=SUBMIT NAME="hgta_doPasteIdentifiers" VALUE="paste list" > <INPUT TYPE=SUBMIT NAME="hgta_doUploadIdentifiers" VALUE="upload list" ></TD></TR>
+<TR><TD><B>filter:</B>
+<INPUT TYPE=SUBMIT NAME="hgta_doFilterPage" VALUE="create" ></TD></TR>
+<TR><TD><B>intersection:</B>
+<INPUT TYPE=SUBMIT NAME="hgta_doIntersectPage" VALUE="create" ></TD></TR>
+<TR><TD><B>correlation:</B>
+<INPUT TYPE=SUBMIT NAME="hgta_doCorrelatePage" VALUE="create" ></TD></TR>
+<TR><TD><B>output format:</B>
+<SELECT NAME="hgta_outputType"> <OPTION VALUE=primaryTable>all fields from selected table
+ <OPTION VALUE=selectedFields>selected fields from primary and related tables
+ <OPTION VALUE=sequence>sequence
+ <OPTION VALUE=gff>GTF - gene transfer format
+ <OPTION VALUE=fasta>CDS FASTA alignment from multiple alignment
+ <OPTION VALUE=bed SELECTED id="outBed">BED - browser extensible data
+ <OPTION VALUE=customTrack>custom track
+ <OPTION VALUE=hyperlinks>hyperlinks to Genome Browser
+</SELECT>
+  Send output to <INPUT TYPE=CHECKBOX NAME="sendToGalaxy" id="checkboxGalaxy" VALUE=on onclick="document.getElementById('checkboxGreat').checked=false; return true;"><INPUT TYPE=HIDDEN NAME='boolshad.sendToGalaxy' VALUE='0' class='cbShadow'>
+<A HREF="https://usegalaxy.org" target=_BLANK>Galaxy</A>
+&nbsp;&nbsp;<INPUT TYPE=CHECKBOX NAME="sendToGreat" id="checkboxGreat" VALUE=on onclick="return onSelectGreat();"><INPUT TYPE=HIDDEN NAME='boolshad.sendToGreat' VALUE='0' class='cbShadow'>
+ <A HREF="http://great.stanford.edu" target=_BLANK>GREAT</A></TD></TR>
+<TR><TD>
+<B>output file:</B>&nbsp;<INPUT TYPE=TEXT NAME="hgta_outFileName" SIZE=29 VALUE="chrY_gene.bed">
+&nbsp;(leave blank to keep output in browser)</TD></TR>
+<TR><TD>
+<B>file type returned:&nbsp;</B><INPUT TYPE=RADIO NAME="hgta_compressType" VALUE="none" CHECKED>&nbsp;plain text&nbsp&nbsp<INPUT TYPE=RADIO NAME="hgta_compressType" VALUE="gzip" >&nbsp;gzip compressed</TD></TR>
+</TABLE>
+<BR>
+<INPUT TYPE=SUBMIT NAME="hgta_doTopSubmit" VALUE="get output" > <INPUT TYPE=SUBMIT NAME="hgta_doSummaryStats" VALUE="summary/statistics" > <P>To reset <B>all</B> user cart settings (including custom tracks), 
+<A HREF="/cgi-bin/cartReset?destination=/cgi-bin/hgTables">click here</A>.
+</FORM>
+<FORM ACTION="/cgi-bin/hgTables" METHOD="GET" NAME="hiddenForm">
+<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI'>
+<input type="hidden" name="clade" value="">
+<input type="hidden" name="org" value="">
+<input type="hidden" name="db" value="">
+<input type="hidden" name="hgta_group" value="">
+<input type="hidden" name="hgta_track" value="">
+<input type="hidden" name="hgta_table" value="">
+<input type="hidden" name="hgta_regionType" value="">
+<input type="hidden" name="position" value="">
+<input type="hidden" name="hgta_outputType" value="">
+<input type="hidden" name="hgta_outFileName" value="">
+</FORM>
+<FORM ACTION='../cgi-bin/hgCustom' NAME='customTrackForm'><INPUT TYPE=HIDDEN NAME='hgsid' VALUE='369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI'>
+</FORM>
+<FORM ACTION='../cgi-bin/hgHubConnect' NAME='trackHubForm'><INPUT TYPE=HIDDEN NAME='hgHubConnect.destUrl' VALUE='../cgi-bin/hgTables'>
+<INPUT TYPE=HIDDEN NAME='hgsid' VALUE='369633145_6eSo7go1shM3N0Vjqcg6SibFPBhI'>
+</FORM>
+
+	</TD><TD WIDTH=15></TD></TR></TABLE>
+	</TD></TR></TABLE>
+	</TD></TR></TABLE>
+	
+</div>
+<div>
+<!-- +++++++++++++++++++++ START NEW SECTION +++++++++++++++++++ -->
+<BR>
+
+   <!--outer table is for border purposes-->
+   <TABLE WIDTH='100%' BGCOLOR='#888888' BORDER='0' CELLSPACING='0' CELLPADDING='1'><TR><TD>
+    <TABLE BGCOLOR='#FFFEE8' WIDTH='100%'  BORDER='0' CELLSPACING='0' CELLPADDING='0'><TR><TD>
+
+<div class='subheadingBar' class='windowSize'>
+<A NAME="Help"></A>Using the Table Browser
+     </div>
+     <TABLE BGCOLOR='#FFFEE8' WIDTH='100%' CELLPADDING=0><TR><TH HEIGHT=10></TH></TR>
+     <TR><TD WIDTH=10>&nbsp;</TD><TD>
+
+
+This section provides brief line-by-line descriptions of the Table 
+Browser controls. For more information on using this program, see the 
+<A HREF="../goldenPath/help/hgTablesHelp.html" TARGET=_blank>Table 
+Browser User's Guide</A>.
+        <UL>
+        <LI><B>clade: </B>Specifies which clade the organism is in.</LI>
+        
+        <LI><B>genome: </B>Specifies which organism data to use.</LI>
+        
+        <LI><B>assembly: </B>Specifies which version of the organism's genome
+        sequence to use.</LI>
+        
+        <LI><B>group: </B>Selects the type of tracks to be displayed in 
+        the <em>track</em> list. The options correspond to the track groupings
+        shown in the Genome Browser. Select 'All Tracks' for an alphabetical list
+        of all available tracks in all groups.  Select 'All Tables' to see all tables
+        including those not associated with a track.</LI>
+        
+        <LI><B>database: </B> (with &quot;All Tables&quot; group option) Determines 
+	 which database should be used for options in table menu.</LI>
+        
+        <LI><B>track: </B>Selects the annotation track data to work with. This 
+        list displays all tracks belonging to the group specified in the 
+        <em>group</em> list. </LI>
+        
+        <LI><B>table: </B>Selects the SQL table data to use. This list shows 
+        all tables associated with the track specified in the <em>track</em> 
+        list.</LI>
+        
+        <LI><B>describe table schema: </B>Displays schema information for the 
+        tables associated with the selected track.</LI>
+        
+        <LI><B>region: </B>Restricts the query to a
+        particular chromosome or region. Select <em>genome</em> to apply the 
+        query to the entire genome or <em>ENCODE</em> to examine only the 
+        ENCODE Pilot regions.
+        To limit the query to a specific position, type a 
+        chromosome name, e.g. <em>chrX</em>, or a chromosome coordinate 
+        range, such as chrX:100000-200000, or a gene name or other id in 
+        the text box.
+        You can select multiple genomic regions by clicking the &quot;define regions&quot; 
+        button and entering up to 1,000 regions in a 3- or 4-field <a 
+		 href="../FAQ/FAQformat.html#format1">BED</a> file 
+		 format.</LI>
+        
+        <LI><B>lookup:</B> Press this button after typing in a gene name or 
+        other id in the position text box to look up the chromosome position
+        
+        <LI><B>identifiers</B> (selected tracks only)<B>: </B>Restricts the 
+        output to table data that match a list of identifiers, for
+        instance RefSeq accessions for the RefSeq track. If no identifiers 
+        are entered, all table data within the specified region will be 
+        displayed.</LI>
+        
+        <LI><B>filter: </B>Restricts the query to only those items that
+        match certain criteria, e.g. genes with a single exon. Click the 
+        <em>Create</em> button to add a filter, the <em>Edit</em> button to 
+        modify an existing filter, or the <em>Clear</em> button to remove an 
+        existing filter.</LI>
+        
+        <LI><B>intersection </B> (selected tracks only)<B>: </B>Combines the output 
+	 of two queries into a 
+        single set of data based on specific join criteria. For example, this 
+        can be used to find all SNPs that intersect with RefSeq coding 
+        regions. The intersection can be configured to retain the 
+        existing alignment structure of the table with a specified amount of 
+        overlap, or discard the structure in favor of a simple list of position
+        ranges using a base-pair intersection or union of the two data sets. 
+        The button functionalities are similar to those of the <em>filter</em>
+        option.</LI> 
+        <LI><B>output: </B>Specifies the output format (not all options are 
+        available for some tracks). Formats include:
+        <UL>
+        <LI><em><B>all fields from selected table</B></em> - data from the selected table
+        displayed in a tab-separated format suitable 
+        for import into spreadsheets and relational databases. The ASCII 
+        format may be read in any web browser or text editor.
+        <LI><em><B>selected fields from primary and related tables</B></em> - user-selected 
+        set of tab-separated fields 
+        from the selected table and (optionally) other related tables as well. 
+        <LI><em><B>sequence</B></em> - DNA (or protein sequence, in some cases) 
+        associated with the table.</LI>
+        <LI><em><B>BED</B></em> - positions of data items in a standard
+        UCSC Browser format.</LI>
+        
+        <LI><em><B>GTF</B></em> - positions of all data items in a standard
+        gene prediction format. (Both BED and GTF formats can be
+        used as the basis for custom tracks).</LI>
+        
+        <LI><em><B>CDS FASTA alignment from multiple alignment</B></em> 
+        - FASTA alignments of the CDS regions of a gene prediction track 
+        using any of the multiple alignment tracks for the current database. 
+        Output sequence can be in either nucleotide-space or translated to 
+        protein-space. Available only for genePred tracks.</LI>
+        
+        <LI><em><B>custom track</B></em> -  customized Genome Browser annotation  
+        track based on the results of the query.</LI>
+        
+        <LI><em><B>hyperlinks to Genome Browser</B></em> -  returns a page full of
+        hyperlinks to the UCSC Genome Browser, one for each item in the table.</LI>
+        
+        <LI><em><B>data points</B></em> -  the data points that make up a graph 
+	 (aka wiggle) track.</LI>
+        
+        <LI><em><B>MAF</B></em> - multiple alignments in MAF format</LI>
+        
+        </UL>
+        </LI>
+        
+        <LI><B>Send output to Galaxy:</B> displays results of query in 
+        <A HREF="https://usegalaxy.org">Galaxy</A>, a framework for 
+        interactive genome analysis.
+        <LI><B>Send output to GREAT:</B> displays the functional enrichments of the 
+        query results in <A HREF="http://great.stanford.edu">GREAT</A>, a tool for
+        analysis of the biological function of cis-regulatory regions.
+        <LI><B>file type returned: </B>When a filename is entered in the 
+	 &quot;output file&quot; text box, specifies the format of the output file:
+        <UL>
+        <LI><em><B>plain text</B></em> - data is in ASCII format
+        
+        <LI><em><B>gzip compressed</B></em> - data is compressed in gzip format
+        
+        </UL>
+        </LI>
+        <LI><B>get output: </B>Submits a data query based on the specified 
+        parameters and returns the output.</LI>
+        
+        <LI><B>summary/statistics: </B>Displays statistics about the data 
+        specified by the parameters.</LI>
+        
+        </UL>
+
+	</TD><TD WIDTH=15></TD></TR></TABLE>
+	</TD></TR></TABLE>
+	</TD></TR></TABLE>
+	
+</div>
+</TD></TR></TABLE>
+
+</BODY></HTML>

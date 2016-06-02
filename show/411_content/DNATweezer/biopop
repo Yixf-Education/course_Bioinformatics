@@ -1,0 +1,166 @@
+#!/usr/bin/env perl
+
+use strict;    # Still on 5.10, so need this for strict
+use warnings;
+use FindBin;                      # Find the location of seq-manipulations
+use lib "$FindBin::Bin/lib";          # to use it as a lib path
+require "PopManipulations.pm";    # to get this library!
+use 5.010;
+use Getopt::Long qw(:config gnu_getopt);
+use Pod::Usage;
+
+################################################################################
+# Option parsing
+################################################################################
+my %opts;
+my %flags;
+GetOptions(
+    \%opts,
+    "help|h",
+    "man",
+    "input|i=s" => \$flags{"input"},
+    "stats=s@",    # Comma-separated, or multiply specified, list
+    "sample-size|n=i"          => \$flags{"sample-size"},
+    "ingroup|group1|seq1|p=s"  => \$flags{"ingroup"},
+    "outgroup|group2|seq2|q=s" => \$flags{"outgroup"},
+    "mismatch|m",
+    "simmk|k",
+    "distance|d",
+    "dist-method=s" => \$flags{"dist-method"},
+    "kaks=s"
+) or pod2usage(2);
+
+pod2usage(1) if $opts{"help"};
+pod2usage( -exitstatus => 0, -verbose => 2 ) if $opts{"man"};
+
+################################################################################
+# Main
+################################################################################
+
+# This sets all internal variables, and loads AlignIO objects
+initialize( \%opts, \%flags );
+
+for my $option ( keys %opts ) {
+
+    # If there is a function to handle the current option, execute it
+    if ( can_handle($option) ) {
+        handle_opt($option);
+        exit;
+    }
+    else {
+        warn "Missing handler for: $option\n";
+    }
+}
+
+################# POD Documentation ##################
+
+__END__
+
+=head1 NAME
+
+biopop - Wrapper script for BioPerl's population genetics modules
+
+=head1 SYNOPSIS
+
+B<biopop> [options] [alignment file]
+
+=head1 DESCRIPTION
+
+B<biopop> DESCRIPTION GOES HERE
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<--help, -h>
+
+Print a brief help message and exits.
+
+=item B<--man>
+
+Prints the manual page and exits.
+
+=item B<--input, -i>
+
+Input file format. By default, this is 'clustalw'.
+
+=item B<--stats> <comma separated list of values>
+
+Specify the statistics you would like to gather from input data. e.g.,
+"theta,pi" will calculate the theta and pi values.
+
+Can also be specified by giving the option multiple times. e.g.,
+ biopop --stats=pi --stats=theta
+
+=item B<--sample-size, -n>
+
+Input file format. By default, this is 'clustalw'.
+
+=item B<--ingroup, -p>
+
+Specify prefix for ingroup. Required for McDonald-Kreitman test.
+
+=item B<--outgroup, -q>
+
+Specify prefix for outgroup. Required for McDonald-Kreitman test.
+
+=item B<--group1, --group2>
+
+These are actually aliases for --ingroup and --outgroup, respectively, and can
+be used interchangably with those options. Use these when it may not make sense
+in your data to refer to two groups in terms of an 'ingroup' and an 'outgroup'.
+
+=item B<--mismatch, -m>
+
+Pairwise calculation of mismatches for all sequences in the alignment.
+
+=item B<--simmk, -k>
+
+Samples a specified number of times from the alignment after splitting the
+constituent sequences into two groups. The sampled sequences are then used to
+calculate the Ds and Dn, once for each group and once between groups. Sampling
+is done with replacement before each calculation.
+
+The number of times to sample can be specified with the --sample-size option. By
+default, it is 100.
+
+The split of sequences into two groups can be controlled by the --ingroup/group1
+and --outgroup/group2 options, by specifying a prefix for each group.
+
+=item B<--distance, -d>
+
+Calculates a distance matrix for all pairwise distances of all sequences in the
+input alignment and prints it out.
+
+Use B<--dist-method> to specify the method desired. The default in
+Bio::Align::DNAStatistics is "JukesCantor".
+
+=item B<--dist-method>
+
+Used with --distance to specify which distance method to use when getting the
+distance matrix.
+
+Program quits if the distance method is invalid
+
+=back
+
+=head1 EXAMPLES
+
+Section under construction...
+
+=head1 REQUIRES
+
+Perl 5.010, BioPerl
+
+=head1 SEE ALSO
+
+  perl(1)
+
+=head1 AUTHORS
+
+ Weigang Qiu at genectr.hunter.cuny.edu
+ Yözen Hernández yzhernand at gmail dot com
+
+=cut
+
+##################### End ##########################

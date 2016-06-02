@@ -50,7 +50,7 @@
 \section{基因组组装版本}
 自从20世纪70年代Sanger测序法诞生以来，DNA测序技术就在不断发展。虽然越来越多的物种加入被测序的行列，但像人类（\textit{Homo sapiens}）和小鼠（\textit{Mus musculus}）一样，大多数物种的基因组并没有被完全测序。随着测序技术的进步，在全世界科研工作者的努力下，序列不明确的基因组部分会不断被解读出来，测序错误的部分也会被更正。因此，就像操作系统或软件会不时更新、发布新版本一样\footnote{操作系统或软件版本的例子：XP与Win7；迅雷5与迅雷7。}，基因组数据库也会不定期更新各个物种的现有基因组，或者发布一个新的基因组组装版本。对于同一个物种的基因组来说，不同组装版本间的基因组序列、基因组特征（feature）的坐标等注释信息会有很大的不同。因此，在处理基因组数据时，首先要明确使用的基因组组装版本。
 
-对于同一个基因组组装版本，不同数据库中的命名可能不同，但它们本质上完全一样，并存在着一对一的对应关系。在常用的三大综合数据库中，\href{http://www.ncbi.nlm.nih.gov}{NCBI}一般以“Build X”来对基因组组装版本进行命名；\href{http://www.ensembl.org/index.html}{Ensembl}则以“NCBIX”与之对应；\href{http://genome.ucsc.edu}{UCSC}中的命名比较独特，不同物种使用不同的前缀，如人类基因组的组装版本以“hgX”表示，小鼠的以“mmX”表示\footnote{hg、mm、GRCh、GRCm分别表示什么含义？（hsa、mmu分别表示什么含义？）}。NCBI和UCSC之间的基因组组装版本存在着明确的对应关系，如：人类基因组的UCSC hg18对应NCBI Build 36.1，发布于2006年3月；小鼠基因组的UCSC mm9对应NCBI Build 37，发布于2007年7月。更多物种、更多组装版本间的对应关系可以查阅 \href{http://genome.ucsc.edu/FAQ/FAQreleases.html\#release1}{List of UCSC genome releases}。\footnote{对于基因组数据、数据库和软件等，在使用时需要记录下其版本号。}
+对于同一个基因组组装版本，不同数据库中的命名可能不同，但它们本质上完全一样，并存在着一对一的对应关系。在常用的三大综合数据库中，\href{http://www.ncbi.nlm.nih.gov}{NCBI} 一般以“Build X”来对基因组组装版本进行命名；\href{http://www.ensembl.org/index.html}{Ensembl} 则以“NCBIX”与之对应；\href{http://genome.ucsc.edu}{UCSC} 中的命名比较独特，不同物种使用不同的前缀，如人类基因组的组装版本以“hgX”表示，小鼠的以“mmX”表示\footnote{hg、mm、GRCh、GRCm分别表示什么含义？（hsa、mmu分别表示什么含义？）}。NCBI和UCSC之间的基因组组装版本存在着明确的对应关系，如：人类基因组的UCSC hg18对应NCBI Build 36.1，发布于2006年3月；小鼠基因组的UCSC mm9对应NCBI Build 37，发布于2007年7月。更多物种、更多组装版本间的对应关系可以查阅 \href{http://genome.ucsc.edu/FAQ/FAQreleases.html\#release1}{List of UCSC genome releases}。\footnote{对于基因组数据、数据库和软件等，在使用时需要记录下其版本号。}
 
 \section{基因组坐标系统}
 如果把染色体序列看做一条很长的线段，其上的单核苷酸多态性（SNP，Single Nucleotide Polymorphism）\footnote{SNP即单核苷酸多态性，是指等位基因发生了突变，致使不同等位型的出现。SNP的位点极其丰富，几乎遍及整个基因组。据估计基因组中大约平均每1000bp就会出现一个SNP，这样SNP在整个人类基因组的分布就会达到300万个。SNP可以分为两种：纯合SNP（homozygous SNP ）和杂合SNP（heterozygous SNP），纯合SNP是指两个等位基因都发生了突变，杂合SNP是指两个等位基因中的一个发生了突变。}等位点就可以看做线段上的点，而基因等特征则好比线段上一条短的子线段。如同数学中使用坐标来精确定位点和线一样，在生物学中，描述基因组特征时，为了与基因组序列对应起来，常常使用基因组坐标（coordinate）来对其进行精确定位。比如，对于人类基因组hg19来说，SNP rs1800468位于19号染色体的41860587位置，表示为chr19:41860587；基因\textit{SAMD11}位于1号染色体上，起始于861121，终止于879961，表示为chr1:861121-879961。\footnote{因为DNA的双链性，精确定位时还需要考虑其链性，即“+”链或着“-”链。}
@@ -168,7 +168,7 @@ ASCII标准使得只含有ASCII字符的文本文件可以在Unix、Macintosh、
   \item 文字处理器通常能够编辑并导出或保存为纯文本文件。但是，这样做必须很小心。当你用文字处理器处理源程序、HTML代码、配置文件和控制文件的时候，要格外注意。否则，这些文件里就会包含那些文字处理器对应格式里的特殊字符，这样你的文件就会出现问题。
 \end{itemize}
 
-有些文本编辑器简洁易用，只能编辑纯文本文件，也有些文本编辑器功能丰富复杂，支持大量格式的文本文件。Unix和类Unix操作系统都提供了vi编辑器（或者是它的变种），但是也有部分操作系统提供了Emacs编辑器\footnote{Vim被称为“编辑器之神”；而Emacs则被称为“神的编辑器”。}。这两个文本编辑器以其独特的快捷键操作和可定制的工作环境而在程序员世界中广泛应用\footnote{世界上只有三种/类文本编辑器：一是Vim，二是Emacs，第三类就是其他了。}；普通用户则喜欢使用Office来为文本添加格式。Windows系统同样提供了可编辑纯文本文件的记事本和一个类似于Word的写字板，提供了基本的写作功能。也有很多人，尤其是程序员更喜欢Windows下功能更丰富、更专业的其它编辑器\footnote{周围同事不是用Vim就是Emacs，你要是用一UltraEdit，你都不好意思跟人家打招呼。什么插件呀，语法高亮呀，拼写检查呀，能给它开的都给它开着，就是一个字儿：酷。你说这么牛一东西，怎么着学会也得小半年吧。半年？入门都远着呢，能学会移动光标就不错了，你还别说耗不起，就这还只是左右移动。——《大腕$\textbullet$编辑器》}，如 \href{http://notepad-plus-plus.org/}{Notepad++}、\href{http://www.ultraedit.com/index.html}{UltraEdit}和\href{http://www.sublimetext.com/}{Sublime Text} 等。OS X所提供的TextEdit可以编辑纯文本，也可以编辑多信息文本，类似于DOS中的Wordstar。随着计算机网络的发展，又诞生了可以多人协同编辑的文本编辑器，如Windows操作系统下的Netpad，它可以让多人同时协同编辑或阅读同一个文本文件。
+有些文本编辑器简洁易用，只能编辑纯文本文件，也有些文本编辑器功能丰富复杂，支持大量格式的文本文件。Unix和类Unix操作系统都提供了vi编辑器（或者是它的变种），但是也有部分操作系统提供了Emacs编辑器\footnote{Vim被称为“编辑器之神”；而Emacs则被称为“神的编辑器”。}。这两个文本编辑器以其独特的快捷键操作和可定制的工作环境而在程序员世界中广泛应用\footnote{世界上只有三种/类文本编辑器：一是Vim，二是Emacs，第三类就是其他了。}；普通用户则喜欢使用Office来为文本添加格式。Windows系统同样提供了可编辑纯文本文件的记事本和一个类似于Word的写字板，提供了基本的写作功能。也有很多人，尤其是程序员更喜欢Windows下功能更丰富、更专业的其它编辑器\footnote{周围同事不是用Vim就是Emacs，你要是用一UltraEdit，你都不好意思跟人家打招呼。什么插件呀，语法高亮呀，拼写检查呀，能给它开的都给它开着，就是一个字儿：酷。你说这么牛一东西，怎么着学会也得小半年吧。半年？入门都远着呢，能学会移动光标就不错了，你还别说耗不起，就这还只是左右移动。——《大腕$\textbullet$编辑器》}，如 \href{http://notepad-plus-plus.org/}{Notepad++}、\href{http://www.ultraedit.com/index.html}{UltraEdit} 和 \href{http://www.sublimetext.com/}{Sublime Text} 等。OS X所提供的TextEdit可以编辑纯文本，也可以编辑多信息文本，类似于DOS中的Wordstar。随着计算机网络的发展，又诞生了可以多人协同编辑的文本编辑器，如Windows操作系统下的Netpad，它可以让多人同时协同编辑或阅读同一个文本文件。
 
 \noindent
 \ovalbox{\parbox{\textwidth}{
@@ -314,7 +314,7 @@ DAVID提供的分析工具在分析内容上可能有所重叠，但都有自己
 
 序列标识图\footnote{此部分摘抄自《生物信息学》（李霞，人民卫生出版社），第十一章（转录调控的信息学分析），第三节（转录因子结合位点的信息学预测方法）。}依次绘出模体中各个位置上出现的碱基，每个位置上所有碱基的累积可反映出该位置上碱基的一致性，每个碱基字母的大小与碱基在该位置上出现的频率成正比。这种表示方法直观地给出模体各个位置上碱基出现的倾向性和整个模体的序列的一致性，应用非常广泛。
 
-\href{http://weblogo.threepluson.com}{WebLogo} 是一个灵活方便的序列标识产生器，最常用的是其网络版本，但也有\href{http://code.google.com/p/weblogo/}{命令行界面的本地版}可供选用。此外，WebLogo也已经集成到了Galaxy中，位于“Motif Tools”工具集中。此外，还有 \href{http://www.benoslab.pitt.edu/cgi-bin/enologos/enologos.cgi}{enoLOGOS}、\href{http://skylign.org/}{Skylign}、\href{http://www.twosamplelogo.org/}{Two Sample Logo}、\href{https://yiplab.cse.cuhk.edu.hk/ecplot/}{ECplot}、\href{https://plogo.uconn.edu/}{pLogo}、\href{http://schneider.ncifcrf.gov/delila/makelogo.html}{makelogo}、\href{http://www.ccrnp.ncifcrf.gov/users/bshapiro/webserver\_index.html}{CorreLogo}、\href{http://bioconductor.org/packages/release/bioc/html/seqLogo.html}{seqLogo}、\href{http://www.biogenio.com/logo/logo.cgi}{GENIO/logo}、\href{http://recode.ucc.ie/CodonLogo/}{CodonLogo}、\href{http://rth.dk/resources/rilogo/}{RILogo} 等众多类似的工具可供选用。 
+\href{http://weblogo.threepluson.com}{WebLogo} 是一个灵活方便的序列标识产生器，最常用的是其网络版本，但也有 \href{http://code.google.com/p/weblogo/}{命令行界面的本地版}可供选用。此外，WebLogo也已经集成到了Galaxy中，位于“Motif Tools”工具集中。此外，还有 \href{http://www.benoslab.pitt.edu/cgi-bin/enologos/enologos.cgi}{enoLOGOS}、\href{http://skylign.org/}{Skylign}、\href{http://www.twosamplelogo.org/}{Two Sample Logo}、\href{https://yiplab.cse.cuhk.edu.hk/ecplot/}{ECplot}、\href{https://plogo.uconn.edu/}{pLogo}、\href{http://schneider.ncifcrf.gov/delila/makelogo.html}{makelogo}、\href{http://www.ccrnp.ncifcrf.gov/users/bshapiro/webserver\_index.html}{CorreLogo}、\href{http://bioconductor.org/packages/release/bioc/html/seqLogo.html}{seqLogo}、\href{http://www.biogenio.com/logo/logo.cgi}{GENIO/logo}、\href{http://recode.ucc.ie/CodonLogo/}{CodonLogo}、\href{http://rth.dk/resources/rilogo/}{RILogo} 等众多类似的工具可供选用。 
 
 为了使用WebLogo制作序列标识，需要先进行多序列比对，获得以CLUSTALW、FASTA或MSF等格式\footnote{查找CLUSTALW、MSF格式的相关资料。}保存的比对结果。
 \vspace{0.5cm}
@@ -329,8 +329,7 @@ Sequence logos是展示DNA/RNA或氨基酸序列一致程度的一种图形化�
   \includegraphics[width=5cm]{sequence.logo.10.png}
 \end{center}
 
-如果要用一种方法把上面四条序列用另外一种方法表示出来，作为一名程序员，我首先想到的是正则表达式（regular
-expression）——\verb|TA[YF]M[IML][AT][ED]M[ML]K|。在做查找的时候regular expression无疑能将所有满足要求的序列都找出来，但是它不直观，也不能反映出现频率。而Sequence logo就能让这些信息直观的显示出来（如下图所示）。
+如果要用一种方法把上面四条序列用另外一种方法表示出来，作为一名程序员，我首先想到的是正则表达式（regular expression）——\verb|TA[YF]M[IML][AT][ED]M[ML]K|。在做查找的时候regular expression无疑能将所有满足要求的序列都找出来，但是它不直观，也不能反映出现频率。而Sequence logo就能让这些信息直观的显示出来（如下图所示）。
 \begin{center}
   \includegraphics{sequence.logo.11.png}
 \end{center}
@@ -511,7 +510,7 @@ Wickham提出了基于Wilkinson语法的图层图形语法，它将图层作为�
 \end{itemize}
 
 \section{回顾与导入}
-前面介绍了基因组功能注释的基础知识和几个高级注释内容，现在介绍一下贯穿全章的生物信息学分析平台——\href{http://galaxyproject.org}{Galaxy}，重点通过实例演示Galaxy的使用。
+前面介绍了基因组功能注释的基础知识和几个高级注释内容，现在介绍一下贯穿全章的生物信息学分析平台—— \href{http://galaxyproject.org}{Galaxy}，重点通过实例演示Galaxy的使用。
 
 \section{Galaxy分析平台}
 从前文所述可以看出，基因组功能注释的内容丰富多样，涉及的工具更是五花八门。而随着芯片、第二代测序等高通量技术的飞速发展，海量的基因组数据不断积累，分析工作越来越多，注释内容更加复杂。而研究人员则希望数据分析不但要系统化，具有一定的创新性，而且要更能体现个性化。基因组数据与研究人员要求之间的矛盾催生了专业、系统且扩展性高的生物信息学数据分析平台。这些分析平台大多集成了丰富且优秀的生物信息学工具，能够与常用数据库无缝衔接，使研究人员可以轻松快速地进行多样化的基因组功能注释，整个分析工作更加自动化、更具流程性。由UCSC（加利福尼亚大学圣克鲁兹分校）开发的 \href{https://main.g2.bx.psu.edu/}{Galaxy} 便是其中的佼佼者。此外，\href{http://www.broadinstitute.org/cancer/software/genepattern/}{GenePattern} 也是一个不错的选择。
@@ -548,7 +547,7 @@ Galaxy平台功能强大，但学习起来并不困难，因为该项目提供�
 
 \section{Galaxy使用演示}
 \subsection{人类基因的坐标转换}
-虽然基因组不同组装版本间的坐标不同，但它们之间是可以相互转换的。\href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{liftOver} 是由UCSC基因组生物信息学组（UCSC Genome Bioinformatics Group）开发的坐标转换工具，它除了可以转换同一物种基因组不同组装版本间的坐标与注释文件外，还可以在不同物种间转化基因组坐标及相应的注释文件。对于liftOver来说，有多种形式的版本可供选用，如\href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{网页版的liftOver}，\href{http://hgdownload.cse.ucsc.edu/downloads.html\#source\_downloads}{单机版的liftOver}，以及集成到Galaxy中的liftOver。
+虽然基因组不同组装版本间的坐标不同，但它们之间是可以相互转换的。\href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{liftOver} 是由UCSC基因组生物信息学组（UCSC Genome Bioinformatics Group）开发的坐标转换工具，它除了可以转换同一物种基因组不同组装版本间的坐标与注释文件外，还可以在不同物种间转化基因组坐标及相应的注释文件。对于liftOver来说，有多种形式的版本可供选用，如 \href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{网页版的liftOver}，\href{http://hgdownload.cse.ucsc.edu/downloads.html\#source\_downloads}{单机版的liftOver}，以及集成到Galaxy中的liftOver。
 \begin{enumerate}
     \item 获取输入
       \begin{itemize}
