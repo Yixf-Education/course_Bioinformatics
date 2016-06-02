@@ -1,0 +1,143 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%实验名称
+\shiyan{原核生物和真核生物的基因识别}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2013年9月11日14时-16时}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程学院2010级生信班（本）}
+%实验人数
+\renshu{23}
+%实验类型
+\leixing{验证型}
+%实验分组
+\fenzu{一人一机}
+%学时数
+\xueshi{2}
+%教材版本
+\jiaocai{生物信息学实验讲义（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解隐马尔科夫模型在基因识别中的应用。
+  \item 掌握原核基因和真核基因的结构特征。
+  \item 掌握GeneMarkS和GENSCAN的使用方法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）基因结构：回顾原核生物和真核生物基因的结构特点。
+  \item （5'）基因识别的方法：回顾基因识别的三大类方法。
+  \item （5'）基因识别的工具：介绍GeneMarkS和GENSCAN。
+  \item （85'）实验操作：对大肠杆菌基因组序列进行基因识别，对人类CD9基因进行结构分析。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 实验材料：大肠杆菌基因组，人类CD9基因。
+  \item 主要仪器：联网的计算机。
+  \item 分析工具：GeneMarkS，GENSCAN。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 难点：FASTA格式与序列的区别；解决策略：通过实例进行讲解。
+  \item 重点：GeneMarkS和GENSCAN的使用；解决策略：通过练习熟练掌握。
+\end{itemize}
+
+}
+
+\sikao{
+\begin{itemize}
+  \item 原核基因和真核基因的结构有何异同？
+  \item GeneMarkS和GENSCAN的适用范围有何差别？
+  \item GeneMarkS和GENSCAN对输入格式的要求有何差别？
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item NCBI
+  \item GeneMarkS
+  \item GENSCAN
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、基因结构（5分钟）
+
+\textcolor{red}{基因结构的复杂性直接影响着基因预测的策略及最终的准确度。}
+\begin{enumerate}
+  \item 原核基因：连续基因
+  \item 真核基因：不连续性
+\end{enumerate}
+
+\noindent
+二、基因识别的方法（5分钟）
+\begin{enumerate}
+  \item 间接识别法
+  \item 从头预测法：基因预测
+  \item 比较基因组学的方法
+\end{enumerate}
+
+\noindent
+三、基因识别的工具（5分钟）
+
+\textcolor{red}{分析工具有各自的适用范围。}
+\begin{enumerate}
+  \item GeneMarkS：迭代隐马尔科夫模型，适用于原核生物的基因预测
+  \item GENSCAN：广义隐马尔科夫模型，脊椎动物基因预测软件
+\end{enumerate}
+
+\noindent
+四、实验操作（85分钟）
+
+\textcolor{red}{基因结构的复杂性直接影响着基因预测的准确度。}
+\begin{enumerate}
+  \item 大肠杆菌基因组序列的基因识别
+    \begin{itemize}
+      \item 获取序列：NCBI中的Nucleotide数据库，U00096，FASTA格式和GenBank格式\textcolor{red}{（自学GenBank格式）}
+      \item 截取序列：EMBOSS，extractseq，1-10000bp
+      \item 基因预测：GeneMarkS，FASTA格式
+      \item 结果分析：和GenBank格式中的信息进行比较
+    \end{itemize}
+  \item 人类CD9基因的结构分析
+    \begin{itemize}
+      \item 获取序列：NCBI中的Nucleotide数据库，AY422198，FASTA格式和GenBank格式
+      \item 基因预测：GENSCAN，纯序列\textcolor{red}{（注意不是FASTA格式）}
+      \item 结果分析：和GenBank格式中的信息进行比较
+    \end{itemize}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}
+

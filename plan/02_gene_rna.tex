@@ -1,0 +1,287 @@
+\documentclass{TIJMUjiaoanLL}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%课程内容
+\neirong{基因识别与RNA序列分析}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2013年8月30日8时-10时}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程学院2010级生信班（本）}
+%听课人数
+\renshu{23}
+%授课方式
+\fangshi{理论讲授}
+%学时数
+\xueshi{2}
+%教材版本
+\jiaocai{生物信息学（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 熟悉原核基因和真核基因的结构特点，掌握基因识别的方法和工具并自学其使用方法。
+  \item 掌握mRNA选择性剪接的主要机制，了解可变剪接的数据库与分析工具并自学其使用方法。
+  \item 熟悉miRNA的特点、生成过程和作用方式，掌握miRNA预测和miRNA靶基因预测的方法，熟悉miRNA的相关数据库和分析工具并自学其使用方法。
+  \item 了解lncRNA的定义及其主要特点，自学lncRNA的相关数据库，以及lncRNA在疾病发生发展过程中的作用。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）回顾与导入：回顾序列基本信息和特征信息分析的主要内容，引出基因识别与RNA分析的内容。
+  \item （25'）基因识别：介绍基因和基因识别的基本概念，回顾原核基因和真核基因的结构特点并进行比较，讲解基因识别的主要方法，介绍基因识别的常用工具。
+  \item （25'）mRNA选择性剪接：介绍剪接和选择性剪接的基本概念，讲解mRNA选择性剪接的主要机制，介绍相关的数据库和分析工具。
+  \item
+    （25'）miRNA及其靶基因预测：回顾miRNA的特点、生成过程、作用方式和生物学功能，讲解miRNA预测和miRNA靶基因预测的主要方法，介绍常用的数据库和分析工具。
+  \item （10'）lncRNA：介绍lncRNA的定义、主要特点及其研究进展，总结查找数据库和分析工具的主要策略。
+  \item （10'）总结与答疑：回顾授课内容中的知识点，解答学生疑问。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点：原核基因和真核基因的结构特点，mRNA选择性剪接的主要机制；解决策略：通过示意图和实例帮助学生理解、记忆。
+  \item 难点：查找数据库和分析工具的主要策略；解决策略：以miRNA和lncRNA为例进行分析与讲解。
+\end{itemize}
+}
+
+\waiyu{
+\vspace*{-10pt}
+\begin{multicols}{2}
+选择性剪接（alternative splicing）
+
+微RNA（miRNA，microRNA）
+
+非编码RNA（ncRNA，non-coding RNA）
+
+长链非编码RNA（lncRNA）
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\fuzhu{
+\begin{itemize}
+  \item 多媒体：原核基因和真核基因的结构，mRNA选择性剪接的机制，miRNA的结构、生成过程和作用方式等。
+  \item 板书：课程结构，查找数据库和分析工具的主要策略。
+\end{itemize}
+}
+
+\sikao{
+\vspace*{-10pt}
+\begin{multicols}{2}
+  \begin{itemize}
+    \item 原核基因和真核基因结构的异同。
+    \item 基因识别的主要方法。
+    \item mRNA选择性剪接的主要机制。
+    \item miRNA的特点、生成过程和作用方式。
+    \item miRNA预测和miRNA靶基因预测的方法。
+    \item 查找数据库和分析工具的主要策略。
+  \end{itemize}
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\cankao{
+\begin{itemize}
+  \item 朱玉贤，李毅，郑晓峰。现代分子生物学（第3版），高等教育出版社，2007。
+  \item 维基百科。
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、回顾与导入（5分钟）
+\begin{enumerate}
+  \item 序列分析\textcolor{red}{（上期回顾）}
+    \begin{itemize}
+      \item 基本信息：碱基比例、GC含量、序列转换、限制性核酸内切酶位点、……
+      \item 特征信息：开放阅读框、启动子、转录因子结合位点、CpG岛、……
+    \end{itemize}
+  \item 基因识别、mRNA分析、miRNA分析、……\textcolor{red}{（本期导读）}
+\end{enumerate}
+
+\noindent
+二、基因识别（25分钟）
+
+\textcolor{red}{在介绍基本概念的基础上，通过比较原核基因和真核基因的异同，讲解基因识别方法在原核和真核基因识别中的具体应用。}
+\begin{enumerate}
+  \item 基本概念
+    \begin{itemize}
+      \item 基因：产生一条多肽链或功能RNA所需的全部核苷酸序列
+      \item 基因识别：识别DNA序列上具有生物学特征的片段
+    \end{itemize}
+  \item 基因结构\textcolor{red}{（通过示意图形象化展示不同的基因结构）}
+    \begin{itemize}
+      \item 原核基因：连续基因
+      \item 真核基因：不连续性
+    \end{itemize}
+  \item 基因识别的方法
+    \begin{itemize}
+      \item 间接识别法：mRNA/蛋白质序列 $\Rightarrow$ DNA序列
+      \item 从头预测法：基因预测，基于“信号”和“内容”两类特征
+      \item 比较基因组学的方法：比较相关物种的DNA序列
+    \end{itemize}
+  \item 基因预测
+    \begin{itemize}
+      \item 原核基因 
+	\begin{itemize}
+	  \item 信号：启动子序列
+	  \item 内容：连续的开放阅读框
+	\end{itemize}
+      \item 真核基因
+	\begin{itemize}
+	  \item 信号：启动子区特征序列，供体位点和受体位点，终止密码子，polyA序列，……
+	  \item 内容：密码子使用偏好性，双联密码子出现频率，基因组等值区，……
+	\end{itemize}
+    \end{itemize}
+  \item 识别工具\textcolor{red}{（提醒：分析工具的适用范围）}
+    \begin{itemize}
+      \item 识别原核基因：GeneMarkS, Glimmer
+      \item 识别真核基因：GENSCAN
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+三、mRNA选择性剪接（25分钟）
+\begin{enumerate}
+  \item 基本概念
+    \begin{itemize}
+      \item 剪接：移除内含子、合并外显子
+      \item 选择性剪接：一个mRNA前体 $\Rightarrow$ 不同mRNA剪接异构体
+    \end{itemize}
+  \item 主要机制\textcolor{red}{（展示示意图并给出实例）}
+    \begin{itemize}
+      \item 外显子跳跃：外显子被移除或保留，最常见
+      \item 互斥外显子：两个外显子只有一个保留下来，相对较少见
+      \item 5'选择性剪接：使用不同的5'端的供体位点
+      \item 3'选择性剪接：使用不同的3'端的受体位点
+      \item 内含子保留：内含子作为外显子保留下来，最少见
+      \item 选择性起始：在不同的位点起始转录
+      \item 选择性终止：使用不同的polyA位点
+    \end{itemize}
+  \item 相关资源\textcolor{red}{（提醒：数据库具有时效性）}
+    \begin{itemize}
+      \item 数据库：ASTD，ASAP，ASPicDB
+      \item 分析工具：ESEfinder，RESCUE-ESE
+    \end{itemize}
+\end{enumerate}
+
+\otherTail
+\newpage
+\otherHeader
+
+\noindent
+四、miRNA及其靶基因预测（25分钟）
+\begin{enumerate}
+  \item miRNA\textcolor{red}{（通过示意图将相关内容形象化展示出来）}
+    \begin{itemize}
+      \item 特点：20～24nt，单链，没有开放阅读框，不编码蛋白质，具有时序性和组织特异性，进化上高度保守
+      \item 生成过程：300～1000nt的双链pri-miRNA $\Rightarrow$ 70～90nt的双链具有茎环结构的pre-miRNA $\Rightarrow$ 20～24nt的单链成熟miRNA
+      \item 作用方式：完全互补型（导致靶基因mRNA降解）和不完全互补型（导致靶基因mRNA的翻译受到抑制）
+      \item 生物学功能：调控个体发育、细胞分化、组织发育、肿瘤发生发展、……
+    \end{itemize}
+  \item miRNA预测
+    \begin{itemize}
+      \item 同源片段搜索
+      \item 基于比较基因组学
+      \item 基于序列和结构特征打分
+      \item 结合作用靶标
+      \item 基于机器学习
+    \end{itemize}
+  \item miRNA靶基因预测
+    \begin{itemize}
+      \item 基于种子区域互补和保守性
+      \item 基于机器学习
+    \end{itemize}
+  \item 相关资源
+    \begin{itemize}
+      \item 数据库：miRBase，TarBase，miRGen
+      \item 分析工具：MiRscan，MiPred，miRFinder；miRanda，TargetScan，PicTar，miTarget
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+五、lncRNA（10分钟）
+\begin{enumerate}
+  \item RNA的分类
+    \begin{itemize}
+      \item mRNA
+      \item 非编码RNA
+	\begin{itemize}
+	  \item 基础结构性ncRNA：tRNA，rRNA，snRNA，snoRNA
+	  \item 调节性ncRNA
+	    \begin{itemize}
+	      \item sRNA：$\textless$ 200nt，miRNA、siRNA、piRNA
+	      \item lncRNA：$\textgreater$ 200nt
+	    \end{itemize}
+	\end{itemize}
+    \end{itemize}
+  \item lncRNA的特点
+    \begin{itemize}
+      \item RNA聚合酶II所转录
+      \item 有5'帽子和3'端的polyA尾巴
+      \item 主要富集在细胞核
+      \item 长度偏短、外显子数目偏少
+      \item 保守性差，稳定性低
+      \item 表达水平很低，表达具有细胞、组织、发育、疾病等时空特异性
+    \end{itemize}
+  \item lncRNA的研究进展
+    \begin{itemize}
+      \item 作用方式：表观遗传学水平、转录水平和转录后水平
+      \item 生物学功能：基因转录、剪接、翻译、修饰和印迹等
+      \item 与疾病的关系：肿瘤、阿尔兹海默病、心血管疾病等
+    \end{itemize}
+  \item 查找数据库和分析工具的策略\textcolor{red}{（以lncRNA和miRNA为例）}
+    \begin{itemize}
+      \item 专辑资料：NAR，相关文献，维基百科
+      \item 请教搜索：领域专家，搜索引擎
+    \end{itemize}
+\end{enumerate}
+
+\otherTail
+\newpage
+\otherHeader
+
+\noindent
+六、总结与答疑（10分钟）
+\begin{enumerate}
+  \item 知识点
+    \begin{itemize}
+      \item 基因识别：原核和真核的基因结构，基因识别的方法
+      \item mRNA选择性剪接：主要机制
+      \item miRNA及其靶基因预测：特点、生成过程和作用方式，miRNA及其靶基因预测方法
+      \item lncRNA：特点
+    \end{itemize}
+  \item 技能
+    \begin{itemize}
+      \item 查找数据库：注意时效性
+      \item 查找分析工具：注意适用范围
+    \end{itemize}
+\end{enumerate}
+
+
+\otherTail
+
+\end{document}
+

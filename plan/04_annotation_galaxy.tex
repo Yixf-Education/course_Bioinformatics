@@ -1,0 +1,230 @@
+\documentclass{TIJMUjiaoanLL}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+%课程名称
+\kecheng{生物信息学}
+%课程内容
+\neirong{基因组功能的高级注释}
+%教师姓名
+\jiaoshi{伊现富}
+%职称
+\zhicheng{讲师}
+%教学日期（格式：XXXX年XX月XX日XX时-XX时）
+\riqi{2013年9月6日8时-10时}
+%授课对象（格式：XXX系XXXX年级XX班（硕/本/专科））
+\duixiang{生物医学工程学院2010级生信班（本）}
+%听课人数
+\renshu{23}
+%授课方式
+\fangshi{理论讲授}
+%学时数
+\xueshi{2}
+%教材版本
+\jiaocai{生物信息学（自编教材）}
+
+
+%教案首页
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解变异位点注释的用途，熟悉注释结果的解析，自学注释工具的使用方法。
+  \item 熟悉基因集富集分析的概念、用途以及结果的解析，了解富集分析的常用工具并自学其使用方法。
+  \item 掌握序列标识的图形含义，熟悉制作序列标识的工具并自学其使用方法。
+  \item 熟悉Galaxy分析平台，掌握其基本使用方法，自学Galaxy的高级使用技巧。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）回顾与导入：回顾基因组注释的基础知识，介绍功能注释的主要内容及常用分析平台。
+  \item （15'）变异位点的注释：介绍变异位点注释的内容、步骤及相关的注释工具，讲解对注释结果的解读。
+  \item （10'）基因集富集分析：介绍基因集富集分析的用途，讲解常用的DAVID工具及其结果的解析。
+  \item （20'）序列标识：讲解序列标识的含义，介绍制作工具及其使用方法并讲解对结果的解读。
+  \item （40'）Galaxy分析平台：介绍基因组注释分析平台中常用的Galaxy平台，通过实例演示讲解Galaxy的基本使用方法。
+  \item （10'）总结与答疑：总结授课内容中的知识点，解答学生疑问。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点：序列标识的含义，Galaxy分析平台的使用方法。
+  \item 难点：Galaxy分析平台的使用方法。
+  \item 解决策略：通过制作过程的演示和对结果的解读来讲解序列标识的含义；从实例入手，通过逐步演示讲解Galaxy的使用方法与技巧。
+\end{itemize}
+}
+
+\waiyu{
+\vspace*{-10pt}
+\begin{multicols}{2}
+单核苷酸变异（SNV）
+
+基因集（gene set）
+
+GO（gene ontology）
+
+富集分析（enrichment analysis）
+
+序列标识（sequence logo）
+
+工作流（workflow）
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\fuzhu{
+\begin{itemize}
+  \item 多媒体：变异位点注释、富集分析的结果；序列标识示意图；DAVID、Galaxy等工具的界面。
+  \item 板书：基因组功能注释的流程及其对应的工具。
+  \item 操作演示：序列标识的制作；Galaxy的使用。
+\end{itemize}
+}
+
+\sikao{
+\vspace*{-10pt}
+\begin{multicols}{2}
+\begin{itemize}
+  \item 变异位点注释结果的解读。
+  \item DAVAD富集分析结果的解读。
+  \item 序列标识的含义。
+  \item Galaxy分析平台的使用。
+\end{itemize}
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\cankao{
+\begin{itemize}
+  \item Galaxy
+  \item 维基百科
+\end{itemize}
+}
+
+\firstTail
+
+
+%教案续页
+\newpage
+\otherHeader
+
+\noindent
+一、回顾与导入（5分钟）
+
+\textcolor{red}{回顾注释的基础知识，介绍高级注释的内容，并说明所学基础知识在高级注释中无处不在。}
+\begin{enumerate}
+  \item 基因组注释的基础知识
+    \begin{itemize}
+      \item 基因组的组装版本
+      \item 两种坐标系统
+      \item 四种常用格式
+      \item 逻辑运算模式
+    \end{itemize}
+  \item 基因组功能的高级注释
+    \begin{itemize}
+      \item 变异位点的注释
+      \item 基因集富集分析
+      \item 序列标识
+      \item Galaxy分析平台
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+二、变异位点的注释（15分钟）
+
+\textcolor{red}{重点讲解注释结果的解读及其在功能注释流程中承上启下的作用。}
+\begin{enumerate}
+  \item 单核苷酸变异的注释
+    \begin{itemize}
+      \item 注释内容：附加相关的基因组注释信息（数据库ID，基因名，变异功能类别，……）
+      \item 注释工具：SeattleSeq Annotation，variant tools，SnpEff
+      \item 结果解读：SeattleSeq Annotation的注释结果\textcolor{red}{（通过实例解读注释结果；对注释结果过滤筛选后可继续进行非同义多态性的注释）}
+    \end{itemize}
+  \item 非同义多态性的注释
+    \begin{itemize}
+      \item 注释内容：对蛋白质产物结构和功能的影响
+      \item 注释工具：SIFT，PolyPhen-2，SNPs3D，PROVEAN
+      \item 结果解读：SIFT的注释结果\textcolor{red}{（通过实例解读注释结果；承接SNVs的注释结果；对结果过滤筛选后可继续进行基因集的富集分析）}
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+三、基因集富集分析（10分钟）
+\begin{enumerate}
+  \item 基因集富集分析\textcolor{red}{（承接变异位点的注释）}
+    \begin{itemize}
+      \item 富集分析：GO，KEGG
+      \item 结果解读：富集显著性及多重检验校正\textcolor{red}{（通过实例解读富集分析的结果）}
+    \end{itemize}
+  \item DAVID分析工具\textcolor{red}{（以DAVID为例介绍查找工具使用protocol的方法与资源）}
+    \begin{itemize}
+      \item Gene Name Batch Viewer：把基因ID转换成基因名
+      \item Gene ID Conversion Tool：转换数据库间的基因ID
+      \item Gene Functional Classification Tool：根据注释信息聚类基因
+      \item Functional Annotation Tool
+	\begin{itemize}
+          \item Functional Annotation Clustering：根据注释信息聚类注释项目
+          \item Functional Annotation Chart：根据注释信息进行富集分析\textcolor{red}{（重点介绍）}
+          \item Functional Annotation Table：以表格形式呈现注释信息
+	\end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+四、序列标识（20分钟）
+\begin{enumerate}
+  \item 图形含义\textcolor{red}{（以GT-AG规则为例，展示示意图）}
+    \begin{itemize}
+      \item 横轴：序列的位置
+      \item 纵轴：保守性
+      \item 字符堆叠的总高度：此位置的保守性
+      \item 每个字符的高度：出现的相对频率
+    \end{itemize}
+  \item 制作工具：WebLogo，enoLOGOs\textcolor{red}{（演示WebLogo制作GT-AG规则的操作并解读结果）}
+\end{enumerate}
+
+\otherTail
+\newpage
+\otherHeader
+
+\noindent
+五、Galaxy分析平台（40分钟）
+\begin{enumerate}
+  \item 生物信息学数据分析平台：Galaxy，GenePattern
+  \item Galaxy分析平台\textcolor{red}{（展示Galaxy的主界面）}
+    \begin{itemize}
+      \item 主界面：顶部是刊头，左侧栏是工具菜单，中间是工作区，右侧栏是历史面板
+      \item 工具集：Get Data，Text Manipulation，Convert Formats，Operate on Genomic Intervals，……
+      \item 学习资料：Galaxy 101，Galaxy Screencasts and Demos，Learn
+	Galaxy，Galaxy Wiki\textcolor{red}{（以Galaxy为例介绍学习新工具的方法与步骤：官网手册，由浅入深）}
+    \end{itemize}
+  \item Galaxy的使用：\textcolor{red}{以寻找Y染色体上含有SNP数目最多的外显子为例进行操作演示}\textcolor{red}{（介绍“工作流”的思想及其优势，以及Galaxy中工作流的提取、制作、使用和分享）}
+\end{enumerate}
+
+\noindent
+六、总结与答疑（10分钟）
+\begin{enumerate}
+  \item 知识点
+    \begin{itemize}
+      \item 变异位点的注释：注释工具，结果解读
+      \item 基因集富集分析：DAVID，结果解读
+      \item 序列标识：图形含义，制作方法，结果解读
+      \item Galaxy分析平台：使用方法
+    \end{itemize}
+  \item 技能
+    \begin{itemize}
+      \item 查找工具使用的protocol
+      \item 学习新工具的方法与步骤
+      \item 数据处理的“工作流”思想
+    \end{itemize}
+\end{enumerate}
+
+\otherTail
+
+\end{document}
+
