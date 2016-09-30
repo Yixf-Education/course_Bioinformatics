@@ -114,10 +114,16 @@
 
 \begin{frame}
   \frametitle{重复序列 | 数据库与分析工具}
+  \begin{block}{数据库}
   \begin{itemize}
     \item Repbase Update（RU）：真核生物DNA重复序列数据库
     \item L1Base：L1数据库
     \item STRBase：STR数据库
+  \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{分析工具}
+  \begin{itemize}
     \item RepeatMasker：识别、分类和屏蔽重复序列
       \begin{itemize}
         \item Cross\_match：速度慢、精度高
@@ -126,6 +132,7 @@
         \item HMMER：只适用于人类基因组序列
       \end{itemize}
   \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -153,6 +160,7 @@
   \pause
   \begin{block}{基因识别（gene prediction，gene finding）}
     使用生物学实验或计算机等手段识别DNA序列上的具有生物学特征的片段，是基因组研究的基础。\\
+    \vspace{1em}
     对象主要是蛋白质编码基因（还有RNA基因和调控因子等）。
   \end{block}
 \end{frame}
@@ -287,7 +295,7 @@ intrinsic signals involved in gene specification, such as start and stop codons 
 the statistical properties of coding sequences (3);
 and, most importantly, known transcript sequences (either full-length cDNAs or partial ESTs) and protein sequences (4). 
 Over the past two decades, a plethora of programs and strategies has been developed to combine these sources of information to obtain reliable gene predictions.
-The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models), to produce gene predictions (6). These programs are often referred to as \textit{ab} initio or \textit{de novo} gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes.
+The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models), to produce gene predictions (6). These programs are often referred to as \textit{ab initio} or \textit{de novo} gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes.
 If related genome sequences are available, the intrinsic information can be combined with patterns of genomic sequence conservation using programs often referred to as comparative (or dual- or multi-genome) gene finders (5). With these programs, maximum resolution is achieved when the compared genomes are at a phylogenetic distance such that there is maximum separation between the conservation in coding and noncoding regions. To increase resolution, programs have been developed that use multiple informant genomes. The most sophisticated use an underlying phylogenetic tree to appropriately weight sequence conservation depending on evolutionary distance.
 If cDNA and EST sequences are available, these often take priority over other sources of information. The initial map of the transcript or protein sequences onto the genome, which can be obtained using a variety of tools, including sequence-similarity searches, is refined using more sophisticated 'splice alignment' algorithms, whose explicit splice-site models allow more precise alignment across gaps corresponding to introns (8). 
 Alternatively, cDNA and protein information can be fed into an \textit{ab initio} gene-finder algorithm to give information on the exons included in the prediction (7). 
