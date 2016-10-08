@@ -108,6 +108,18 @@
   \end{center}
 \end{frame}
 
+\begin{frame}
+  \frametitle{组装版本 | \textcolor{gray}{坐标转换}}
+  \begin{itemize}
+    \item \href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{UCSC liftOver tool}：支持BED和“chrN:start-end”格式的输入
+    \item \href{https://usegalaxy.org/}{Galaxy（基于UCSC liftOver tool）}：支持BED、GFF和GTF格式的输入
+    \item \href{http://crossmap.sourceforge.net/}{CrossMap}：支持SAM/BAM、Wiggle/BigWig、BED、GFF/GTF和VCF格式的输入，输出对应格式
+    \item \href{http://www.ncbi.nlm.nih.gov/genome/tools/remap}{NCBI Remap}：支持BED、GFF、GTF和VCF等格式的输入
+    \item \href{http://asia.ensembl.org/Homo\_sapiens/UserData/SelectFeatures}{\textcolor{gray}{Ensembl assembly converter（2015年退休，CrossMap继位）}}\textcolor{gray}{：支持BED、GFF、GFT和PSL格式的输入，但输出都是GFF格式的}
+    \item \href{https://pypi.python.org/pypi/pyliftover}{pyliftover}：仅支持点坐标（point coordinates）的转换，无法对区段（ranges）坐标进行转换
+  \end{itemize}
+\end{frame}
+
 \section{基因组坐标系统}
 \begin{frame}
   \frametitle{坐标系统 | 坐标轴}
@@ -316,7 +328,7 @@
     \begin{itemize}
       \item Windows：\verb|\r\n|（CR+LF，回车+换行），文件尾部直接EOF（文件结束标志）
       \item Unix：\verb|\n|（LF，仅有换行），文件最后一行也会增加该字符，然后才是EOF
-      \item Mac：\verb|\r|（CR，仅有回车）
+      \item \textcolor{gray}{Mac}：\verb|\r|（CR，仅有回车）
     \end{itemize}
   \end{block}
   \pause
@@ -626,7 +638,7 @@ chr1\ \ \ 180\ \ \ 229\ \ \ Feature1.4\qquad chr1\ \ \ 150\ \ \ 199\ \ \ Feature
       \item 两种坐标系统——0-based和1-based
       \item 四种常用格式——FASTA，BED，GFF，VCF
       \item 坐标逻辑运算——常见模式及其适用范围
-      \item 坐标转换、格式转换、逻辑运算的工具
+      \item \textcolor{gray}{坐标转换、格式转换、}逻辑运算的工具
     \end{itemize}
   \end{block}
   \begin{block}{技能——纯文本与文本编辑器}
