@@ -70,6 +70,24 @@
 
 \begin{frame}
   \frametitle{引言 | 序列分析}
+  \begin{block}{基本问题}
+    \begin{itemize}
+      \item 总的GC含量或者其他核苷酸成分是多少？
+      \item 有哪些重复的DNA序列，在什么地方？
+      \item 一共有多少个基因（编码蛋白质的序列）？
+    \end{itemize}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
+  \begin{block}{深层问题}
+    \begin{itemize}
+      \item 为什么会有各种特征序列？（物理、化学性质？进化压力？）
+      \item 需要从哪些方面分析序列特征？
+      \item 怎样描述这些序列特征？
+    \end{itemize}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
   \begin{block}{序列分析}
     通过实验或计算等方式，确定核苷酸或氨基酸序列中可能与特定功能、结构或生化过程相关联的\alert{具有生物学意义的序列特征}，或者\alert{序列自身的规律}。
   \end{block}
@@ -81,25 +99,6 @@
     \centering
     \includegraphics[width=8cm]{sequence.analysis.jpg}
   \end{figure}
-\end{frame}
-
-\begin{frame}
-  \frametitle{引言 | 序列分析 | 问题}
-  \begin{block}{基本问题}
-    \begin{itemize}
-      \item 总的GC含量或者其他核苷酸成分是多少？
-      \item 有哪些重复的DNA序列，在什么地方？
-      \item 一共有多少个基因（编码蛋白质的序列）？
-    \end{itemize}
-  \end{block}
-  \pause
-  \begin{block}{深层问题}
-    \begin{itemize}
-      \item 为什么会有各种特征序列？（物理、化学性质？进化压力？）
-      \item 需要从哪些方面分析序列特征？
-      \item 怎样描述这些序列特征？
-    \end{itemize}
-  \end{block}
 \end{frame}
 
 \section{DNA组份分析与序列转换}
@@ -138,22 +137,22 @@
 
 \begin{frame}
   \frametitle{DNA序列 | 碱基组成}
+  \begin{block}{碱基组成}
   \begin{itemize}
     \item 核酸序列由ACGT四种碱基组成
     \item 不同物种的DNA碱基组成存在差异
-    \item 同一基因组内不同区段的碱基组成有差异
-    \item 同一基因内部不同片段的碱基组成也有差异
+    \item 同一基因组内不同区段（基因、基因间）的碱基组成有差异
+    \item 同一基因内部不同片段（外显子、内含子）的碱基组成也有差异
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{DNA序列 | 碱基组成 | 分析}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
+  \begin{block}{碱基频率}
   \begin{itemize}
-    \item 对于随机分布的DNA序列，每种核苷酸的出现是均匀分布的，出现频率各为0.25
-    \item 真实基因组的核苷酸分布则是非均匀的（酵母基因组核苷酸出现频率：A/T=0.325，G/C=0.175）
-    \item 如果同时计算DNA的正反两条链，根据碱基配对原则，A和T、G和C的出现频率相同
-    \item 如果仅统计一条链，则虽然A和T、G和C的出现频率不同，但是数值接近（酵母单链核苷酸出现频率：A=0.344，T=0.343，G=0.157，C=0.155）
+    \item 对于随机分布的DNA序列，每种核苷酸的出现是均匀分布的（出现频率各为0.25）；真实基因组的核苷酸分布则是非均匀的（酵母：A/T=0.325，G/C=0.175）
+    \item 如果同时计算DNA的正反两条链，A和T、G和C的出现频率相同（碱基配对原则）；如果仅统计一条链，则虽然A和T、G和C的出现频率不同，但是数值接近（酵母：A=0.344，T=0.343，G=0.157，C=0.155）
   \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -371,14 +370,20 @@
 
 \begin{frame}
   \frametitle{限制酶 | \alert{\Rmnum{2}型}}
+  \begin{block}{\Rmnum{2}型限制酶}
   \begin{itemize}
-    \item 识别、切割位点专一
-    \item 识别序列：4-8个碱基，回文对称结构
-    \item 切割序列：识别序列，切割位点对称
+    \item 识别与切割位点：专一
+      \begin{itemize}
+        \item 识别序列：4-8个碱基，回文对称结构
+        \item 切割序列：识别序列，切割位点对称
+      \end{itemize}
     \item 切割末端：黏性末端，平滑末端
-    \item 黏性末端：切割位点在回文序列的一侧
-    \item 平滑末端：切割位点在回文序列的中间
+      \begin{itemize}
+        \item 黏性末端：切割位点在回文序列的一侧
+        \item 平滑末端：切割位点在回文序列的中间
+      \end{itemize}
   \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -445,10 +450,20 @@
 
 \begin{frame}
   \frametitle{限制酶 | 数据库与分析工具}
+  \begin{block}{资源}
   \begin{itemize}
     \item REBASE：收录了限制酶的所有信息
     \item NEBCutter V2.0：产生DNA序列的酶切位点分析结果
   \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{检索}
+    \begin{itemize}
+      \item 搜索引擎：Google，Bing，Yahoo! Search，DuckDuckGo，搜狗，360搜索，百度，……
+      \item 检索技巧：关键词（英文 vs. 中文）；表达式（与、或、非）；……
+      \item 翻墙方法：Lantern（蓝灯），shadowsocks，VPN，……
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -635,10 +650,18 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
   \frametitle{启动子 | TF\&TFBS}
   \begin{block}{转录因子（transcription factor）}
     能够结合在某基因上游特异核苷酸序列上的蛋白质，这些蛋白质能调控其基因的转录。
+    \begin{itemize}
+      \item 功能区域：DNA结合结构域、效应结构域
+      \item 作用方式：与启动子区域结合、与其他TF形成复合体
+      \item 调控模式：同时调控多个基因
+    \end{itemize}
   \end{block}
   \pause
   \begin{block}{转录因子结合位点（Transcription Factor Binding Site，TFBS）}
     与转录因子结合的DNA序列，长度约为5～20bp，它们与转录因子相互作用进行基因的转录调控。
+    \begin{itemize}
+      \item 保守性 vs. 可变性
+    \end{itemize}
   \end{block}
 \end{frame}
 
@@ -836,6 +859,23 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
   \begin{figure}
     \centering
     \includegraphics[width=11cm]{sw.window.size.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 动态规划}
+  \begin{block}{动态规划}
+    动态规划（Dynamic programming，简称DP）是一种在数学、管理科学、计算机科学、经济学和生物信息学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。\\
+    \vspace{0.5em}
+动态规划背后的基本思想非常简单。大致上，若要解一个给定问题，我们需要解其不同部分（即子问题），再合并子问题的解以得出原问题的解。通常许多子问题非常相似，为此动态规划法试图仅仅解决每个子问题一次，从而减少计算量：一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。这种做法在重复子问题的数目关于输入的规模呈指数增长时特别有用。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 动态规划}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{dp.01.jpg}
   \end{figure}
 \end{frame}
 
