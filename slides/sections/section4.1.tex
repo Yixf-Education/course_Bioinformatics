@@ -311,14 +311,17 @@
 \begin{frame}
   \frametitle{DNA序列 | 分析工具}
   \begin{itemize}
-    \item \href{http://yixf.name/2011/06/01/\%E5\%AF\%B9fasta\%E6\%A0\%BC\%E5\%BC\%8F\%E7\%9A\%84\%E7\%AE\%80\%E5\%8D\%95\%E5\%A4\%84\%E7\%90\%86\%E4\%B8\%8E\%E7\%BB\%9F\%E8\%AE\%A1/}{SeqTools.pl}
-    \item EMBOSS
-    \item \href{http://bioinfx.net/}{bioinfx(Free Online Tools for Bioinformatics)}
-    \item \href{http://clasher.myweb.uga.edu/testpages/seqconv.html}{Complementary Sequence Conversion Tool}
+    \item \href{http://lh3lh3.users.sourceforge.net/fasta.shtml}{SeqTools}
     \item \href{http://www.cellbiol.com/scripts/complement/dna\_sequence\_reverse\_complement.php}{DNA Sequence Reverse and Complement Online Tool}
     \item \href{http://www.endmemo.com/bio/gc.php}{DNA/RNA GC Content Calculator}
     \item \href{http://www.sciencelauncher.com/oligocalc.html}{Oligo Calculator}
+    \item \href{http://erilllab.umbc.edu/bioword-2/}{BioWord (A Microsoft Word add-in for biological sequence manipulation)}
+    \item \href{http://www.bioinformatics.org/sms2/}{SMS2 (Sequence Manipulation Suite)}
+    \item \href{http://emboss.sourceforge.net/}{EMBOSS (The European Molecular Biology Open Software Suite)}
     \item \ldots
+    % \item \href{http://yixf.name/2011/06/01/\%E5\%AF\%B9fasta\%E6\%A0\%BC\%E5\%BC\%8F\%E7\%9A\%84\%E7\%AE\%80\%E5\%8D\%95\%E5\%A4\%84\%E7\%90\%86\%E4\%B8\%8E\%E7\%BB\%9F\%E8\%AE\%A1/}{SeqTools.pl}
+    % \item \href{http://bioinfx.net/}{bioinfx(Free Online Tools for Bioinformatics)}
+    % \item \href{http://clasher.myweb.uga.edu/testpages/seqconv.html}{Complementary Sequence Conversion Tool}
   \end{itemize}
 \end{frame}
 
@@ -512,6 +515,14 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{功能位点 | motif}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{motif.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
   \frametitle{功能位点 | 共有序列}
   \begin{block}{共有序列（consensus sequence）}
     又称一致性片段，描述了功能位点每个位置上进化的保守性。例如：NTATN。
@@ -560,6 +571,23 @@
     \centering
     \includegraphics[width=8cm]{site.matrix.png}
   \\ 对于ATTGCA来说，得分$W = 1 + 6 + 14 - 5 + 8 + 19 = 43$。
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{功能位点 | PWM}
+  \begin{block}{PWM}
+A position weight matrix (PWM), also known as a position-specific weight matrix (PSWM) or position-specific scoring matrix (PSSM), is a commonly used representation of motifs (patterns) in biological sequences.\\
+\vspace{0.5em}
+PWMs are often derived from a set of aligned sequences that are thought to be functionally related and have become an important part of many software tools for computational motif discovery.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{功能位点 | PWM}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{motif.pwm.01.jpg}
   \end{figure}
 \end{frame}
 
@@ -634,6 +662,15 @@
       \begin{itemize}
         \item TRANSFAC：真核生物顺式作用元件和反式作用因子数据库
         \item Tfblast（TRANSFAC BLAST）
+        \item JASPAR: The high-quality transcription factor binding profile database
+        \item CIS-BP Database: Catalog of Inferred Sequence Binding Preferences
+        \item footprintDB
+        \item HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models
+        % \item HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) v10 provides transcription factor (TF) binding models for 600 human and 395 mouse TFs.
+        \item MotifMap: genome-wide maps of regulatory elements.
+        \item UniPROBE (Universal PBM Resource for Oligonucleotide Binding Evaluation) database
+        \item ENCODE TF ChIP-seq datasets
+        \item Human Protein-DNA Interactome (hPDI)
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -803,18 +840,6 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 聚类分析}
-  \begin{block}{聚类分析（cluster analysis）}
-    聚类是把相似的对象通过静态分类的方法分成不同的组别或者更多的子集（subset），这样让在同一个子集中的成员对象都有相似的一些属性。
-  \end{block}
-  \begin{figure}
-    \centering
-    \includegraphics[width=7cm]{cluster.01.jpg}
-    \includegraphics[width=5cm]{cluster.02.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
   \frametitle{序列分析中的算法 | 机器学习}
   \begin{block}{机器学习}
     机器学习理论主要是设计和分析一些让计算机可以自动“学习”的算法。机器学习算法是一类从数据中自动分析获得规律，并利用规律对未知数据进行预测的算法。
@@ -830,7 +855,40 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 判别分析}
+  \frametitle{序列分析中的算法 | 机器学习}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{ml.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习}
+  \begin{block}{machine learning}
+    The classical machine learning workflow can be broken down into four steps: data pre-processing, feature extraction, model learning and model evaluation.\\
+    \vspace{0.5em}
+    Supervised machine learning methods relate input features x to an output label y, whereas unsupervised method learns factors about x without observed labels.\\
+    \vspace{0.5em}
+    Raw input data are often high-dimensional and related to the corresponding label in a complicated way, which is challenging for many classical machine learning algorithms. Alternatively, higher-level features extracted using a deep model may be able to better discriminate between classes.\\
+    \vspace{0.5em}
+    Deep networks use a hierarchical structure to learn increasingly abstract feature representations from the raw data.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习 | 聚类分析}
+  \begin{block}{聚类分析（cluster analysis）}
+    聚类是把相似的对象通过静态分类的方法分成不同的组别或者更多的子集（subset），这样让在同一个子集中的成员对象都有相似的一些属性。
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=7cm]{cluster.01.jpg}
+    \includegraphics[width=5cm]{cluster.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习 | 判别分析}
   \begin{block}{判别分析}
     线性判别分析（Linear Discriminant Analysis），简称判别分析，是统计学上的一种分析方法，用于在已知的分类之下遇到有新的样本时，选定一个判别标准，以判定如何将新样本放置于哪一个类别之中。
   \end{block}
@@ -842,7 +900,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 人工神经网络}
+  \frametitle{序列分析中的算法 | 机器学习 | 人工神经网络}
   \begin{block}{人工神经网络（artificial neural network，ANN）}
    简称神经网络（neural network，NN），是一种模仿生物神经网络的结构和功能的数学模型或计算模型。神经网络由大量的人工神经元联结进行计算。大多数情况下人工神经网络能在外界信息的基础上改变内部结构，是一种自适应系统。现代神经网络是一种非线性统计性数据建模工具，常用来对输入和输出间复杂的关系进行建模，或用来探索数据的模式。
   \end{block}
@@ -853,7 +911,26 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 深度学习}
+  \begin{block}{深度学习}
+    深度学习（deep learning）是机器学习拉出的分支，它试图使用包含复杂结构或由多重非线性变换构成的多个处理层对数据进行高层抽象的算法。\\
+    \vspace{0.5em}
+深度学习是机器学习中一种基于对数据进行表征学习的方法。深度学习的好处是用非监督式或半监督式（Semi-supervised learning）的特征学习和分层特征提取高效算法来替代手工获取特征（Feature）。\\
+    \vspace{0.5em}
+至今已有数种深度学习框架，如深度神经网络、卷积神经网络和深度置信网络（Deep belief network）和递归神经网络已被应用于计算机视觉、语音识别、自然语言处理、音频识别与生物信息学等领域并获取了极好的效果。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习 | 深度学习}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{dl.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{block}{马尔可夫性质}
     当一个随机过程在给定现在状态及所有过去状态情况下，其未来状态的条件概率分布仅依赖于当前状态；换句话说，在给定现在状态时，它与过去状态（即该过程的历史路径）是条件独立的，那么此随机过程即具有马尔可夫性质。
   \end{block}
@@ -864,7 +941,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{block}{马尔可夫链（Markov chain）}
     具备离散状态的马尔可夫过程，通常被称为马尔可夫链。又称离散时间马尔可夫链（discrete-time Markov chain，DTMC），是马尔可夫过程中的一个特例，为具备马尔可夫性质与离散时间状态的随机过程。该过程中，在给定当前知识或信息的情况下，只有当前的状态用来预测将来，过去（即当前以前的历史状态）对于预测将来（即当前以后的未来状态）是无关的。
   \end{block}
@@ -875,7 +952,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{figure}
     \centering
     \includegraphics[width=5.5cm]{markov.chain.png}
@@ -885,7 +962,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{figure}
     \centering
     \includegraphics[width=10cm]{hmm.01.png}
@@ -893,7 +970,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{block}{三个典型问题}
     \begin{enumerate}
       \item 已知模型参数，计算某一特定输出序列的概率。通常使用forward算法解决。
@@ -905,7 +982,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{figure}
     \centering
     \includegraphics[width=6.5cm]{hmm.03.png}
@@ -914,7 +991,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 隐马尔可夫模型}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
   \begin{figure}
     \centering
     \includegraphics[width=10.5cm]{hmm.04.jpg}
