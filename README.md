@@ -16,4 +16,4 @@
 * plan：教案
 * show：课堂演示素材
 * slides：理论课幻灯片
-
+* collection：收集的备用素材
