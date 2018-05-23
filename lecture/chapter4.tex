@@ -343,13 +343,13 @@ K-均值算法表示以空间中k个点为中心进行聚类，对最靠近他�
 \subsection{判别分析}
 线性判别分析（Linear Discriminant Analysis），简称判别分析，是统计学上的一种分析方法，用于在已知的分类之下遇到有新的样本时，选定一个判别标准，以判定如何将新样本放置于哪一个类别之中。这种方法主要应用于医学的患者疾病分级，以及人脸识别、经济学的市场定位、产品管理及市场研究等范畴。
 
-关于线性鉴别分析的研究应追溯到Fisher在1936年发表的经典论文（Fisher R A. The use of multiple measurements in taxonomic problems），其基本思想是选择使得Fisher准则函数达到极值的向量作为最佳投影方向，从而使得样本在该方向上投影后，达到最大的类间离散度和最小的类内离散度。在Fisher思想的基础上，Wilks和Duda分别提出了鉴别矢量集的概念，即寻找一组鉴别矢量构成子空间，以原始样本在该子空间内的投影矢量作为鉴别特征用于识别。 
+关于线性鉴别分析的研究应追溯到Fisher在1936年发表的经典论文（Fisher R A. The use of multiple measurements in taxonomic problems），其基本思想是选择使得Fisher准则函数达到极值的向量作为最佳投影方向，从而使得样本在该方向上投影后，达到最大的类间离散度和最小的类内离散度。在Fisher思想的基础上，Wilks和Duda分别提出了鉴别矢量集的概念，即寻找一组鉴别矢量构成子空间，以原始样本在该子空间内的投影矢量作为鉴别特征用于识别。
 
 1970年Sammon提出了基于Fisher鉴别准则的最佳鉴别平面的概念。随后，Foley和Sammon进一步提出了采用一组满足正交条件的最佳鉴别矢量集进行特征抽取的方法。
 
 1988年Duchene和Leclercq给出了多类情况下最佳鉴别矢量集的计算公式。
 
-2001年Jin和Yang 从统计不相关的角度，提出了具有统计不相关性的最优鉴别矢量集的概念。与F-S鉴别矢量集不同的是，具有统计不相关性的最优鉴别矢量是满足共轭正交条件的，该方法被称为不相关的鉴别分析或Jin-Yang线性鉴别法。 
+2001年Jin和Yang 从统计不相关的角度，提出了具有统计不相关性的最优鉴别矢量集的概念。与F-S鉴别矢量集不同的是，具有统计不相关性的最优鉴别矢量是满足共轭正交条件的，该方法被称为不相关的鉴别分析或Jin-Yang线性鉴别法。
 
 以上提到的各种方法仅适用于类内散布矩阵非奇异(可逆)的情形，但实际应用中存在着大量的典型的小样本问题，比如在人脸图像识别问题中，类内散布矩阵经常是奇异的。这是因为待识别的图像矢量的维数一般较高，而在实际问题中难以找到或根本不可能找到足够多的训练样本来保证类内散布矩阵的可逆性。因此，在小样本情况下，如何抽取Fisher最优鉴别特征成为一个公认的难题。
 
@@ -476,16 +476,16 @@ HMM有三个典型（canonical）问题：
 
 \begin{lstlisting}[language=python]
 states = ('Healthy', 'Fever')
- 
+
 observations = ('normal', 'cold', 'dizzy')
- 
+
 start_probability = {'Healthy': 0.6, 'Fever': 0.4}
- 
+
 transition_probability = {
     'Healthy' : {'Healthy': 0.7, 'Fever': 0.3},
     'Fever' : {'Healthy': 0.4, 'Fever': 0.6},
 }
- 
+
 emission_probability = {
     'Healthy' : {'normal': 0.5, 'cold': 0.4, 'dizzy': 0.1},
     'Fever' : {'normal': 0.1, 'cold': 0.3, 'dizzy': 0.6},
@@ -863,7 +863,7 @@ miRNA基因是一类高度保守的基因家族，按其作用模式不同可分
 \hrule height 3pt
 \vspace{0.5cm}
 
-miRNA通过作用于相应靶基因mRNA完成生物学功能，如个体发育的调控、细胞分化和组织发育等。据推测脊椎动物基因组有多达1000个不同的miRNAs，调控至少30\%以上基因的表达。miRNA的异常与疾病发生发展具有相关性。最近的研究发现，miRNA表达与多种癌症相关，大约50\%得到注释的miRNAs在基因组上定位于与肿瘤相关的脆性位点（fragile site）。这说明miRNAs在肿瘤发生过程中起至关重要的作用，这些miRNAs所起的作用类似于抑癌基因和癌基因的功能。
+miRNA通过作用于相应靶基因mRNA完成生物学功能，如个体发育的调控、细胞分化和组织发育等。据推测脊椎动物基因组有多达2000个不同的miRNAs，调控至少30\%以上基因的表达。miRNA的异常与疾病发生发展具有相关性。最近的研究发现，miRNA表达与多种癌症相关，大约50\%得到注释的miRNAs在基因组上定位于与肿瘤相关的脆性位点（fragile site）。这说明miRNAs在肿瘤发生过程中起至关重要的作用，这些miRNAs所起的作用类似于抑癌基因和癌基因的功能。
 
 miRNA在细胞分化，生物发育及疾病发生发展过程中发挥巨大作用，越来越多地引起研究人员的关注。随着对于miRNA作用机理的深入研究，以及利用最新的例如miRNA芯片、miRNA-seq等高通量技术手段对于miRNA和疾病之间的关系进行研究，将会使人们对于高等真核生物基因表达调控的网络理解提高到一个新的水平。这也将使miRNA可能成为疾病诊断的新的生物学标记，还可能使得这一分子成为药靶，或是模拟这一分子进行新药研发，这将可能会给人类疾病的治疗提供一种新的手段。
 
@@ -879,6 +879,7 @@ miRNA主要通过cDNA克隆测序和计算预测两种方法获得。早期克�
   \item 结合作用靶标的预测方法。依据miRNA与其靶基因序列间的碱基互补配对的保守性的特点预测miRNA。
   \item 基于机器学习的预测方法。通过对阳性miRNA和阴性miRNA数据集的训练来构建区分两者的分类器，根据所得分类器对未知序列进行预测。其中支持向量机（SVM，Support Vector Machine）方法是目前miRNA分类和预测最常用的机器学习方法。
 \end{enumerate}
+
 常用的miRNA预测软件有MiRscan、MiPred、miRFinder等。
 
 miRNA通过与靶基因mRNA的3' UTR不精确互补配对使靶mRNA的翻译受到抑制，二者相互作用以miRNA:mRNA二聚体结构形式存在。miRNA序列5'端的2-8nt为种子区域，在miRNA靶基因预测中起主导作用。种子区域具有保守性，与靶mRNA序列能较好得互补配对结合，且在不同物种中靶序列也是保守的，这些特征是靶基因预测方法的重要依据。miRNA靶基因预测方法主要有2类：
@@ -890,7 +891,7 @@ miRNA通过与靶基因mRNA的3' UTR不精确互补配对使靶mRNA的翻译受�
 miRBase\footnote{此部分内容摘抄自《生物信息学》（李霞，人民卫生出版社），第十六章（miRNA与复杂疾病），第二节（miRNA与其靶基因）。}是一个集miRNA序列、注释信息以及预测的靶基因数据为一体的数据库，是目前存储miRNA信息最主要的公共数据库之一（网址：\href{http://www.mirbase.org}{http://www.mirbase.org}）。miRBase提供便捷的网上查询服务，允许用户使用关键词或序列在线搜索已知的miRNA和靶基因信息。该数据库主要包括三部分内容，即miRBase Registry、miRBase Sequence以及miRBase Targets。miRBase Registry主要是为新发现的miRNA命名服务；miRBase Sequence包含所有已发布的成熟miRNA序列，同时提供对应的预测的发卡结构、注释信息以及与其他数据库的链接；miRBase Targets（已更名为microCosm，网址：\href{http://www.ebi.ac.uk/enright-srv/microcosm/htdocs/targets/v5}{http://www.ebi.ac.uk/enright-srv/microcosm/htdocs/targets/v5}）主要采用miRanda算法预测miRNA靶基因。TarBase\footnote{此部分内容摘抄自《生物信息学》（李霞，人民卫生出版社），第十六章（miRNA与复杂疾病），第二节（miRNA与其靶基因）。}是一个目前使用最广泛的存储已被实验验证的真实miRNA与靶基因间关系的数据库，其网址为：\href{http://diana.cslab.ece.ntua.gr/tatbase}{http://diana.cslab.ece.ntua.gr/tatbase}，存储来自大约200篇文献、涵盖多种实验方法的1333个miRNA与靶基因关系对。miRGen是整合了miRNA靶基因数据、基因组注释信息以及位置关系的综合数据库。更多数据库可以参看\href{http://zh.wikipedia.org/wiki/\%E5\%BE\%AERNA\%E4\%B8\%8E\%E5\%BE\%AERNA\%E9\%9D\%B6\%E6\%95\%B0\%E6\%8D\%AE\%E5\%BA\%93}{微RNA与微RNA靶数据库（维基百科）}。
 
 \section{lncRNA简介}
-目前已知在人类基因组中，lncRNA（长链非编码RNA，long non-coding RNAs）基因\footnote{以学校等社会机构进行类比，垃圾DNA真的是垃圾吗？}的数目已经达到了13870（GENCODE，version 19）。据估计，人类基因组中lncRNA基因的总数可能在15000条以上。lncRNA作为一类特殊的RNA分子，在生命体内发挥着重要的生物功能，因其独特的生物特征和复杂的生物功能引起了国内外的广泛关注，对其研究正逐步深入。
+目前已知在人类基因组中，lncRNA（长链非编码RNA，long non-coding RNAs）基因\footnote{以学校等社会机构进行类比，垃圾DNA真的是垃圾吗？}的数目已经达到了15779（GENCODE，version 28；蛋白质编码基因的数目为19901）。lncRNA作为一类特殊的RNA分子，在生命体内发挥着重要的生物功能，因其独特的生物特征和复杂的生物功能引起了国内外的广泛关注，对其研究正逐步深入。
 
 对于长度小于200nt的小非编码RNA的生物特征已经开展了广泛的研究。小非编码RNA在序列和结构上存在很多标志性的特征，例如，miRNA
 前体可以形成发卡结构，在酶的作用下，在茎结构处产生成熟的miRNA。因此不同类型小非编码RNA预测、靶位点查找和功能分析等都取得了快速的进展。与之不同，lncRNA没有明显的、独特的生物特征，一般不能通过单一的方法鉴定和识别，其长度大于200nt，产生方式类似mRNA，具有许多与其类似的特征。
