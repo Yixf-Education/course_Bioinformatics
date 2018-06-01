@@ -1,3 +1,35 @@
+\begin{frame}
+  \frametitle{插曲 | “言之凿凿“的大数据}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{friends.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{插曲 | 大数据的数字大小}
+  \begin{columns}
+    \column{0.6\textwidth}
+  \begin{block}{阅读量}
+    大学4年，借阅400本书（确切数字为476册）。
+  \end{block}
+  \pause
+  \pause
+  \begin{block}{“科研人才”}
+    5年发表40余篇科研论文！——灌水！
+  \end{block}
+  \pause
+  \begin{block}{学科评估}
+    2017年，天津财经大学，5名评估专家，5天的时间，“评阅”4000多份毕业论文！（工作到晚上10点，给准备夜宵，……）
+  \end{block}
+    \column{0.38\textwidth}
+    \begin{figure}
+      \centering
+      \visible<2->{\includegraphics[width=0.9\textwidth]{book.2017.png}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
 \section{引言}
 \begin{frame}
   \frametitle{引言}
@@ -107,7 +139,7 @@
   \pause
   \begin{block}{两大关系}
     \begin{itemize}
-      \item is\_a: for simple, hierarchical connections between terms 
+      \item is\_a: for simple, hierarchical connections between terms
       \item part\_of: for describing how the components of a living system fit together
     \end{itemize}
   \end{block}
@@ -122,7 +154,7 @@
 \note{
 The structure of GO can be described in terms of a graph, where each GO term is a node, and the relationships between the terms are edges between the nodes. GO is loosely hierarchical, with 'child' terms being more specialized than their 'parent' terms, but unlike a strict hierarchy, a term may have more than one parent term (note that the parent/child model does not hold true for all types of relation). For example, the biological process term hexose biosynthetic process has two parents, hexose metabolic process and monosaccharide biosynthetic process. This is because biosynthetic process is a subtype of metabolic process and a hexose is a subtype of monosaccharide.
 
-In the diagram, relations between the terms are represented by the colored arrows; the letter in the box midway along each arrow is the relationship type. Note that the terms get more specialized going down the graph, with the most general terms—the root nodes, cellular component, biological process and molecular function—at the top of the graph. Terms may have more than one parent, and they may be connected to parent terms via different relations. The GO relations documentation describes these relations in greater detail. 
+In the diagram, relations between the terms are represented by the colored arrows; the letter in the box midway along each arrow is the relationship type. Note that the terms get more specialized going down the graph, with the most general terms—the root nodes, cellular component, biological process and molecular function—at the top of the graph. Terms may have more than one parent, and they may be connected to parent terms via different relations. The GO relations documentation describes these relations in greater detail.
 }
 
 \begin{frame}
