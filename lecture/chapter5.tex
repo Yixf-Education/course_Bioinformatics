@@ -352,12 +352,12 @@ Logo程序（Schneider \& Stephens，1990）根据序列保守区域的多序列
 {\small
 Sequence logos是展示DNA/RNA或氨基酸序列一致程度的一种图形化方法。该方法由Thomas D.Schneider和R.Michael Stephens于1990年提出。它由在每一个位点的一堆字母组成。字母的尺寸（高度）表明它在此位点出现的频率。以下面的四条序列来说：
 \begin{center}
-  \includegraphics[width=5cm]{sequence.logo.10.png}
+  \includegraphics[width=5cm]{sequence_logo_10.png}
 \end{center}
 
 如果要用一种方法把上面四条序列用另外一种方法表示出来，作为一名程序员，我首先想到的是正则表达式（regular expression）——\verb|TA[YF]M[IML][AT][ED]M[ML]K|。在做查找的时候regular expression无疑能将所有满足要求的序列都找出来，但是它不直观，也不能反映出现频率。而Sequence logo就能让这些信息直观的显示出来（如下图所示）。
 \begin{center}
-  \includegraphics{sequence.logo.11.png}
+  \includegraphics{sequence_logo_11.png}
 \end{center}
 
 Sequence logo图中的横坐标指示在序列中的位置，而纵坐标则是i处的信息量（单位为bits）。纵坐标根据公式$R_i = \log_2 20 - (H_i + e_n)$（氨基酸）或$R_i = 2 - (H_i + e_n)$（核苷酸）。公式中的$H_i$是信息熵（Shannon entropy），$H_i = -\sum_{b=a}^{t}f_{(b,i)} \times \log_2 f_{b,i}$，式中的$f_{b,i}$是b在i处出现的相对频率。如果是脱氧核苷酸序列，则上式当中的$b \in (A, C, G, T)$。$e_n$是对于小样本的一项修正系数，公式为$e_n = \frac{1}{\ln 2} \times \frac{s-1}{2n}$，当序列为核苷酸序列时，s=4；为氨基酸序列时，s=20。n=本次比对中的序列数。所以我们不难推出，在i处，对于b，其高度$height = R_i \times f_{b,i}$。
