@@ -12,8 +12,7 @@
 二、实验内容
 
 1. 打开Galaxy网站。通过搜索引擎搜索“Galaxy UCSC”，或者直接在浏览器的地址栏中输入网址，打开[https://main.g2.bx.psu.edu/](https://main.g2.bx.psu.edu/)即可。
-2. 获取chr22上基因的内含子数据。打开Get Data工具集中的UCSC Main工具，调整参数提取人类hg19基因组中22号染色体（chr22）上的所有内含子信息，以BED格式进
-行存储。
+2. 获取chr22上基因的内含子数据。打开Get Data工具集中的UCSC Main工具，调整参数提取人类hg19基因组中22号染色体（chr22）上的所有内含子信息，以BED格式进行存储。
 3. 提取内含子上的剪接位点信息。
 	1. 提取供体位点的信息。打开Operate on Genomic Intervals工具集中的Get flanks工具，利用刚刚获取的内含子数据，调整Region为Around Start，调整Location of the flanking region/s为Upstream，设置Offset为17，设置Length of flanking region(s)为32，提取出包含供体位点2bp在内、同时上下游各延伸15bp的坐标。
 	2. 提取受体位点的信息。打开Operate on Genomic Intervals工具集中的Get flanks工具，利用刚刚获取的内含子数据，调整Region为Around End，调整Location of the flanking region/s为Downstream，设置Offset为-17，设置Length of flanking region(s)为32，提取出包含受体位点2bp在内、同时上下游各延伸15bp的坐标。

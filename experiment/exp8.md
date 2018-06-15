@@ -12,8 +12,7 @@ Galaxy是一个开放的、基于网络的生物信息学分析平台，整合�
 
 1. 打开Galaxy网站。通过搜索引擎搜索“Galaxy UCSC”，或者直接在浏览器的地址栏中输入网址，打开[https://main.g2.bx.psu.edu/](https://main.g2.bx.psu.edu/)即可。
 2. 获取所需数据。
-	1. chr22上的外显子数据。打开Get Data工具集中的UCSC Main工具，调整参数提取人类hg19基因组中22号染色体（chr22）上的所有外显子信息，以BED格式进
-行存储。
+	1. chr22上的外显子数据。打开Get Data工具集中的UCSC Main工具，调整参数提取人类hg19基因组中22号染色体（chr22）上的所有外显子信息，以BED格式进行存储。
 	2. chr22上的SNP数据。同样使用UCSC Main工具提取dbSNP37中chr22上的所有SNP信息，也以BED格式进行存储。
 3. 提取含有SNP的外显子。打开Operate on Genomic Intervals工具集中的Join工具，以外显子数据为第一套数据集、SNP数据为第二套数据集，通过坐标比较提取出含有SNP
 的所有外显子。坐标联合操作的结果中前半部分是外显子的信息，后半部分是SNP的信息。结果显示，不少外显子上含有多个SNP。
