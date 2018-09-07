@@ -12,7 +12,7 @@
 
 1. 人类CD9基因的序列组分分析
      1. 获取序列。打开NCBI主页（[http://www.ncbi.nlm.nih.gov/](http://www.ncbi.nlm.nih.gov/)），在核酸（Nucleotide）数据库查询人类CD9抗原基因（AY422198），将其序列以FASTA格式保存到本地计算机上。
-     2. 打开EMBOSS。有 [http://emboss.bioinformatics.nl/](http://emboss.bioinformatics.nl/) 和 [http://genome.csdb.cn/emboss/](http://genome.csdb.cn/emboss/) 多个EMBOSS Explorer可供选用，任选其一打开链接即可使用。
+     2. 打开EMBOSS。有[http://emboss.bioinformatics.nl/](http://emboss.bioinformatics.nl/)和[http://genome.csdb.cn/emboss/](http://genome.csdb.cn/emboss/)多个EMBOSS Explorer可供选用，任选其一打开链接即可使用。
      3. 碱基组成分析。找到程序compseq，在Input section项目中，使用upload上传CD9的序列;在Required section项目中，把Word size to consider修改为“1”;其他参数默认即可。最后，点击Run compseq获得ATGC四种碱基的数目及百分比含量。
      4. GC含量分析。找到程序geecee，以上传文件的方式提交DNA序列，之后点击Run geecee得到CD9基因的GC含量。
      5. 序列转换。找到程序revseq，如前所述上传CD9基因的DNA序列，点击Run revseq后，得到其反向互补序列。通过调整Advanced section项目中的参数，可以仅获得反向序列或互补序列。
@@ -72,14 +72,3 @@
    orfm -t orfm_dna.fasta -c 11 U00096_1-3000bp.fasta > orfm_protein.fasta
    getorf -sequence U00096_1-3000bp.fasta -outseq getorf_dna.fa -table 11 -minsize 90 -find 3
    ```
-
-
-5. 参考资料
-   * [Bioconda Homepage](https://bioconda.github.io/index.html)
-   * [Available packages in Bioconda](https://bioconda.github.io/index.html)
-   * [NCBI Entrez Direct UNIX E-utilities](http://bioinformatics.cvr.ac.uk/blog/ncbi-entrez-direct-unix-e-utilities/)
-   * [Seqtk at GitHub](https://github.com/lh3/seqtk)
-   * [SeqKit Homepage](https://bioinf.shenwei.me/seqkit/)
-   * [Usage and Examples for SeqKit](https://bioinf.shenwei.me/seqkit/usage/)
-   * [OrfM at GitHub](https://github.com/wwood/OrfM)
-   * [EMBOSS](http://emboss.sourceforge.net/developers/acd/commandline.html)

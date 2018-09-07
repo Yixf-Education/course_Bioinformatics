@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>exp6</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; }
+<title>exp6</title><link href='https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
-.first-line-indent #write p .md-line { text-indent: 0px; }
-.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
@@ -35,9 +36,7 @@ h3 { font-size: 1.6rem; }
 h4 { font-size: 1.4rem; }
 h5 { font-size: 1.2rem; }
 h6 { font-size: 1rem; }
-h1, h2, h3, h4, h5, h6 { margin-top: 1rem; margin-bottom: 1rem; }
-p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
-.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
 a { cursor: pointer; }
@@ -56,15 +55,17 @@ table.md-table td { min-width: 80px; }
 .CodeMirror pre { padding: 0px 4px; }
 .CodeMirror-lines { padding: 0px; }
 div.hr:focus { cursor: none; }
-pre { white-space: pre-wrap; }
-pre.contain-cm { white-space: normal; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
 .md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-.md-fences.mock-cm { white-space: pre-wrap; }
-.show-fences-line-number .md-fences { padding-left: 0px; }
-.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
-.CodeMirror-line { break-inside: avoid; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
@@ -75,7 +76,7 @@ li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-.footnote-line { white-space: pre-wrap; }
+#write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
   #write { margin-top: 0px; border-color: transparent !important; }
@@ -89,11 +90,10 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > img:only-child { display: block; margin: auto; }
-.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
-.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
-p + .mathjax-block { margin-top: -1.143rem; }
-.mathjax-block:not(:empty)::after { display: none; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
 [contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
@@ -122,153 +122,154 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .footnote-line a:not(.reversefootnote) { color: inherit; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
-code, pre, tt { font-family: var(--monospace); }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
-.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
 .MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
 .MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
 
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px; }
-body { font-family: Georgia, Palatino, serif; font-size: 14px; line-height: 1.6; color: rgb(51, 51, 51); background-color: rgb(252, 245, 237); padding: 20px; max-width: 960px; margin: 0px auto; }
-body > :first-child { margin-top: 0px !important; }
-body > :last-child { margin-bottom: 0px !important; }
-p, blockquote, ul, ol, dl, table, pre { margin: 15px 0px; }
-h1, h2, h3, h4, h5, h6 { margin: 20px 0px 10px; padding: 0px; font-weight: 500; -webkit-font-smoothing: antialiased; }
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code { font-size: inherit; }
-h1 { font-weight: 300; text-align: center; font-size: 28px; color: rgb(147, 61, 63); }
-h2 { font-size: 24px; border-bottom: 1px solid rgb(204, 204, 204); color: rgb(0, 0, 0); }
-h3 { font-size: 18px; }
-h4 { font-size: 16px; }
-h5 { font-size: 14px; }
-h6 { color: rgb(119, 119, 119); font-size: 14px; }
-body > h2:first-child, body > h1:first-child, body > h1:first-child + h2, body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
-h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p { margin-top: 10px; }
-a { color: rgb(174, 55, 55); text-decoration: none; }
-a:hover { text-decoration: underline; }
-ul, ol { padding-left: 30px; }
-ul li > :first-child, ol li > :first-child, ul li ul:first-of-type, ol li ol:first-of-type, ul li ol:first-of-type, ol li ul:first-of-type { margin-top: 0px; }
-ul ul, ul ol, ol ol, ol ul { margin-bottom: 0px; }
-dl { padding: 0px; }
-dl dt { font-size: 14px; font-weight: bold; font-style: italic; padding: 0px; margin: 15px 0px 5px; }
-dl dt:first-child { padding: 0px; }
-dl dt > :first-child { margin-top: 0px; }
-dl dt > :last-child { margin-bottom: 0px; }
-dl dd { margin: 0px 0px 15px; padding: 0px 15px; }
-dl dd > :first-child { margin-top: 0px; }
-dl dd > :last-child { margin-bottom: 0px; }
-pre, code, tt { font-size: 12px; font-family: Consolas, "Liberation Mono", Courier, monospace; }
-code, tt { margin: 0px; padding: 0px; white-space: nowrap; border: 1px solid rgb(234, 234, 234); background-color: rgb(244, 236, 227); border-radius: 3px; }
-pre > code { margin: 0px; padding: 0px; white-space: pre; border: none; background: transparent; }
-pre { background-color: rgb(248, 248, 248); border: 1px solid rgb(204, 204, 204); font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; }
-pre code, pre tt { background-color: transparent; border: none; }
-kbd { background-color: rgb(221, 221, 221); background-image: linear-gradient(rgb(241, 241, 241), rgb(221, 221, 221)); background-repeat: repeat-x; border-color: rgb(221, 221, 221) rgb(204, 204, 204) rgb(204, 204, 204) rgb(221, 221, 221); border-image-source: none; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-radius: 2px; border-style: solid; border-width: 1px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 10px; padding: 1px 4px; }
-blockquote { border-top: 1px dotted rgb(205, 199, 188); border-bottom: 1px dotted rgb(205, 199, 188); padding: 0px 15px; background-color: rgb(248, 237, 218); color: rgb(119, 119, 119); }
-blockquote > :first-child { margin-top: 0px; }
-blockquote > :last-child { margin-bottom: 0px; }
-hr { clear: both; margin: 15px 0px; height: 0px; overflow: hidden; border-top: none; border-right: none; border-left: none; border-image: initial; background: transparent; border-bottom: 4px solid rgb(221, 221, 221); padding: 0px; }
-table th { font-weight: bold; }
-table th, table td { border: 1px solid rgb(204, 204, 204); padding: 6px 13px; }
-table tr { border-top: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
-table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
-img { max-width: 100%; }
-.highlight .c { color: rgb(153, 153, 136); font-style: italic; }
-.highlight .err { color: rgb(166, 23, 23); background-color: rgb(227, 210, 210); }
-.highlight .k { font-weight: bold; }
-.highlight .o { font-weight: bold; }
-.highlight .cm { color: rgb(153, 153, 136); font-style: italic; }
-.highlight .cp { color: rgb(153, 153, 153); font-weight: bold; }
-.highlight .c1 { color: rgb(153, 153, 136); font-style: italic; }
-.highlight .cs { color: rgb(153, 153, 153); font-weight: bold; font-style: italic; }
-.highlight .gd { color: rgb(0, 0, 0); background-color: rgb(255, 221, 221); }
-.highlight .gd .x { color: rgb(0, 0, 0); background-color: rgb(255, 170, 170); }
-.highlight .ge { font-style: italic; }
-.highlight .gr { color: rgb(170, 0, 0); }
-.highlight .gh { color: rgb(153, 153, 153); }
-.highlight .gi { color: rgb(0, 0, 0); background-color: rgb(221, 255, 221); }
-.highlight .gi .x { color: rgb(0, 0, 0); background-color: rgb(170, 255, 170); }
-.highlight .go { color: rgb(136, 136, 136); }
-.highlight .gp { color: rgb(85, 85, 85); }
-.highlight .gs { font-weight: bold; }
-.highlight .gu { color: rgb(170, 170, 170); }
-.highlight .gt { color: rgb(170, 0, 0); }
-.highlight .kc { font-weight: bold; }
-.highlight .kd { font-weight: bold; }
-.highlight .kp { font-weight: bold; }
-.highlight .kr { font-weight: bold; }
-.highlight .kt { color: rgb(68, 85, 136); font-weight: bold; }
-.highlight .m { color: rgb(0, 153, 153); }
-.highlight .s { color: rgb(221, 17, 68); }
-.highlight .na { color: rgb(0, 128, 128); }
-.highlight .nb { color: rgb(0, 134, 179); }
-.highlight .nc { color: rgb(68, 85, 136); font-weight: bold; }
-.highlight .no { color: rgb(0, 128, 128); }
-.highlight .ni { color: rgb(128, 0, 128); }
-.highlight .ne { color: rgb(153, 0, 0); font-weight: bold; }
-.highlight .nf { color: rgb(153, 0, 0); font-weight: bold; }
-.highlight .nn { color: rgb(85, 85, 85); }
-.highlight .nt { color: rgb(0, 0, 128); }
-.highlight .nv { color: rgb(0, 128, 128); }
-.highlight .ow { font-weight: bold; }
-.highlight .w { color: rgb(187, 187, 187); }
-.highlight .mf { color: rgb(0, 153, 153); }
-.highlight .mh { color: rgb(0, 153, 153); }
-.highlight .mi { color: rgb(0, 153, 153); }
-.highlight .mo { color: rgb(0, 153, 153); }
-.highlight .sb { color: rgb(221, 17, 68); }
-.highlight .sc { color: rgb(221, 17, 68); }
-.highlight .sd { color: rgb(221, 17, 68); }
-.highlight .s2 { color: rgb(221, 17, 68); }
-.highlight .se { color: rgb(221, 17, 68); }
-.highlight .sh { color: rgb(221, 17, 68); }
-.highlight .si { color: rgb(221, 17, 68); }
-.highlight .sx { color: rgb(221, 17, 68); }
-.highlight .sr { color: rgb(0, 153, 38); }
-.highlight .s1 { color: rgb(221, 17, 68); }
-.highlight .ss { color: rgb(153, 0, 115); }
-.highlight .bp { color: rgb(153, 153, 153); }
-.highlight .vc { color: rgb(0, 128, 128); }
-.highlight .vg { color: rgb(0, 128, 128); }
-.highlight .vi { color: rgb(0, 128, 128); }
-.highlight .il { color: rgb(0, 153, 153); }
-.pl-c { color: rgb(150, 152, 150); }
-.pl-c1, .pl-mdh, .pl-mm, .pl-mp, .pl-mr, .pl-s1 .pl-v, .pl-s3, .pl-sc, .pl-sv { color: rgb(0, 134, 179); }
-.pl-e, .pl-en { color: rgb(121, 93, 163); }
-.pl-s1 .pl-s2, .pl-smi, .pl-smp, .pl-stj, .pl-vo, .pl-vpf { color: rgb(51, 51, 51); }
-.pl-ent { color: rgb(99, 163, 92); }
-.pl-k, .pl-s, .pl-st { color: rgb(167, 29, 93); }
-.pl-pds, .pl-s1, .pl-s1 .pl-pse .pl-s2, .pl-sr, .pl-sr .pl-cce, .pl-sr .pl-sra, .pl-sr .pl-sre, .pl-src, .pl-v { color: rgb(223, 80, 0); }
-.pl-id { color: rgb(181, 42, 29); }
-.pl-ii { background-color: rgb(181, 42, 29); color: rgb(248, 248, 248); }
-.pl-sr .pl-cce { color: rgb(99, 163, 92); font-weight: bold; }
-.pl-ml { color: rgb(105, 58, 23); }
-.pl-mh, .pl-mh .pl-en, .pl-ms { color: rgb(29, 62, 129); font-weight: bold; }
-.pl-mq { color: rgb(0, 128, 128); }
-.pl-mi { color: rgb(51, 51, 51); font-style: italic; }
-.pl-mb { color: rgb(51, 51, 51); font-weight: bold; }
-.pl-md, .pl-mdhf { background-color: rgb(255, 236, 236); color: rgb(189, 44, 0); }
-.pl-mdht, .pl-mi1 { background-color: rgb(234, 255, 234); color: rgb(85, 165, 50); }
-.pl-mdr { color: rgb(121, 93, 163); font-weight: bold; }
-.pl-mo { color: rgb(29, 62, 129); }
-.task-list { padding-left: 10px; margin-bottom: 0px; }
-.task-list li { margin-left: 20px; }
-.task-list-item { list-style-type: none; padding-left: 10px; }
-.task-list-item label { font-weight: 400; }
-.task-list-item.enabled label { cursor: pointer; }
-.task-list-item + .task-list-item { margin-top: 3px; }
-.task-list-item-checkbox { display: inline-block; margin-left: -20px; margin-right: 3px; vertical-align: 1px; }
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root { --side-bar-bg-color: white; --window-border: none; --search-select-bg-color: #575c61; --active-file-bg-color: #f1f4f5; --item-hover-bg-color: #f1f4f5; --item-hover-text-color: black; --control-text-color: #555; }
+html { font-size: 12pt; }
+@font-face { font-family: STIX2Text; font-style: normal; font-weight: normal; src: local("STIX2Text Regular"), url("./academic/STIX2Text-Regular.woff") format("woff"), url("ttps://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff") format("woff"); }
+@font-face { font-family: STIX2Text; font-style: italic; font-weight: normal; src: local("STIX2Text Italic"), url("./academic/STIX2Text-Italic.woff") format("woff"), url("ttps://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff") format("woff"); }
+@font-face { font-family: STIX2Text; font-style: normal; font-weight: bold; src: local("STIX2Text Bold"), url("./academic/STIX2Text-Bold.woff") format("woff"), url("ttps://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff") format("woff"); }
+@font-face { font-family: STIX2Text; font-style: italic; font-weight: bold; src: local("STIX2Text Bold Italic"), url("./academic/STIX2Text-BoldItalic.woff") format("woff"), url("ttps://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/fonts/HTML-CSS/TeX/woff/MathJax_Main-BoldItalic.woff") format("woff"); }
+@font-face { font-family: STIX2Math; font-style: italic; font-weight: bold; src: local("STIX2Math"), url("./academic/STIX2Math.woff") format("woff"); }
+@font-face { font-family: "Latin Modern Mono Light"; src: url("./academic/lmmonolt10-oblique-webfont.woff") format("woff"); font-weight: normal; font-style: italic; }
+@font-face { font-family: "Latin Modern Mono Light"; src: url("./academic/lmmonolt10-regular-webfont.woff") format("woff"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "Latin Modern Mono Light"; src: url("./academic/lmmonolt10-boldoblique-webfont.woff") format("woff"); font-weight: bold; font-style: italic; }
+@font-face { font-family: "Latin Modern Mono Light"; src: url("./academic/lmmonolt10-bold-webfont.woff") format("woff"); font-weight: bold; font-style: normal; }
+#write { font-family: STIX2Text, "Times New Roman", serif; line-height: 1.5em; padding: 5% 10% 10%; }
+.file-list-item-summary { height: 36px; }
+.file-list-item { padding-bottom: 18px; padding-top: 18px !important; }
+#sidebar-loading-template.file-list-item { padding-top: 0px !important; }
+a, a:visited { color: rgb(170, 0, 0); }
+h1, h2, h3, h4, h5, h6 { font-family: inherit; line-height: 1.5em; margin-bottom: 1em; margin-top: 1em; }
+h1 { font-size: 2.4em; }
+#write h1 { text-align: center; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; }
+p { margin-top: 1em; margin-bottom: 1em; text-align: justify; }
+pre, code { font-family: "Latin Modern Mono Light", "Latin Modern Mono", monospace !important; }
+.footnotes { display: list-item; margin-left: 1em; }
+.md-fences { border: 1px solid; }
+.md-fences.md-fences-with-lineno { border: none; }
+.CodeMirror-linenumber { color: rgb(51, 51, 51); }
+.in-text-selection, ::selection, .CodeMirror-selected { background: var(--search-select-bg-color); text-shadow: none; color: var(--search-select-text-color)  !important; }
+a.md-toc-inner { color: var(--text-color); }
+.cm-s-typora-default .cm-link { color: rgb(170, 0, 0); text-decoration: underline; }
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property { color: black; }
+#typora-source .CodeMirror-lines { -webkit-font-smoothing: auto; max-width: 1000px; }
+.md-def-name::before, .md-def-name::after { color: rgb(45, 45, 45); }
+sup.md-footnote { background-color: initial; color: inherit; }
+mark { background: rgb(255, 243, 135); }
+[cid] > td, [cid] > th { border: 1px solid; padding-left: 1ch; padding-right: 1ch; }
+[cid] > th { border-bottom: 0px rgb(51, 51, 51); padding-top: 2px; background: rgb(87, 92, 97); border-top-color: rgb(51, 51, 51); border-right-color: rgb(51, 51, 51); border-left-color: rgb(51, 51, 51); color: rgb(243, 243, 243); }
+pre.md-meta-block { border: 1px solid rgb(162, 169, 177); background-color: rgb(248, 249, 250); padding: 5px; margin-bottom: 1em; }
+.task-list-item input::before { content: "√"; display: inline-block; width: 1.25rem; height: 1.6rem; vertical-align: middle; text-align: center; color: rgb(187, 187, 187); background-color: inherit; }
+.task-list-item input:checked::before, .task-list-item input[checked]::before { color: inherit; }
+.md-task-list-item > input { top: auto; margin-left: -1.1em; font-size: 1.3em; margin-top: 0px; -webkit-appearance: none; }
+.md-task-list-item input::before { content: "☐"; display: inline-block; width: 1.25rem; height: 1.6rem; vertical-align: middle; text-align: center; color: rgb(187, 187, 187); background-color: inherit; }
+.md-task-list-item input:checked::before, .md-task-list-item input[checked]::before { color: inherit; content: "☑"; }
+.task-list-item { padding-left: 1.5em; }
+blockquote { font-style: italic; padding: 0.25em 24px; position: relative; color: rgb(56, 56, 56); border-left: 2px solid; }
+#write > blockquote { padding: 0.25em 30px; margin-left: -32px; width: calc(100% + 32px); }
+#write > .md-fences-with-lineno { margin-left: -33px; color: black; }
+.CodeMirror-linenumber { min-width: 25px; }
+.md-header { font-size: inherit !important; }
 
 
 
@@ -278,6 +279,6 @@ img { max-width: 100%; }
 </style>
 </head>
 <body class='typora-export' >
-<div  id='write'  class = 'is-node show-fences-line-number'><h1><a name='header-n0' class='md-header-anchor '></a>实验六 DNA序列的基本信息及特征分析</h1><p>一、实验目的</p><p>人类CD9抗原基因属于4跨膜蛋白超家族，与癌细胞黏附、迁移及增生有关，具有肿瘤转移抑制作用。应用集成工具EMBOSS的网页版EMBOSS Explorer，对人类CD9抗原基因（序列号为AY422198）进行核酸序列组分分析，同时对大肠杆菌基因组序列（U00096）进行ORF的分析，从中识别真实的ORF。</p><ol start='' ><li>学习和掌握应用NCBI查询核酸序列信息。</li><li>学习和掌握EMBOSS的基本使用方法。</li><li>学习和掌握核酸序列ORF的性质。</li></ol><p>二、实验内容</p><ol start='' ><li><p>人类CD9基因的序列组分分析</p><ol start='' ><li>获取序列。打开NCBI主页（<a href='http://www.ncbi.nlm.nih.gov/'>http://www.ncbi.nlm.nih.gov/</a>），在核酸（Nucleotide）数据库查询人类CD9抗原基因（AY422198），将其序列以FASTA格式保存到本地计算机上。</li><li>打开EMBOSS。有<a href='http://emboss.bioinformatics.nl/'>http://emboss.bioinformatics.nl/</a>和<a href='http://genome.csdb.cn/emboss/'>http://genome.csdb.cn/emboss/</a>多个EMBOSS Explorer可供选用，任选其一打开链接即可使用。</li><li>碱基组成分析。找到程序compseq，在Input section项目中，使用upload上传CD9的序列;在Required section项目中，把Word size to consider修改为“1”;其他参数默认即可。最后，点击Run compseq获得ATGC四种碱基的数目及百分比含量。</li><li>GC含量分析。找到程序geecee，以上传文件的方式提交DNA序列，之后点击Run geecee得到CD9基因的GC含量。</li><li>序列转换。找到程序revseq，如前所述上传CD9基因的DNA序列，点击Run revseq后，得到其反向互补序列。通过调整Advanced section项目中的参数，可以仅获得反向序列或互补序列。</li><li>比较AY422198及其互补序列的组成成分。</li></ol></li><li><p>大肠杆菌基因组序列的ORF分析</p><ol start='' ><li>获取序列。登录NCBI主页（<a href='http://www.ncbi.nlm.nih.gov/'>http://www.ncbi.nlm.nih.gov/</a>），在核酸（Nucleotide）数据库查询大肠杆菌基因组序列（U00096），将其以FASTA格式保存到本地计算机上。</li><li>截取序列。找到EMBOSS中的程序extractseq，在Required section项目中，通过设定Regions to extract为1-3000截取大肠杆菌基因组序列的前3000bp。</li><li>ORF预测。找到程序getorf，在序列输入框中粘贴上一步截取的前3000bp序列片段，Code to use中选择“Bacterial”，Type of output中选择“Nucleic sequences between START and STOP codons”，其他默认即可。之后点击Run getorf得到ORF的预测结果。</li><li>和NCBI的ORF Finder预测结果进行比较分析。</li></ol></li></ol></div>
+<div  id='write'  class = 'is-node'><h1><a name='header-n0' class='md-header-anchor '></a>实验六 DNA序列的基本信息及特征分析</h1><p>一、实验目的</p><p>人类CD9抗原基因属于4跨膜蛋白超家族，与癌细胞黏附、迁移及增生有关，具有肿瘤转移抑制作用。应用集成工具EMBOSS的网页版EMBOSS Explorer，对人类CD9抗原基因（序列号为AY422198）进行核酸序列组分分析，同时对大肠杆菌基因组序列（U00096）进行ORF的分析，从中识别真实的ORF。</p><ol start='' ><li>学习和掌握应用NCBI查询核酸序列信息。</li><li>学习和掌握EMBOSS的基本使用方法。</li><li>学习和掌握核酸序列ORF的性质。</li></ol><p>二、实验内容——图形化操作</p><ol start='' ><li><p>人类CD9基因的序列组分分析</p><ol start='' ><li>获取序列。打开NCBI主页（<a href='http://www.ncbi.nlm.nih.gov/'>http://www.ncbi.nlm.nih.gov/</a>），在核酸（Nucleotide）数据库查询人类CD9抗原基因（AY422198），将其序列以FASTA格式保存到本地计算机上。</li><li>打开EMBOSS。有 <a href='http://emboss.bioinformatics.nl/'>http://emboss.bioinformatics.nl/</a> 和 <a href='http://genome.csdb.cn/emboss/'>http://genome.csdb.cn/emboss/</a> 多个EMBOSS Explorer可供选用，任选其一打开链接即可使用。</li><li>碱基组成分析。找到程序compseq，在Input section项目中，使用upload上传CD9的序列;在Required section项目中，把Word size to consider修改为“1”;其他参数默认即可。最后，点击Run compseq获得ATGC四种碱基的数目及百分比含量。</li><li>GC含量分析。找到程序geecee，以上传文件的方式提交DNA序列，之后点击Run geecee得到CD9基因的GC含量。</li><li>序列转换。找到程序revseq，如前所述上传CD9基因的DNA序列，点击Run revseq后，得到其反向互补序列。通过调整Advanced section项目中的参数，可以仅获得反向序列或互补序列。</li><li>比较AY422198及其互补序列的组成成分。</li></ol></li><li><p>大肠杆菌基因组序列的ORF分析</p><ol start='' ><li>获取序列。登录NCBI主页（<a href='http://www.ncbi.nlm.nih.gov/'>http://www.ncbi.nlm.nih.gov/</a>），在核酸（Nucleotide）数据库查询大肠杆菌基因组序列（U00096），将其以FASTA格式保存到本地计算机上。</li><li>截取序列。找到EMBOSS中的程序extractseq，在Required section项目中，通过设定Regions to extract为1-3000截取大肠杆菌基因组序列的前3000bp。</li><li>ORF预测。找到程序getorf，在序列输入框中粘贴上一步截取的前3000bp序列片段，Code to use中选择“Bacterial”，Type of output中选择“Nucleic sequences between START and STOP codons”，其他默认即可。之后点击Run getorf得到ORF的预测结果。</li><li>和NCBI的ORF Finder预测结果进行比较分析。</li></ol></li></ol><p>三、实验内容——命令行操作</p><ol start='' ><li><p>配置环境。安装conda、bioconda，新建环境（略）。</p></li><li><p>安装软件。</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># NCBI Entrez Direct UNIX E-utilities for sequence and data retrieval from NCBI</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">conda install entrez-direct</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Seqtk is a fast and lightweight tool for processing sequences in the FASTA or FASTQ format</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">conda install seqtk</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># SeqKit - a cross-platform and ultrafast toolkit for FASTA/Q file manipulation</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">conda install seqkit</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># OrfM: A simple and not slow open reading frame (ORF) caller.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">conda install orfm</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># EMBOSS</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">conda install emboss</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre></li><li><p>下载序列。</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># AY422198, 人类CD9基因</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">esearch <span class="cm-attribute">-db</span> nucleotide <span class="cm-attribute">-query</span> <span class="cm-string">"AY422198"</span> | efetch <span class="cm-attribute">-format</span> fasta &gt; AY422198.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">esearch <span class="cm-attribute">-db</span> nucleotide <span class="cm-attribute">-query</span> <span class="cm-string">"AY422198"</span> | efetch <span class="cm-attribute">-format</span> gb &gt; AY422198.gb</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># U00096, 大肠杆菌基因组</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">esearch <span class="cm-attribute">-db</span> nucleotide <span class="cm-attribute">-query</span> <span class="cm-string">"U00096"</span> | efetch <span class="cm-attribute">-format</span> fasta &gt; U00096.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">esearch <span class="cm-attribute">-db</span> nucleotide <span class="cm-attribute">-query</span> <span class="cm-string">"U00096"</span> | efetch <span class="cm-attribute">-format</span> gb &gt; U00096.gb</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 144px;"></div><div class="CodeMirror-gutters" style="display: none; height: 144px;"></div></div></div></pre></li><li><p>组分分析与ORF预测。</p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># ATGC四种碱基的数目/百分比含量，GC含量</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqtk comp AY422198.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqkit fx2tab AY422198.fasta &nbsp;<span class="cm-attribute">-l</span> <span class="cm-attribute">-g</span> <span class="cm-attribute">-n</span> <span class="cm-attribute">-i</span> <span class="cm-attribute">-H</span> <span class="cm-attribute">-BA</span> <span class="cm-attribute">-BC</span> <span class="cm-attribute">-BG</span> <span class="cm-attribute">-BT</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">compseq <span class="cm-attribute">-sequence</span> AY422198.fasta <span class="cm-attribute">-word</span> <span class="cm-number">1</span> <span class="cm-attribute">-outfile</span> AY422198_composition.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 序列转换：反向序列，互补序列，反向互补序列</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqtk seq <span class="cm-attribute">-r</span> AY422198.fasta &gt; AY422198_rev_com_seqtk.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqkit seq <span class="cm-attribute">-r</span> AY422198.fasta &gt; AY422198_rev_seqkit.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqkit seq <span class="cm-attribute">-p</span> AY422198.fasta &gt; AY422198_com_seqkit.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqkit seq <span class="cm-attribute">-r</span> <span class="cm-attribute">-p</span> AY422198.fasta &gt; AY422198_rev_com_seqkit.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 截取序列</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">seqkit subseq <span class="cm-attribute">-r</span> <span class="cm-number">1</span>:3000 U00096.fasta &gt; U00096_1-3000bp.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># ORF预测</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">orfm <span class="cm-attribute">-t</span> orfm_dna.fasta <span class="cm-attribute">-c</span> <span class="cm-number">11</span> U00096_1-3000bp.fasta &gt; orfm_protein.fasta</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">getorf <span class="cm-attribute">-sequence</span> U00096_1-3000bp.fasta <span class="cm-attribute">-outseq</span> getorf_dna.fa <span class="cm-attribute">-table</span> <span class="cm-number">11</span> <span class="cm-attribute">-minsize</span> <span class="cm-number">90</span> <span class="cm-attribute">-find</span> <span class="cm-number">3</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 336px;"></div><div class="CodeMirror-gutters" style="display: none; height: 336px;"></div></div></div></pre></li></ol><ol start='5' ><li><p>参考资料</p><ul><li><a href='https://bioconda.github.io/index.html'>Bioconda Homepage</a></li><li><a href='https://bioconda.github.io/index.html'>Available packages in Bioconda</a></li><li><a href='http://bioinformatics.cvr.ac.uk/blog/ncbi-entrez-direct-unix-e-utilities/'>NCBI Entrez Direct UNIX E-utilities</a></li><li><a href='https://github.com/lh3/seqtk'>Seqtk at GitHub</a></li><li><a href='https://bioinf.shenwei.me/seqkit/'>SeqKit Homepage</a></li><li><a href='https://bioinf.shenwei.me/seqkit/usage/'>Usage and Examples for SeqKit</a></li><li><a href='https://github.com/wwood/OrfM'>OrfM at GitHub</a></li><li><a href='http://emboss.sourceforge.net/developers/acd/commandline.html'>EMBOSS</a></li></ul></li></ol></div>
 </body>
 </html>
