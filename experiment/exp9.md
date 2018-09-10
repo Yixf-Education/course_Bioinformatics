@@ -67,7 +67,7 @@
    # 提取供体位点和受体位点的坐标
    bedtools flank -i introns.bed -g hg38.genome -l 15 -r 0 -s | awk 'BEGIN {OFS="\t"}; { if($2<$3) print; }' | bedtools slop -i stdin -g hg38.genome -l 0 -r 17 -s > donor.bed
    bedtools flank -i introns.bed -g hg38.genome -l 0 -r 15 -s | awk 'BEGIN {OFS="\t"}; { if($2<$3) print; }' | bedtools slop -i stdin -g hg38.genome -l 17 -r 0 -s > acceptor.bed
-   # 提取供体位点和受体位点的序列（（此处如果不使用-s，结果会有什么变化？））
+   # 提取供体位点和受体位点的序列（此处如果不使用-s，结果会有什么变化？）
    bedtools getfasta -fi hg38.fa -bed donor.bed -s > donor.fa
    bedtools getfasta -fi hg38.fa -bed acceptor.bed -s > acceptor.fa
    # 制作供体位点和受体位点的序列标识
