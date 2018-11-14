@@ -101,6 +101,14 @@
   \end{figure}
 \end{frame}
 
+\begin{frame}
+  \frametitle{引言 | 序列分析 | 万里长征}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{dna_packing.jpg}
+  \end{figure}
+\end{frame}
+
 \section{DNA组份分析与序列转换}
 \begin{frame}
   \frametitle{DNA序列 | 查戈夫法则}
@@ -899,6 +907,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
     \centering
     \includegraphics[width=\textwidth]{ml_01.jpg}
   \end{figure}
+  % Machine learning and representation learning. (A) The classical machine learning workflow can be broken down into four steps: data pre‐processing, feature extraction, model learning and model evaluation. (B) Supervised machine learning methods relate input features x to an output label y, whereas unsupervised method learns factors about x without observed labels. (C) Raw input data are often high‐dimensional and related to the corresponding label in a complicated way, which is challenging for many classical machine learning algorithms (left plot). Alternatively, higher‐level features extracted using a deep model may be able to better discriminate between classes (right plot). (D) Deep networks use a hierarchical structure to learn increasingly abstract feature representations from the raw data.
 \end{frame}
 
 \begin{frame}
@@ -1035,6 +1044,128 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
     \centering
     \includegraphics[width=10.5cm]{hmm_04.jpg}
   \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 统计推断 | 贝叶斯推断}
+  \begin{block}{统计推断}
+    推断统计学（统计推断，statistical inference），指统计学中，研究如何根据样本数据去推断总体数量特征的方法。它是在对样本数据进行描述的基础上，对统计总体的未知数量特征做出以概率形式表述的推断。
+  \end{block}
+  \pause
+  \begin{block}{贝叶斯推断}
+    贝叶斯推断（Bayesian inference）是推论统计的一种方法。这种方法使用贝叶斯定理，在有更多证据及信息时，更新特定假设的概率。贝叶斯推断是统计学（特别是数理统计学）中很重要的技巧之一。\\
+    \vspace{0.3em}
+    贝叶斯推断应用在许多的领域中，包括科学、工程学、哲学、医学、体育运动、法律等。贝叶斯更新（Bayesian updating）在序列分析中格外的重要。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理}
+  \begin{block}{贝叶斯定理}
+    贝叶斯定理（Bayes' theorem）是概率论中的一个定理，它跟随机变量的条件概率以及边缘概率分布有关。在有些关于概率的解释中，贝叶斯定理（贝叶斯公式）能够告知我们如何利用新证据修改已有的看法。这个名称来自于托马斯·贝叶斯。\\
+    \vspace{0.3em}
+贝叶斯定理是关于随机事件A和B的条件概率的一则定理。通常，事件A在事件B（发生）的条件下的概率，与事件B在事件A（发生）的条件下的概率是不一样的。然而，这两者是有确定的关系的，贝叶斯定理就是这种关系的陈述。贝叶斯公式的一个用途在于通过已知的三个概率函数推出第四个。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{bayes_01.png}
+    \includegraphics[width=0.6\textwidth]{bayes_02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \begin{figure}
+    \centering
+    \visible<1->{\includegraphics[width=0.9\textwidth]{bayes_gun_01.png}}
+    \visible<2->{\includegraphics[width=0.6\textwidth]{bayes_gun_02.png}}
+    \visible<3->{\includegraphics[width=0.7\textwidth]{bayes_gun_03.png}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \begin{block}{吸毒者检测}
+    假设一个常规的检测结果的敏感度与可靠度均为99\%，即吸毒者每次检测呈阳性（+）的概率为99\%。而不吸毒者每次检测呈阴性（-）的概率为99\%。假设某公司对全体雇员进行吸毒检测，已知0.5\%的雇员吸毒。请问每位检测结果呈阳性的雇员吸毒的概率有多高？
+  \end{block}
+  \pause
+  \begin{block}{贝叶斯定理}
+从检测结果的概率来看，检测结果是比较准确的（99\%），但是贝叶斯定理却可以揭示一个潜在的问题。如果某人检测呈阳性，其吸毒的概率只有大约33\%，不吸毒的可能性比较大。假阳性高，则检测的结果不可靠。
+  \end{block}
+  \begin{figure}
+    \centering
+    \visible<3->{\includegraphics[width=0.4\textwidth]{bayes_drug.png}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \begin{block}{胰腺癌检测}
+即使100\%的胰腺癌症患者都有某症状，而某人有同样的症状，绝对不代表该人有100\%的概率得胰腺癌，还需要考虑先验概率，假设胰腺癌的发病率是十万分之一，而全球有同样症状的人有万分之一，则此人得胰腺癌的概率只有十分之一，90\%的可能是是假阳性。
+  \end{block}
+  \pause
+  \begin{block}{不良种子检测}
+假设100\%的不良种子都表现A性状，而种子表现A性状，并不代表此种子100\%是不良种子，还需要考虑先验概率，假设一共有6万颗不良种子，在种子中的比例是十万分之一（假设总共有60亿颗种子），假设所有种子中有1/3表现A性状（即20亿颗种子表现A性状），则此种子为不良种子的概率只有十万分之三。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \begin{block}{女/男神到底爱不爱我}
+    我发给女神/男神的微信，只有一半会收到回复，她/他是喜欢我还是讨厌我？我们有发展的可能吗……
+  \end{block}
+  \begin{figure}
+    \centering
+    \visible<2->{\includegraphics[width=0.9\textwidth]{bayes_love_01.jpg}}
+    \visible<3->{\includegraphics[width=0.8\textwidth]{bayes_love_02.jpg}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{bayes_love_03.jpg}
+    \includegraphics[width=0.88\textwidth]{bayes_love_04.jpg}
+  \end{figure}
+  \pause
+  \vspace{-2em}
+  \begin{block}{结论}
+    \begin{itemize}
+      \item 女神真难追啊！
+      \item 少年你想多了，这概率比 P2P 的投资回报率还低，还是乖乖回家提升自己吧！
+      \item 愚蠢的人类，用微信就想推断女/男神的心？
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯推断}
+  \vspace{-0.4em}
+  \begin{block}{贝叶斯推断}
+    {\small 贝叶斯推断将后验概率（考虑相关证据或数据后，某一事件的条件机率）推导为二个前件——先验概率（考虑相关证据或数据前，某一事件不确定性的机率）及似然函数（由概率模型推导而得）的结果。\\
+\vspace{0.1em}
+    贝叶斯推断最关键的点是可以利用贝斯定理结合新的证据及以前的先验机率，来得到新的机率（这和频率论推论（frequentist inference）相反，频率论推论只考虑证据，不考虑先验机率）。
+  }
+  \end{block}
+  \pause
+  \vspace{-0.4em}
+  \begin{block}{贝叶斯更新}
+    {\small
+贝叶斯推断可以迭代使用：在观察一些证据后得到的后设机率可以当作新的先验机率，再根据新的证据得到新的后设机率。因此贝斯定理可以应用在许多不同的证据上，不论这些证据是一起出现或是不同时出现都可以，这个程序称为贝叶斯更新（Bayesian updating）。
+}
+  \end{block}
+  \pause
+  \vspace{-0.4em}
+  \begin{block}{应用}
+    {\small
+    贝叶斯推断广为机器学习等领域（人工智慧及专家系统）所接受和应用。自1950年代后期开始，贝叶斯推断技巧就是电脑模式识别技术中的基础。
+  } 
+  \end{block}
 \end{frame}
 
 \section{总结与答疑}
