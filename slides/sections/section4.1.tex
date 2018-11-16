@@ -760,7 +760,13 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
     \item GC含量：超过50\%
     \item CpG的观察值与预测值的比率：高于60\%
       \begin{itemize}
-        \item $\frac{Num\ of\ CpG}{Num\ of\ C \times Num\ of\ G} \times Total\ number\ of\ nucleotides\ in\ the\ sequence$
+        \item 观测值：$Num\ of\ CpG$
+          \vspace{0.5em}
+        \item 预测值：$\frac{Num\ of\ C \times Num\ of\ G}{Length\ of\ sequence}$
+          \vspace{0.5em}
+        \item 比率：$\frac{Num\ of\ CpG}{Num\ of\ C \times Num\ of\ G} \times Length\ of\ sequence$
+          \vspace{0.5em}
+        \item 实例：ACGCGACGCG；$\frac{4}{\frac{4\times4}{10}}=\frac{4}{4\times4}\times10=2.5$
       \end{itemize}
     \pause
     \item 500bp，55\%，65\%
@@ -907,7 +913,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
     \centering
     \includegraphics[width=\textwidth]{ml_01.jpg}
   \end{figure}
-  % Machine learning and representation learning. (A) The classical machine learning workflow can be broken down into four steps: data pre‐processing, feature extraction, model learning and model evaluation. (B) Supervised machine learning methods relate input features x to an output label y, whereas unsupervised method learns factors about x without observed labels. (C) Raw input data are often high‐dimensional and related to the corresponding label in a complicated way, which is challenging for many classical machine learning algorithms (left plot). Alternatively, higher‐level features extracted using a deep model may be able to better discriminate between classes (right plot). (D) Deep networks use a hierarchical structure to learn increasingly abstract feature representations from the raw data.
+  % Machine learning and representation learning.
 \end{frame}
 
 \begin{frame}
@@ -1043,6 +1049,14 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
   \begin{figure}
     \centering
     \includegraphics[width=10.5cm]{hmm_04.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 机器学习 | 隐马尔可夫模型}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{hmm_gene_p.png}
   \end{figure}
 \end{frame}
 
