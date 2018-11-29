@@ -37,6 +37,8 @@
    conda install seqtk
    # SeqKit - a cross-platform and ultrafast toolkit for FASTA/Q file manipulation
    conda install seqkit
+   # Bioawk is an extension to Brian Kernighan's awk, adding the support of several common biological data formats, including optionally gzip'ed BED, GFF, SAM, VCF, FASTA/Q and TAB-delimited formats with column names.
+   conda install bioawk
    # OrfM: A simple and not slow open reading frame (ORF) caller.
    conda install orfm
    # EMBOSS
@@ -57,17 +59,21 @@
 4. 组分分析与ORF预测。
 
    ```bash
-   # ATGC四种碱基的数目/百分比含量，GC含量
+   # ATGC四种碱基的数目/百分比含量，GC含量，序列长度
    seqtk comp AY422198.fasta
    seqkit fx2tab AY422198.fasta  -l -g -n -i -H -BA -BC -BG -BT
    compseq -sequence AY422198.fasta -word 1 -outfile AY422198_composition.txt
+   bioawk -c fastx '{ print $name, length($seq) }' AY422198.fasta
+   bioawk -c fastx '{ print $name, gc($seq) }' AY422198.fasta
    # 序列转换：反向序列，互补序列，反向互补序列
    seqtk seq -r AY422198.fasta > AY422198_rev_com_seqtk.fasta
    seqkit seq -r AY422198.fasta > AY422198_rev_seqkit.fasta
    seqkit seq -p AY422198.fasta > AY422198_com_seqkit.fasta
    seqkit seq -r -p AY422198.fasta > AY422198_rev_com_seqkit.fasta
+   bioawk -c fastx '{ print ">"$name; print revcomp($seq) }' AY422198.fasta > AY422198_rev_com_bioawk.fasta
    # 截取序列
-   seqkit subseq -r 1:3000 U00096.fasta > U00096_1-3000bp.fasta
+   seqkit subseq -r 1:3000 U00096.fasta > U00096_1-3000bp_seqkit.fasta
+   bioawk -c fastx '{ print ">"$name; print substr($seq,1,3000) }' U00096.fasta > U00096_1-3000bp_bioawk.fasta
    # ORF预测
    orfm -t orfm_dna.fasta -c 11 U00096_1-3000bp.fasta > orfm_protein.fasta
    getorf -sequence U00096_1-3000bp.fasta -outseq getorf_dna.fa -table 11 -minsize 90 -find 3
@@ -81,5 +87,6 @@
    * [Seqtk at GitHub](https://github.com/lh3/seqtk)
    * [SeqKit Homepage](https://bioinf.shenwei.me/seqkit/)
    * [Usage and Examples for SeqKit](https://bioinf.shenwei.me/seqkit/usage/)
+   * [bioawk at GitHub](https://github.com/lh3/bioawk)
    * [OrfM at GitHub](https://github.com/wwood/OrfM)
    * [EMBOSS](http://emboss.sourceforge.net/developers/acd/commandline.html)
