@@ -26,7 +26,7 @@ Galaxy是一个开放的、基于网络的生物信息学分析平台，整合�
 
 三、实验内容——命令行操作
 
-1. 配置环境。安装 conda 、 bioconda，新建环境(略)。
+1. 配置环境。安装conda 、设置镜像、添加bioconda仓库、新建环境（略）。
 
 2. 安装软件。
 
@@ -41,6 +41,7 @@ Galaxy是一个开放的、基于网络的生物信息学分析平台，整合�
    # hg38, chr22, refGene, 外显子数据
    mysql -h genome-mysql.cse.ucsc.edu -u genome -D hg38 -N -A -e 'select chrom,exonStarts,exonEnds,name2,score,strand from refGene where chrom="chr22"' > chr22_genes_hg38.txt
    awk 'BEGIN {OFS="\t"}; { n=split($2, a, ","); split($3, b, ","); for(i=1; i<n; ++i) print $1, a[i], b[i], $4, $5, $6 }' chr22_genes_hg38.txt | sort | uniq > chr22_exons_hg38.bed
+   
    # hg38, chr22, snp150, SNP数据
    mysql -h genome-mysql.cse.ucsc.edu -u genome -D hg38 -N -A -e 'select chrom,chromStart,chromEnd,name,score,strand from snp150 where chrom="chr22"' > chr22_snps_snp150.bed
    ```

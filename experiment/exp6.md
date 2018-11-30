@@ -26,7 +26,33 @@
 
 三、实验内容——命令行操作
 
-1. 配置环境。安装conda、bioconda，新建环境（略）。
+1. 配置环境。
+
+   ```bash
+   # 安装conda
+   # 1. 下载Miniconda/Anaconda的安装包
+   # 2. 开始安装
+   bash Miniconda3-latest-Linux-x86_64.sh
+   # 或者
+   bash Anaconda-latest-Linux-x86_64.sh
+   # 3. 按照安装过程中的提示进行操作（设置安装路径、修改环境变量，涉及的配置文件为 ~/.bashrc）
+   # 4. 重启终端或者重新登录
+   # 5. 测试是否安装成功
+   conda list
+   
+   # 设置镜像，同时添加bioconda仓库，涉及的配置文件为 ~/.condarc
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+   conda config --set show_channel_urls yes
+   
+   # 新建一个专用环境（环境名字自己选定即可）
+   conda create -n bx_exp
+   source activate bx_exp
+   # 进行后续实验，实验结束后，记得退出环境：
+   source deactivate bx_exp
+   ```
 
 2. 安装软件。
 
@@ -41,7 +67,7 @@
    conda install bioawk
    # OrfM: A simple and not slow open reading frame (ORF) caller.
    conda install orfm
-   # EMBOSS
+   # EMBOSS: The European Molecular Biology Open Software Suite, a free Open Source software analysis package specially developed for the needs of the molecular biology (e.g. EMBnet) user community
    conda install emboss
    ```
 
@@ -51,6 +77,7 @@
    # AY422198, 人类CD9基因
    esearch -db nucleotide -query "AY422198" | efetch -format fasta > AY422198.fasta
    esearch -db nucleotide -query "AY422198" | efetch -format gb > AY422198.gb
+   
    # U00096, 大肠杆菌基因组
    esearch -db nucleotide -query "U00096" | efetch -format fasta > U00096.fasta
    esearch -db nucleotide -query "U00096" | efetch -format gb > U00096.gb
@@ -65,22 +92,29 @@
    compseq -sequence AY422198.fasta -word 1 -outfile AY422198_composition.txt
    bioawk -c fastx '{ print $name, length($seq) }' AY422198.fasta
    bioawk -c fastx '{ print $name, gc($seq) }' AY422198.fasta
+   
    # 序列转换：反向序列，互补序列，反向互补序列
    seqtk seq -r AY422198.fasta > AY422198_rev_com_seqtk.fasta
    seqkit seq -r AY422198.fasta > AY422198_rev_seqkit.fasta
    seqkit seq -p AY422198.fasta > AY422198_com_seqkit.fasta
    seqkit seq -r -p AY422198.fasta > AY422198_rev_com_seqkit.fasta
    bioawk -c fastx '{ print ">"$name; print revcomp($seq) }' AY422198.fasta > AY422198_rev_com_bioawk.fasta
+   
    # 截取序列
    seqkit subseq -r 1:3000 U00096.fasta > U00096_1-3000bp_seqkit.fasta
    bioawk -c fastx '{ print ">"$name; print substr($seq,1,3000) }' U00096.fasta > U00096_1-3000bp_bioawk.fasta
+   
    # ORF预测
    orfm -t orfm_dna.fasta -c 11 U00096_1-3000bp.fasta > orfm_protein.fasta
-   getorf -sequence U00096_1-3000bp.fasta -outseq getorf_dna.fa -table 11 -minsize 90 -find 3
+   getorf -sequence U00096_1-3000bp_seqkit.fasta -outseq getorf_dna.fa -table 11 -minsize 90 -find 3
    ```
 
 
 5. 参考资料
+   * [Anaconda](https://www.anaconda.com/download/#linux)
+   * [Miniconda](https://conda.io/miniconda.html)
+   * [Installing Miniconda/Anaconda on Linux](https://conda.io/docs/user-guide/install/linux.html)
+   * [Anaconda 镜像使用帮助](https://mirror.tuna.tsinghua.edu.cn/help/anaconda/)
    * [Bioconda Homepage](https://bioconda.github.io/index.html)
    * [Available packages in Bioconda](https://bioconda.github.io/index.html)
    * [NCBI Entrez Direct UNIX E-utilities](http://bioinformatics.cvr.ac.uk/blog/ncbi-entrez-direct-unix-e-utilities/)

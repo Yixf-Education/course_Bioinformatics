@@ -31,7 +31,7 @@
 
 三、实验内容——命令行操作
 
-1. 配置环境。安装 conda 、 bioconda，新建环境(略)。
+1. 配置环境。安装conda 、设置镜像、添加bioconda仓库、新建环境（略）。
 
 2. 安装软件。
 
@@ -47,14 +47,18 @@
    ```bash
    # hg38, refGene, 基因数据
    mysql -h genome-mysql.cse.ucsc.edu -u genome -D hg38 -N -A -e 'select chrom,txStart,txEnd,name2,score,strand from refGene' > genes_hg38.bed
+   
    # hg38, refGene, 外显子数据
    mysql -h genome-mysql.cse.ucsc.edu -u genome -D hg38 -N -A -e 'select chrom,exonStarts,exonEnds,name2,score,strand from refGene' > genes_hg38_tmp.txt
    awk 'BEGIN {OFS="\t"}; { n=split($2, a, ","); split($3, b, ","); for(i=1; i<n; ++i) print $1, a[i], b[i], $4, $5, $6 }' genes_hg38_tmp.txt | sort | uniq > exons_hg38.bed
+   
    # hg38, 基因组信息
    mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -e "select chrom, size from hg38.chromInfo"  > hg38.genome
+   
    # hg38, 基因组序列
    # wget --timestamping 'http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz' -O hg38.fa.gz
    # gunzip -c hg38.fa.gz > hg38.fa
+   # ln /home/share/courseBX/hg38.fa ~
    ```
 
 4. 数据处理。
@@ -62,14 +66,18 @@
    ```bash
    # 获取最终的外显子数据
    bedtools sort -i exons_hg38.bed | bedtools merge -s -i stdin > exons.bed
+   
    # 提取内含子坐标（注意：此处不使用-s，为什么？）
    bedtools sort -i genes_hg38.bed | bedtools subtract -a stdin -b exons.bed > introns.bed
+   
    # 提取供体位点和受体位点的坐标
    bedtools flank -i introns.bed -g hg38.genome -l 15 -r 0 -s | awk 'BEGIN {OFS="\t"}; { if($2<$3) print; }' | bedtools slop -i stdin -g hg38.genome -l 0 -r 17 -s > donor.bed
    bedtools flank -i introns.bed -g hg38.genome -l 0 -r 15 -s | awk 'BEGIN {OFS="\t"}; { if($2<$3) print; }' | bedtools slop -i stdin -g hg38.genome -l 17 -r 0 -s > acceptor.bed
+   
    # 提取供体位点和受体位点的序列（此处如果不使用-s，结果会有什么变化？）
    bedtools getfasta -fi hg38.fa -bed donor.bed -s > donor.fa
    bedtools getfasta -fi hg38.fa -bed acceptor.bed -s > acceptor.fa
+   
    # 制作供体位点和受体位点的序列标识
    weblogo -i -15 -F png -s large --resolution 300 < donor.fa > donor.png
    weblogo -i -17 -F png  -s large --resolution 300 < acceptor.fa > acceptor.png

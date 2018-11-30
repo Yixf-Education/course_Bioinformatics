@@ -26,7 +26,7 @@
 
 三、实验内容——命令行操作
 
-1. 配置环境。安装 conda 、 bioconda，新建环境(略)。
+1. 配置环境。安装conda 、设置镜像、添加bioconda仓库、新建环境（略）。
 
 2. 安装软件。
 
@@ -49,6 +49,7 @@
    # U00096, 大肠杆菌基因组
    esearch -db nucleotide -query "U00096" | efetch -format fasta > U00096.fa
    esearch -db nucleotide -query "U00096" | efetch -format gb > U00096.gb
+   
    # AY422198, 人类CD9基因
    esearch -db nucleotide -query "AY422198" | efetch -format fasta > AY422198.fa
    esearch -db nucleotide -query "AY422198" | efetch -format gb > AY422198.gb
@@ -59,9 +60,11 @@
    ```bash
    # 截取序列
    seqkit subseq -r 1:10000 U00096.fa > U00096_1-10kb.fa
+   
    # 原核基因预测
    prodigal -i U00096.gb -t U00096_training.txt
    prodigal -a U00096_protein.fa -d U00096_dna.fa -f gff -g 11 -i U00096_1-10kb.fa -o U00096_prodigal.gff -s U00096_potential.txt -t U00096_training.txt
+   
    # 真核基因预测
    augustus --species=human --gff3=on --UTR=on AY422198.fa > AY422198_augustus.gff3
    ```
