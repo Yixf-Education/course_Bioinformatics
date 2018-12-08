@@ -62,8 +62,8 @@
    seqkit subseq -r 1:10000 U00096.fa > U00096_1-10kb.fa
    
    # 原核基因预测
-   prodigal -i U00096.gb -t U00096_training.txt
-   prodigal -a U00096_protein.fa -d U00096_dna.fa -f gff -g 11 -i U00096_1-10kb.fa -o U00096_prodigal.gff -s U00096_potential.txt -t U00096_training.txt
+   prodigal -i U00096.gb -t U00096_training.dat
+   prodigal -a U00096_protein.fa -d U00096_dna.fa -f gff -g 11 -i U00096_1-10kb.fa -o U00096_prodigal.gff -s U00096_potential.txt -t U00096_training.dat
    
    # 真核基因预测
    augustus --species=human --gff3=on --UTR=on AY422198.fa > AY422198_augustus.gff3
