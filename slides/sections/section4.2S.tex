@@ -1,0 +1,338 @@
+\section{引言}
+\begin{frame}
+  \frametitle{引言 | 回顾}
+  \begin{itemize}[<+-|alert@+>]
+    \item 基本信息分析
+      \begin{itemize}
+        \item 碱基比例
+        \item GC含量
+        \item 序列转换
+        \item 寻找限制酶切位点
+      \end{itemize}
+    \item 序列特征分析
+      \begin{itemize}
+        \item 开放阅读框的预测
+        \item 启动子和转录因子结合位点的分析
+        \item CpG岛的识别
+      \end{itemize}
+    \item 基因识别
+      \begin{itemize}
+        \item 屏蔽重复序列
+        \item 基因识别
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{重复序列分析}
+
+\begin{frame}
+  \frametitle{重复序列 | 基因组构成 | 原核}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{gene_kb.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | 基因组构成 | 真核}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{human_genome.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | \alert{分类}}
+  \begin{block}{重复序列（repetitive sequence, repeated sequence）}
+    真核生物基因组中重复出现的核苷酸序列，一般不编码多肽，在基因组内可成簇排布，也可散布于基因组。
+  \end{block}
+  \pause
+  \begin{block}{重复次数}
+    \begin{itemize}
+      \item 低度重复序列（lowly repetitive sequence）：2～10个拷贝
+      \item 中度重复序列（moderately repetitive sequence）：重复几十次到几千次，平均长300bp
+      \item 高度重复序列（highly repetitive sequence）：重复几百万次，少于10个核苷酸残基组成的短片段
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | \alert{分类}}
+  \begin{block}{组织形式}
+    \begin{itemize}
+      \item 串联重复序列：成簇存在于染色体的特定区域，依重复单位的长度分类
+        \begin{itemize}
+          \item 卫星DNA（satellite DNA）：5～200bp，几百万个拷贝，着丝粒部位，高度重复序列
+          \item 小卫星（minisatellite，VNTR）：10～100bp的基本单位，总长不超过20kb，重复次数高度变异，靠近端粒的位置
+          \item 微卫星（microsatellite，SSR，STR）：2～10bp，长度50～100bp，STR遗传多态性，内含子
+        \end{itemize}
+      \item 散在重复序列：比较均匀地分散于染色体的各位点上，中度重复序列
+        \begin{itemize}
+          \item 短散在重复序列（SINE）：500bp以下，重复拷贝数达10万以上；非自主转座的反转录转座子；来源于RNA聚合酶\Rmnum{3}的转录产物；Alu（300bp，100万个拷贝）
+          \item 长散在重复序列（LINE）：1000bp以上，上万份拷贝；可以自主转座的反转录转座子；来源于RNA聚合酶\Rmnum{2}的转录产物；L1（6100bp，3500个拷贝）
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | 分类}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{repeat.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | 数据库与分析工具}
+  \begin{block}{数据库}
+  \begin{itemize}
+    \item Repbase Update（RU）：真核生物DNA重复序列数据库
+    \item L1Base：L1数据库
+    \item STRBase：STR数据库
+  \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{\alert{分析工具}}
+  \begin{itemize}
+    \item RepeatMasker：识别、分类和屏蔽重复序列
+      \begin{itemize}
+        \item Cross\_match：速度慢、精度高
+        \item ABBlast：速度快、精度略低
+        \item RMBlast：NCBI Blast的兼容版
+        \item HMMER：只适用于人类基因组序列
+      \end{itemize}
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{重复序列 | RepeatMasker}
+  \begin{figure}
+    \centering
+    \includegraphics[width=6.5cm]{repeatmasker_output.png}
+  \end{figure}
+\end{frame}
+
+\section{基因识别}
+\begin{frame}
+  \frametitle{基因识别 | \alert{基因与基因识别}}
+  \begin{block}{基因（gene）}
+    产生一条多肽链或功能RNA所需的全部核苷酸序列。一段具有特定功能和结构的连续的DNA片段，携带着遗传信息，是编码蛋白质或RNA分子遗传信息、控制性状的基本遗传单位。\\
+    \vspace{0.5em}
+    一个完整的基因，不仅包括编码区，还包括5'末端和3'末端长度不等的特异性序列。
+  \end{block}
+  \pause
+  \begin{block}{基因识别（gene prediction，gene finding）}
+    使用生物学实验或计算机等手段识别DNA序列上的具有生物学特征的片段，是基因组研究的基础。\\
+    \vspace{0.5em}
+    对象主要是蛋白质编码基因（还有RNA基因和调控因子等）。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因结构 | 连续 vs. 不连续}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{geneP.jpg}
+    \\
+    \includegraphics[width=10cm]{geneE.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因结构}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{gene_structure_p_01.png}
+    \vspace{0.2cm}
+    \includegraphics[width=11cm]{gene_structure_e_01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | \alert{方法}}
+  \begin{enumerate}
+    \item 间接识别法（Extrinsic Approach）：利用已知的mRNA或蛋白质序列为线索在DNA序列中搜寻所对应的片段
+    \item 从头计算法（\textit{Ab Initio} Approach）：基因预测（通常仍需实验证实）。基于基因的两种类型的特征：
+      \begin{itemize}
+        \item “信号”：由一些特殊的序列构成，通常预示着周围存在着一个基因
+        \item “内容”：蛋白质编码基因所具有的某些统计学特征
+      \end{itemize}
+    \item 比较基因组学的方法：自然选择的力量使得基因和DNA序列上具有生物学功能的片段较其他部分有较慢的变异速率，在前者的变异更有可能对生物体的生存产生负面影响，因而难以得到保存
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | \alert{信号 \& 内容}}
+  \begin{block}{信号}
+    \begin{itemize}
+      \item 不连续的局部序列模体，一般都有一致性序列（consensus sequence）
+      \item 启动子，剪接供体和受体位点，起始和终止密码子，polyA位点
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{内容}
+    \begin{itemize}
+      \item 不同长度的扩展序列，没有一致性序列，但具有把自己与周围DNA区分开来的保守特征
+      \item 密码子使用偏好性（codon usage bias），双联密码子出现频率，基因组等值区（isochore）
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 信号}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{signal.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 内容 | 密码子使用偏好性}
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{cu1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 基因预测 | 内容 | 密码子使用偏好性}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{cu2.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 原核基因}
+  \begin{block}{信号}
+    启动子序列（Pribnow盒），转录因子结合位点
+  \end{block}
+  \begin{block}{内容}
+    连续的开放阅读框，统计学特征
+  \end{block}
+  \pause
+  \begin{block}{总结}
+    信号容易识别，内容容易判别，预测能达到相对较高的精度
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 真核基因}
+  \begin{block}{信号}
+    启动子（TATA box，CAAT box，GC box），供体和受体位点，起始和终止密码子，polyA信号序列，CpG岛
+  \end{block}
+  \begin{block}{内容}
+    密码子使用偏好性，双联密码子出现频率，基因组等值区，核苷酸周期性规律
+  \end{block}
+  \pause
+  \begin{block}{总结}
+    \begin{itemize}
+      \item 综合信号信息确定外显子的边界，识别编码区域
+      \item 通过内容统计值区分外显子、内含子和基因间区域
+      \item 信号复杂，内容难判别，预测相当有挑战性
+      \item 联合信号和内容检测以及同源性搜索，提高识别效率
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 真核基因}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{genfind.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | \alert{策略}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11.5cm]{gp.jpg}
+  \end{figure}
+\end{frame}
+
+\note{
+\textbf{Gene-finding strategies.} Given a genome DNA sequence, information on the location of genes and transcripts can be obtained from different sources: 
+conservation with one or more informant genomes (1);
+intrinsic signals involved in gene specification, such as start and stop codons and splice sites (2);
+the statistical properties of coding sequences (3);
+and, most importantly, known transcript sequences (either full-length cDNAs or partial ESTs) and protein sequences (4). 
+Over the past two decades, a plethora of programs and strategies has been developed to combine these sources of information to obtain reliable gene predictions.
+The 'intrinsic' evidence from sequence signals and statistical bias can be combined (using a variety of frameworks often related to hidden Markov models), to produce gene predictions (6). These programs are often referred to as \textit{ab initio} or \textit{de novo} gene finders. They are the programs of choice in the absence of known transcript or protein sequences or phylogenetically related genomes.
+If related genome sequences are available, the intrinsic information can be combined with patterns of genomic sequence conservation using programs often referred to as comparative (or dual- or multi-genome) gene finders (5). With these programs, maximum resolution is achieved when the compared genomes are at a phylogenetic distance such that there is maximum separation between the conservation in coding and noncoding regions. To increase resolution, programs have been developed that use multiple informant genomes. The most sophisticated use an underlying phylogenetic tree to appropriately weight sequence conservation depending on evolutionary distance.
+If cDNA and EST sequences are available, these often take priority over other sources of information. The initial map of the transcript or protein sequences onto the genome, which can be obtained using a variety of tools, including sequence-similarity searches, is refined using more sophisticated 'splice alignment' algorithms, whose explicit splice-site models allow more precise alignment across gaps corresponding to introns (8). 
+Alternatively, cDNA and protein information can be fed into an \textit{ab initio} gene-finder algorithm to give information on the exons included in the prediction (7). 
+Often, cDNA and protein evidence is only partial; in such cases, the initial reliable gene and transcript set may be extended with more hypothetical models derived from \textit{ab initio} or comparative gene finders, or from the genome mapping of cDNA and protein sequences from other species. Pipelines have been derived that automate this multi-step process (9). 
+More recently, programs have been developed that combine the output of many individual gene finders (10). The underlying assumption in these 'combiners' is that consensus across programs increases the likelihood of the predictions. Thus, predictions are weighted according to the particular features of the program producing them. The most general frameworks allow the integration of a great variety of types of predictions - not only gene predictions, but also predictions of individual sites and exons.
+Despite all the developments in computational gene finding, the most reliable and complete gene annotations are still obtained after the initial alignments of cDNA and proteins onto the genome sequence are inspected manually to establish the exon boundaries of genes and transcripts (11). This is the task carried out by the HAVANA team at the Sanger Institute.
+The initial manual annotation can be refined even further by subsequent experimental verification of those transcript models lacking sufficiently strong evidence, as in the GENCODE project (12).
+Examples of gene-prediction programs (with references and URLs) corresponding to each strategy outlined here are provided in Additional data file 1.
+}
+
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{gps0.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{gps1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | 工具列表}
+  \begin{itemize}
+    \item GeneMarkS：迭代隐马尔科夫模型
+    \item Glimmer：插入式马尔科夫模型
+    \item GENSCAN：广义隐马尔科夫模型
+    \item GRAIL：人工神经网路
+    \item FGENESH：HMM-based gene structure prediction
+    \item \href{http://en.wikipedia.org/wiki/List\_of\_gene\_prediction\_software}{List of gene prediction software(Wikipedia)}
+    \item \href{http://www.nature.com/nrg/journal/v3/n9/box/nrg890\_BX2.html}{Computational prediction of eukaryotic protein-coding genes, Box 2, Useful internet resources}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | GENSCAN | 结果}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{genescan_output.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基因识别 | GENSCAN | 结果 | \alert{解读}}
+  \begin{block}{Type}
+    \begin{itemize}
+      \item Init: initial exon; Intr: internal exon; Term: terminal exon
+      \item Sngl: single-exon gene; Prom: promoter region; PlyA: polyA signal
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{P}
+  \begin{itemize}
+    \item 可能性极高的外显子（P>0.99）：预测结果几乎完全与真实注释的外显子相吻合，准确度高达97.7\%
+    \item 中等或高可能性的外显子（0.50<P<0.99）：预测结果在大多数情况下与实际相吻合，准确度比P值略小（P>0.90的准确度为88\%）
+    \item 低可能性的外显子（P<0.50）：不可靠，使用时要小心，甚至可以直接将其忽略
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{block}{知识点——重复序列和基因识别}
+    \begin{itemize}
+      \item 重复序列——分类
+      \item 基因识别——原核和真核的基因结构，基因识别方法
+    \end{itemize}
+  \end{block}
+\end{frame}

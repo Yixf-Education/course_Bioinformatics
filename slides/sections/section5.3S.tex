@@ -1,0 +1,320 @@
+\section{引言}
+\begin{frame}
+  \frametitle{引言}
+  \begin{block}{基础知识}
+    \begin{itemize}
+      \item 组装版本和坐标系统
+      \item 常用格式
+      \item 坐标的逻辑运算
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{高级注释}
+    \begin{itemize}
+      \item 变异位点的注释
+      \item 基因集富集分析
+      \item 制作序列标识
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{分析平台}
+    \begin{itemize}
+      \item Galaxy
+      \item GenePattern
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Galaxy分析平台}
+\begin{frame}
+  \frametitle{Galaxy | 工具集}
+  \begin{itemize}
+    \item Get Data
+    \item Text Manipulation
+    \item Convert Formats
+    \item Operate on Genomic Intervals
+    \item Phenotype Association
+    \item Statistics
+    \item Graph/Display Data
+    \item NGS Toolbox
+    \item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy | 界面}
+  \begin{center}
+    \includegraphics[width=12cm]{galaxy.png}
+  \end{center}
+\end{frame}
+
+\section{Galaxy使用演示}
+%\begin{frame}
+  %\frametitle{Galaxy演示 | \alert{坐标转换}}
+  %\begin{itemize}
+    %\item \href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{liftOver}：支持BED和“chrN:start-end”格式的输入
+    %\item \href{https://usegalaxy.org/}{Galaxy中的liftOver}：支持BED、GFF和GTF格式的输入
+    %\item \href{http://www.ncbi.nlm.nih.gov/genome/tools/remap}{NCBI Remap}：支持BED、GFF、GTF和VCF等格式的输入
+    %\item \href{http://asia.ensembl.org/Homo\_sapiens/UserData/SelectFeatures}{Ensembl assembly converter}：支持BED、GFF、GFT和PSL格式的输入，但输出都是GFF格式的
+    %\item \href{https://pypi.python.org/pypi/pyliftover}{pyliftover}：仅支持点坐标（point coordinates）的转换，无法对区段（ranges）坐标进行转换
+  %\end{itemize}
+%\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | \alert{坐标转换}}
+  \begin{itemize}
+    \item \href{http://genome.ucsc.edu/cgi-bin/hgLiftOver}{UCSC liftOver tool}：支持BED和“chrN:start-end”格式的输入
+    \item \href{https://usegalaxy.org/}{Galaxy（基于UCSC liftOver tool）}：支持BED、GFF和GTF格式的输入
+    \item \href{http://crossmap.sourceforge.net/}{CrossMap}：支持SAM/BAM、Wiggle/BigWig、BED、GFF/GTF和VCF格式的输入，输出对应格式
+    \item \href{http://www.ncbi.nlm.nih.gov/genome/tools/remap}{NCBI Remap}：支持BED、GFF、GTF和VCF等格式的输入
+    \item \href{http://asia.ensembl.org/Homo\_sapiens/UserData/SelectFeatures}{\textcolor{gray}{Ensembl assembly converter（2015年退休，CrossMap继位）}}\textcolor{gray}{：支持BED、GFF、GFT和PSL格式的输入，但输出都是GFF格式的}
+    \item \href{https://pypi.python.org/pypi/pyliftover}{pyliftover}：仅支持点坐标（point coordinates）的转换，无法对区段（ranges）坐标进行转换
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 坐标转换 | liftOver}
+  \begin{block}{hg19 $\Rightarrow$ hg18}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item 获取输入
+      \begin{itemize}
+        \item 输入文件：hg19坐标
+      \end{itemize}
+    \item 数据处理
+      \begin{itemize}
+        \item 设置参数：hg19 $\Rightarrow$ hg18
+      \end{itemize}
+    \item 保存输出
+      \begin{itemize}
+        \item 过滤结果：MAPPED VS. UNMAPPED
+      \end{itemize}
+  \end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 格式转换 | BED $\Leftrightarrow$ GFF}
+  \begin{block}{BED $\Leftrightarrow$ GFF}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item 获取输入
+      \begin{itemize}
+        \item 输入文件：BED
+      \end{itemize}
+    \item 数据处理
+      \begin{enumerate}
+        \item BED $\Rightarrow$ GFF
+        \item GFF $\Rightarrow$ BED
+      \end{enumerate}
+    \item 保存输出
+      \begin{itemize}
+        \item 查看结果：互相比较
+      \end{itemize}
+  \end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | \alert{逻辑运算}}
+  \begin{itemize}
+    \item \href{https://usegalaxy.org/}{Galaxy} 中的“Operate on Genomic Intervals”工具集
+    \item \href{http://bedtools.readthedocs.org/en/latest/}{BEDTools}: a powerful toolset for genome arithmetic
+    \item \href{https://bedops.readthedocs.org/en/latest/}{BEDOPS}: the fast, highly scalable and easily-parallelizable genome analysis toolkit
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示| 逻辑运算 | subtract \& join}
+  \begin{block}{外显子 vs. SNP}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item 获取输入
+      \begin{itemize}
+        \item exon
+        \item SNP
+      \end{itemize}
+    \item 数据处理
+      \begin{itemize}
+        \item subtract
+        \item join
+      \end{itemize}
+    \item 保存输出
+      \begin{itemize}
+        \item 解析结果
+      \end{itemize}
+  \end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 综合应用 | 简单实例}
+  \begin{block}{问题}
+    \begin{itemize}
+      \item 找到含有至少N（2）个SNP的外显子。
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{输入}
+    \begin{itemize}
+      \item 外显子数据（BED格式）
+      \item SNP数据（BED格式）
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{输出}
+    \begin{itemize}
+      \item 满足要求的外显子信息（BED格式）
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 综合应用 | 简单实例}
+  \begin{block}{外显子数据}
+    \begin{enumerate}
+      \item chr1 \qquad 10 \qquad 20 \qquad exon1 \qquad 0 \qquad +
+      \item chr1 \qquad 30 \qquad 40 \qquad exon2 \qquad 0 \qquad +
+      \item chr1 \qquad 50 \qquad 60 \qquad exon3 \qquad 0 \qquad -
+      \item chr1 \qquad 65 \qquad 75 \qquad exon4 \qquad 0 \qquad +
+      \item chr1 \qquad 85 \qquad 95 \qquad exon5 \qquad 0 \qquad -
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 综合应用 | 简单实例}
+  \begin{block}{SNP数据}
+    \begin{enumerate}
+      \item chr1 \qquad 11 \qquad 12 \qquad snp1 \qquad 0 \qquad +
+      \item chr1 \qquad 15 \qquad 16 \qquad snp2 \qquad 0 \qquad +
+      \item chr1 \qquad 17 \qquad 18 \qquad snp3 \qquad 0 \qquad +
+      \item chr1 \qquad 24 \qquad 25 \qquad snp4 \qquad 0 \qquad +
+      \item chr1 \qquad 33 \qquad 34 \qquad snp5 \qquad 0 \qquad +
+      \item chr1 \qquad 37 \qquad 38 \qquad snp6 \qquad 0 \qquad +
+      \item chr1 \qquad 44 \qquad 45 \qquad snp7 \qquad 0 \qquad +
+      \item chr1 \qquad 54 \qquad 55 \qquad snp8 \qquad 0 \qquad +
+      \item chr1 \qquad 57 \qquad 58 \qquad snp9 \qquad 0 \qquad -
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | \alert{综合应用} | 策略一}
+  \begin{block}{Finding exons with the highest number ($\geq$ 10) of SNPs}
+    \pause
+    \begin{block}{Join-Group-Filter-Compare-Sort}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item Input: Get exons, SNPs; UCSC Table Browser
+    \item Join[Operate on Genomic Intervals]: Join exons with SNPs
+    \item Group: Count the number of SNPs per exon 
+    \item Filter: Filter exons that have ten or more SNPs
+    \item Compare two Datasets: Recover exon information
+    \item Sort: Sort the start and end coordinates
+    \item Visualize: Display data in genome browser
+  \end{enumerate}
+\end{block}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | \alert{综合应用} | 策略二}
+  \begin{block}{Finding exons with the highest number ($\geq$ 10) of SNPs}
+    \pause
+    \begin{block}{Join-Count-Filter-Cut-Sort}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item Input: Get exons, SNPs; UCSC Table Browser
+    \item Join[Operate on Genomic Intervals]: Join exons with SNPs
+    \item Count: Count the number of SNPs per exon 
+    \item Filter: Filter exons that have ten or more SNPs
+    \item Cut: Cut columns to recover BED format
+    \item Sort: Sort the start and end coordinates
+    \item Visualize: Display data in genome browser
+  \end{enumerate}
+\end{block}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Galaxy演示 | \alert{综合应用} | 策略三}
+  \begin{block}{Finding 10 exons with the highest number of SNPs}
+    \pause
+    \begin{block}{Join-Group-Sort-SelectFirst-Join-Cut-Sort}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item Input: Get exons, SNPs; UCSC Table Browser
+    \item Join[Operate on Genomic Intervals]: Join exons with SNPs
+    \item Group: Count the number of SNPs per exon 
+    \item Sort: Sort exons by SNPs count
+    \item Select first: Select top ten
+    \item Join[Join two Datasets]: Recover exon information
+    \item Cut: Cut columns to recover BED format
+    \item Sort: Sort the start and end coordinates
+    \item Visualize: Display data in genome browser
+  \end{enumerate}
+\end{block}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Galaxy演示 | 综合应用 | 策略四}
+  \begin{block}{Finding exons with the highest number ($\geq$ 10) of SNPs}
+    \pause
+    \begin{block}{BEDTools-shell-BEDTools}
+    \pause
+    \begin{block}{考虑链性}
+      \verb+bedtools intersect -a exon.bed -b snp.bed -c -s |+
+      \verb+awk '{if($7>=10) print;}' | cut -f1-6 |+
+      \verb+bedtools sort -i stdin+
+    \end{block}
+    \pause
+    \begin{block}{不考虑链性}
+      \verb+bedtools intersect -a exon.bed -b snp.bed -c |+
+      \verb+awk '{if($7>=10) print;}' | cut -f1-6 |+
+      \verb+bedtools sort -i stdin+
+    \end{block}
+\end{block}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Galaxy演示 | 综合应用 | \alert{工作流}}
+  \begin{block}{Workflow：create, modify, rerun, share}
+    \pause
+  \begin{enumerate}[<+-|alert@+>]
+    \item Save: Rename the history as ``Exons and SNPs''
+    \item Workflow: Extract workflow from history
+    \item Modify: Open workflow editor and modify the parameter
+    \item Rerun: Run workflow on whole genome data
+    \item Share: Share or publish workflow
+    \item Create: Create workflows from scratch (e.g. Find the 50 longest exons)
+  \end{enumerate}
+  \end{block}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{block}{知识点——Galaxy分析平台}
+    \begin{itemize}
+      \item Galaxy——界面、学习、使用
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{复习思考题}
+\begin{frame}
+  \frametitle{复习思考题}
+  \begin{block}{知识点}
+    \begin{enumerate}
+      \item hg19和mm10分别代表什么含义？hg19是和GRCh37相对应，还是和GRCm38相对应？
+      \item 常见的基因组坐标系统是哪两种，举例进行说明。
+      \item 简述BED格式前6列的含义，能解释实际的BED记录。
+      \item 基于基因组坐标的常见逻辑运算模式有哪些，画图进行解释。
+      \item 简述序列标识的含义，能解释实际的序列标识图。
+    \end{enumerate}
+  \end{block}
+\end{frame}

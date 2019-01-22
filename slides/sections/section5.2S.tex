@@ -1,0 +1,277 @@
+\section{引言}
+\begin{frame}
+  \frametitle{引言}
+  \begin{block}{前期准备工作}
+    \begin{itemize}
+      \item 组装版本
+      \item 坐标系统
+      \item 常用格式
+      \item 逻辑运算
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{后续功能注释}
+    \begin{itemize}
+      \item 变异位点的注释
+      \item 基因集富集分析
+      \item 制作序列标识
+      \item \ldots
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{变异位点的注释}
+\begin{frame}
+  \frametitle{变异位点的注释 | SNP}
+    \begin{center}
+      \includegraphics[width=9cm]{snp.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{SNP注释}}
+    \begin{center}
+      \includegraphics[width=11cm]{anno.png}
+      \vspace{0.5cm}
+      \includegraphics[width=11cm]{anno2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | 注释工具}
+  \begin{itemize}
+    \item SNVs的注释：SeattleSeq Annotation、VEP（Variant Effect Predictor）、SnpEff、ANNOVAR、Variant Tools
+    \item 非同义多态性的功能注释：SIFT、PolyPhen-2、SNPs3D
+    \item indels的功能注释：PROVEAN
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SeattleSeq Annotation}
+    \begin{center}
+      \includegraphics[width=12cm]{seattleseqannotation.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SeattleSeq Annotation}
+    \begin{center}
+      \includegraphics[width=12cm]{ssa1.png}
+      \vspace{0.5cm}
+      \includegraphics[width=12cm]{ssa2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变异位点的注释 | \alert{结果解析} | SIFT}
+    \begin{center}
+      \includegraphics[width=12cm]{siftannotation.png}
+    \end{center}
+\end{frame}
+
+\section{基因集富集分析}
+\begin{frame}
+  \frametitle{富集分析 | 基因集}
+    \begin{center}
+      \includegraphics[width=12cm]{geneset.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | 数据库与分析工具}
+  \begin{block}{数据库}
+  \begin{description}
+    \item[GO] Gene Ontology
+    \item[KEGG] Kyoto Encyclopedia of Genes and Genomes
+  \end{description}
+  \end{block}
+  \pause
+  \begin{block}{分析工具}
+  \begin{description}
+    \item[DAVID] Database for Annotation, Visualization and Integrated Discovery
+    \item[Metascape] A Gene Annotation \& Analysis Resource
+    \item[Enrichr] interactive and collaborative HTML5 gene list enrichment analysis tool
+  \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | \alert{GO}}
+  \begin{block}{三个方面}
+    \begin{itemize}
+      \item biological process，BP，生物学过程
+      \item molecular function，MF，分子功能
+      \item cellular component，CC，细胞组份
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{两大关系}
+    \begin{itemize}
+      \item is\_a: for simple, hierarchical connections between terms
+      \item part\_of: for describing how the components of a living system fit together
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=12cm]{go_diag.png}
+    \end{center}
+\end{frame}
+\note{
+The structure of GO can be described in terms of a graph, where each GO term is a node, and the relationships between the terms are edges between the nodes. GO is loosely hierarchical, with 'child' terms being more specialized than their 'parent' terms, but unlike a strict hierarchy, a term may have more than one parent term (note that the parent/child model does not hold true for all types of relation). For example, the biological process term hexose biosynthetic process has two parents, hexose metabolic process and monosaccharide biosynthetic process. This is because biosynthetic process is a subtype of metabolic process and a hexose is a subtype of monosaccharide.
+
+In the diagram, relations between the terms are represented by the colored arrows; the letter in the box midway along each arrow is the relationship type. Note that the terms get more specialized going down the graph, with the most general terms—the root nodes, cellular component, biological process and molecular function—at the top of the graph. Terms may have more than one parent, and they may be connected to parent terms via different relations. The GO relations documentation describes these relations in greater detail.
+}
+
+\begin{frame}
+  \frametitle{富集分析 | GO}
+    \begin{center}
+      \includegraphics[width=6cm]{go_bp_1.jpg}
+      \includegraphics[width=5.5cm]{go_bp_2.jpg}
+    \end{center}
+\end{frame}
+\note{
+In the GO biological process ontology, the process of M phase is comprised of parts, such as prophase, anaphase, etc. One of the inferred part\_of relationships, between telophase and cell cycle, is indicated.  Four worm (\textit{C. elegans}) genes have been annotated to the anaphase process, and are indicated here. Counts of worm genes annotated to each node are indicated in parentheses. Transitive relationships allow annotations to child nodes to be propagated [up] to the parent nodes.  Is\_a relationships are represented by red (round [i]) arrows, part\_of relationships by blue (square [p]) arrows, and develops\_from by green (diamond [D]) arrows. Inferred relationships are indicated by dotted lines.
+}
+\note{
+Logicians view an ontology as a graph of information, with terms (concepts) as nodes of the graph and relationships as the links that connect the terms. Many relationships are directed, meaning that they are only true in one direction (e.g., a nucleus is part of a cell, but a cell is not part of a nucleus); because of this, ontologies are often hierarchical in structure. The relationships used in an ontology are not predetermined, so any real-world relationship can be logically defined and used to connect terms and reflect reality. This makes ontologies a flexible framework for modeling many different kinds of data.
+
+There are two basic relationship types used by many ontologies: is\_a and part\_of.
+
+The is\_a relationship allows for simple, hierarchical connections between terms. Consider a section of the ZFA, representing the terms "heart," "gills," and "brain". These terms are all connected to the term "organ," and in turn to the term "anatomical structure," through an is\_a hierarchy. Thus, a search for "all mutants that affect zebrafish organs" could follow the is\_a relationships to return results for any mutants manifesting phenotypes in the heart, gills, or brain.
+
+The part\_of relationship is used for describing how the components of a living system fit together. This can signify physical parts, such as those found in the ZFA, where the brain is divided into the hindbrain, the forebrain, and so on. Note that each part of the brain can be further divided with the subparts related via a part\_of relationship—for instance, the cerebellum is part\_of the hindbrain, which is part\_of the whole brain. A part\_of relationship can also apply to processes, such as those modeled by the GO biological process ontology. For instance, in that ontology, prophase, anaphase, metaphase, and telophase are all part\_of the mitotic cell cycle.
+}
+
+\begin{frame}
+  \frametitle{富集分析 | KEGG}
+    \begin{center}
+      \includegraphics[width=12cm]{kegg_01.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | KEGG}
+    \begin{center}
+      \includegraphics[width=10cm]{kegg_02.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID}
+  \begin{itemize}
+    \item Gene Name Batch Viewer
+    \item Gene ID Conversion Tool
+    \item Gene Functional Classification Tool
+    \item Functional Annotation Tool
+    \begin{itemize}
+      \item Functional Annotation Clustering
+      \item \alert{Functional Annotation Chart}：富集分析
+      \item Functional Annotation Table
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID | \alert{结果解析}}
+  \begin{center}
+    \includegraphics[width=12cm,height=8cm]{david.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{富集分析 | DAVID | 工具选择}
+  \begin{center}
+    \includegraphics[width=11cm]{david2.png}
+  \end{center}
+\end{frame}
+
+\section{序列标识}
+\begin{frame}
+  \frametitle{序列标识 | 徽标}
+  \begin{center}
+    \includegraphics[width=5cm]{logo_01.jpg}
+    \qquad
+    \includegraphics[width=6cm]{tijmu.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\alert{序列标识}}
+  \begin{block}{定义}
+序列标识图是显示序列保守区域的共有序列、每个位置上各个氨基酸或核苷酸出现的频率以及各个位点上的序列信息量的一种可视化方法。
+  \end{block}
+  \pause
+  \begin{block}{含义}
+    根据序列保守区域的多序列比对来绘制序列标识图。\\
+    \vspace{0.5em}
+在一个标识图像里，由大小不一的字符形成的一个堆栈代表序列保守区域的一个位点。每个核苷酸或氨基酸的高度和它在对应位点上出现的频率成比例。堆栈的总高度代表对应位点上的序列信息，以比特（bit）为单位。在每个堆栈里，字符按其出现的频率大小自上而下排列。所以，位于各个堆栈最上方的字符组成保守区域的共识序列。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\alert{序列标识}}
+  \begin{center}
+    \includegraphics[width=9cm,height=2.5cm]{logo.png}
+  \end{center}
+  \pause
+  \begin{block}{序列标识（sequence logo）}
+    \begin{itemize}
+      \item 数据：多序列比对信息
+      \item 横轴：序列坐标位置
+      \item 纵轴：比特，计量单位
+      \item 总高度：信息量/保守性
+      \item 相对高度：相对频率
+      \item 位置自上而下：频率由大到小
+      \item 制作工具：WebLogo, enoLOGOS, Skylign
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 着色 | WebLogo2}
+  \begin{center}
+    \includegraphics[width=10cm]{weblogo2_01.png}\\
+    \vspace{1em}
+    \includegraphics[width=10cm]{weblogo2_02.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 着色 | WebLogo3}
+  \begin{center}
+    \includegraphics[width=10cm]{weblogo3_01.png}\\
+    \vspace{1em}
+    \includegraphics[width=10cm]{weblogo3_02.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 剪接}
+  \begin{center}
+    \includegraphics[width=12cm]{gtag.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 实例}
+  \begin{center}
+    \includegraphics[width=10cm]{donor.png}
+    \vspace{0.5cm}
+    \includegraphics[width=10cm]{acceptor.png}
+  \end{center}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{block}{知识点——基因组功能的高级注释}
+    \begin{itemize}
+      \item 变异位点的注释——用途，注释内容，注释工具
+      \item 基因集富集分析——功能，分析工具
+      \item 序列标识——含义，制作工具
+    \end{itemize}
+  \end{block}
+\end{frame}

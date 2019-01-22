@@ -1,0 +1,487 @@
+\section{引言}
+
+\begin{frame}
+  \frametitle{引言 | 中心法则}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{dogma.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | DNA}
+  \begin{figure}
+    \centering
+    \includegraphics[width=6cm]{dna_acgt.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | DNA \& RNA}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9cm]{dna_rna_01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | \alert{遗传信息}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{info.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | 序列分析}
+  \begin{block}{基本问题}
+    \begin{itemize}
+      \item 总的GC含量或者其他核苷酸成分是多少？
+      \item 有哪些重复的DNA序列，在什么地方？
+      \item 一共有多少个基因（编码蛋白质的序列）？
+    \end{itemize}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
+  \begin{block}{深层问题}
+    \begin{itemize}
+      \item 为什么会有各种特征序列？（物理、化学性质？进化压力？）
+      \item 需要从哪些方面分析序列特征？
+      \item 怎样描述这些序列特征？
+    \end{itemize}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
+  \begin{block}{序列分析}
+    通过实验或计算等方式，确定核苷酸或氨基酸序列中可能与特定功能、结构或生化过程相关联的\alert{具有生物学意义的序列特征}，或者\alert{序列自身的规律}。
+  \end{block}
+\end{frame}
+
+
+\section{DNA组份分析与序列转换}
+\begin{frame}
+  \frametitle{DNA序列 | 查戈夫法则}
+  \begin{block}{查戈夫法则}
+    \begin{description}
+      \item[第一法则]$A=T, G=C \Longrightarrow A+C=T+G, A+G=C+T$
+      \item[第二法则]AT/GC 的比值因生物种类不同而异
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | 序列长度}
+  \begin{block}{序列长度}
+    序列长度是具有独立生物学功能的序列片段（如基因、启动子等）的基本性质。物种的基因组长度也是重要参数之一。 
+  \end{block}
+  \pause
+  \begin{block}{蛋白质编码基因的序列长度}
+    \begin{itemize}
+      \item 原核：～1000个核苷酸
+      \item 脊椎动物：～30000个核苷酸
+      \item 人：20000～50000个核苷酸
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | 序列长度 | 基因组}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{genome_size_01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | 碱基组成}
+  \begin{block}{碱基组成}
+  \begin{itemize}
+    \item 核酸序列由ACGT四种碱基组成
+    \item 不同物种的DNA碱基组成存在差异
+    \item 同一基因组内不同区段（基因、基因间）的碱基组成有差异
+    \item 同一基因内部不同片段（外显子、内含子）的碱基组成也有差异
+  \end{itemize}
+  \end{block}
+  \vspace{-0.3em}
+  \pause
+  \begin{block}{碱基频率}
+  \begin{itemize}
+    \item 对于随机分布的DNA序列，每种核苷酸的出现是均匀分布的（出现频率各为0.25）；真实基因组的核苷酸分布则是非均匀的（酵母：A/T=0.325，G/C=0.175）
+    \item 如果同时计算DNA的正反两条链，A和T、G和C的出现频率相同（碱基配对原则）；如果仅统计一条链，则虽然A和T、G和C的出现频率不同，但是数值接近（酵母：A=0.344，T=0.343，G=0.157，C=0.155）
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | 碱基组成 | 实例}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{base_ratio_01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | GC含量}
+  \begin{block}{GC含量（GC content）}
+    \begin{itemize}
+      \item 对象：核酸片段、基因、基因组、……
+      \item 鸟嘌呤(G)和胞嘧啶(C)所占的比例
+      \item GC含量随DNA不同而异
+      \item GC含量高的DNA更加稳定
+      \item 计算公式：$\frac{G+C}{A+T+G+C}\times100$
+      \item GC比（GC-ratio）：$\frac{A+T}{G+C}$
+      \item 结合滑动窗口进行计算
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | GC含量 | 分析}
+  \begin{block}{特点}
+  \begin{itemize}
+    \item 不同物种基因组中GC含量不同。（15\%～75\%，两头少中间多。疟原虫为20\%，啤酒酵母为38\%，人约为40\%，天蓝色链霉菌A3为72\%。）
+    \item 同一基因组内，GC含量不均匀。
+    \item GC含量与多种生物学特征相关，比如基因密度、内含子、外显子等。
+  \end{itemize}
+\end{block}
+\pause
+\begin{block}{应用}
+  \begin{itemize}
+    \item 根据GC含量差异识别细菌种类
+    \item 真核基因组具有GC含量较高或较低的近似均匀片段
+    \item 不同物种的密码子使用与其GC含量有关 
+    \item GC含量与DNA双链的熔解温度有关，是进行核酸杂交的重要参数
+  \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | GC含量 | 基因组}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9.5cm]{genomeGC.jpg}
+  \end{figure}
+  %{\tiny Genome evolution in bacterial endosymbionts of insects. Jennifer J. Wernegreen. Nature Reviews Genetics 3, 850-861 (November 2002). doi:10.1038/nrg931}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | GC含量 | 基因区}
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{exonGC.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | GC含量 | 基因 vs. 基因组}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{geneGC.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{DNA序列 | 序列转换}
+  \begin{block}{序列转换}
+    \begin{itemize}
+      \item 反向序列
+      \item 互补序列
+      \item 反向互补序列
+      \item DNA双链
+      \item RNA序列
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{书写惯例}
+    \begin{itemize}
+      \item DNA/RNA：[左] 5' $\Longrightarrow$ 3' [右]
+      \item 多肽/蛋白质：[左] N端（氨基端）$\Longrightarrow$ C端（羧基端） [右]
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{限制酶位点分析}
+\begin{frame}
+  \frametitle{限制酶 | 定义}
+  \begin{block}{限制酶（restriction enzyme）}
+    又称限制内切酶或限制性内切酶（restriction endonuclease），全称限制性核酸内切酶，是可以识别DNA的特异序列、并在识别位点或其周围切割双链DNA的一类内切酶。
+  \end{block}
+  \pause
+  \begin{block}{切割末端}
+    \begin{itemize}
+      \item 黏性末端 vs. 平滑末端
+    \end{itemize}
+  \end{block}
+  \begin{figure}
+    \centering
+    \visible<3->{\includegraphics[width=6cm]{ecori_cut.jpg}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \alert{命名}}
+  %\begin{block}{\textit{Eco}R\Rmnum{1}}
+    %\begin{description}
+      %\item[\textit{E}]属名\textit{Escherichia}
+      %\item[\textit{co}]种名\textit{coli}
+      %\item[R]RY13品系
+      %\item[\Rmnum{1}]在此类细菌中的发现顺序
+    %\end{description}
+  %\end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{ecori.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \alert{\Rmnum{2}型}}
+  \begin{block}{\Rmnum{2}型限制酶}
+  \begin{itemize}
+    \item 识别与切割位点：专一
+      \begin{itemize}
+        \item 识别序列：4-8个碱基，回文对称结构
+        \item 切割序列：识别序列，切割位点对称
+      \end{itemize}
+    \item 切割末端：黏性末端，平滑末端
+      \begin{itemize}
+        \item 黏性末端：切割位点在回文序列的一侧
+        \item 平滑末端：切割位点在回文序列的中间
+      \end{itemize}
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \Rmnum{2}型 | 回文对称}
+  \begin{block}{回文对称（palindrome）}
+    特指DNA的一种具有反向重复的结构。具有这种结构的DNA，其一条链从左向右读和另一条链从右向左读的序列是相同的。
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{palindrome.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \Rmnum{2}型 | 末端}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9cm]{ends.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \Rmnum{2}型 | 末端 | 黏性末端}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9cm]{enzyme1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | \Rmnum{2}型 | 末端 | 平滑末端}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9cm]{enzyme2.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{限制酶 | 数据库与分析工具}
+  \begin{block}{资源}
+  \begin{itemize}
+    \item REBASE：收录了限制酶的所有信息
+    \item NEBCutter V2.0：产生DNA序列的酶切位点分析结果
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{开放阅读框分析}
+\begin{frame}
+  \frametitle{开放阅读框}
+  \begin{block}{开放阅读框（Open Reading Frame，ORF）}
+    在给定的阅读框架中，不包含终止密码子的一串序列，是生物个体的基因组中可能作为蛋白质编码序列的部分，包含从5'端翻译起始密码子(AUG)到终止密码子(UAA、UAG、UGA)之间的一段编码蛋白质的碱基序列。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{开放阅读框 | 相位（frame）}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{orf.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{开放阅读框 | \alert{ORF VS. CDS}}
+  \pause
+  \begin{itemize}
+    \item 一个ORF对应一个候选的CDS（编码序列，Coding DNA Sequence）
+    \item ORF：理论预测
+    \item CDS：实验证实
+    \item 分析DNA序列中的ORF是对该序列是否为CDS的初步判断
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{开放阅读框 | 分析工具}
+  \begin{itemize}
+    \item 确定第一个AUG和终止密码子
+    \item 原核生物：最长ORF法
+    \item 真核生物：特征统计、模式识别、同源比对
+    \item ORF Finder：NCBI的在线分析工具
+  \end{itemize}
+\end{frame}
+
+\section{启动子分析}
+\begin{frame}
+  \frametitle{启动子 | 转录调控}
+  \begin{itemize}
+    \item 顺式作用元件（cis-acting element）：核酸序列
+      \begin{itemize}
+        \item 启动子（promoter）
+        \item 增强子（enhancer）
+        \item \ldots
+      \end{itemize}
+    \item 反式作用因子（trans-acting factor）：蛋白质
+    \item 两者相互作用实现转录调控
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{启动子 | 定义}
+  \begin{block}{启动子（promoter）}
+    一段位于转录起始位点5'端上游区的DNA序列，能活化RNA聚合酶，使之与模板DNA准确地结合并具有转录起始的特异性。
+  \end{block}
+  \pause
+  \begin{block}{转录起始位点（Transcription Start Site，TSS）}
+    与新生RNA链第一个核苷酸相对应DNA链上的碱基，研究证实通常为一个嘌呤。
+  \end{block}
+  \visible<3->{
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{tss.png}
+  \end{figure}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{启动子 | 结构}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{promoter.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{启动子 | TF\&TFBS}
+  \begin{block}{转录因子（transcription factor）}
+    能够结合在某基因上游特异核苷酸序列上的蛋白质，这些蛋白质能调控其基因的转录。
+    \begin{itemize}
+      \item 功能区域：DNA结合结构域、效应结构域
+      \item 作用方式：与启动子区域结合、与其他TF形成复合体
+      \item 调控模式：同时调控多个基因
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{转录因子结合位点（Transcription Factor Binding Site，TFBS）}
+    与转录因子结合的DNA序列，长度约为5～20bp，它们与转录因子相互作用进行基因的转录调控。
+    \begin{itemize}
+      \item 保守性 vs. 可变性
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{启动子 | TFBS}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{tfbs.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{启动子 | 数据库与分析工具}
+  \begin{itemize}
+    \item 启动子
+      \begin{itemize}
+	\item EPD：有注释、非冗余的真核生物RNA聚合酶\Rmnum{2}启动子数据集
+        \item Promoter Scan（同源性分析），Promoter 2.0（人工神经网络技术）
+      \end{itemize}
+    \item 转录因子
+      \begin{itemize}
+        \item TRANSFAC：真核生物顺式作用元件和反式作用因子数据库
+        \item Tfblast（TRANSFAC BLAST）
+        \item JASPAR: The high-quality transcription factor binding profile database
+        \item CIS-BP Database: Catalog of Inferred Sequence Binding Preferences
+        \item footprintDB
+        \item HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models
+        % \item HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) v10 provides transcription factor (TF) binding models for 600 human and 395 mouse TFs.
+        \item MotifMap: genome-wide maps of regulatory elements.
+        \item UniPROBE (Universal PBM Resource for Oligonucleotide Binding Evaluation) database
+        \item ENCODE TF ChIP-seq datasets
+        \item Human Protein-DNA Interactome (hPDI)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{CpG岛识别}
+\begin{frame}
+  \frametitle{CpG岛 | 特征}
+  \begin{block}{\alert{CpG岛}}
+    在基因组的某些区段，CpG保持或高于正常概率，这些区段被称作CpG岛（CpG island）。
+  \end{block}
+  \pause
+  \begin{block}{特征}
+    \begin{itemize}
+      \item 几乎看家基因都含有CpG岛（人类和小鼠分别有55.9\%和46.9\%的基因与CpG岛有密切关联）
+      \item 一般位于基因的5'端区域（转录起始位点附近，有助于基因的识别），长度约300～3000bp
+      \item 大多数CpG岛是未甲基化的，未甲基化CpG岛说明基因可能具有潜在活性（表观遗传学中重要的作用区域，甲基化异常常常伴随着疾病的发生）
+      \item CpG岛中的核小体中H1含量低，其他组蛋白被广泛乙酰化，并具有超敏感位点
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{CpG岛 | \alert{识别依据与判别标准}}
+  \begin{enumerate}
+    \item CpG岛长度：至少200bp
+    \item GC含量：超过50\%
+    \item CpG的观察值与预测值的比率：高于60\%
+      \begin{itemize}
+        \item 观测值：$Num\ of\ CpG$
+          \vspace{0.5em}
+        \item 预测值：$\frac{Num\ of\ C \times Num\ of\ G}{Length\ of\ sequence}$
+          \vspace{0.5em}
+        \item 比率：$\frac{Num\ of\ CpG}{Num\ of\ C \times Num\ of\ G} \times Length\ of\ sequence$
+          \vspace{0.5em}
+        \item 实例：ACGCGACGCG；$\frac{4}{\frac{4\times4}{10}}=\frac{4}{4\times4}\times10=2.5$
+      \end{itemize}
+    \pause
+    \item 500bp，55\%，65\%
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{CpG岛 | 分析工具}
+  \begin{itemize}
+    \item EMBOSS中的CpGPlot/CpGReport/Isochore
+    \item CpG Island Searcher
+    \item CpGcluster2
+  \end{itemize}
+\end{frame}
+
+\section{总结与答疑}
+\begin{frame}
+  \frametitle{总结与答疑}
+  \begin{block}{知识点——DNA序列的基本信息与特征信息分析}
+    \begin{itemize}
+      \item DNA序列基本信息分析——查戈夫法则，GC含量，序列转换
+      \item 限制酶位点分析——命名，\Rmnum{2}型的特点
+      \item 开放阅读框分析——相位，ORF与CDS
+      \item 启动子与转录因子结合位点分析——启动子结构
+      \item CpG岛识别——概念、判别依据及标准
+    \end{itemize}
+  \end{block}
+\end{frame}
