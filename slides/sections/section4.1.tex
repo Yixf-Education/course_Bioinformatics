@@ -1107,7 +1107,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 步枪校准}
   \begin{figure}
     \centering
     \visible<1->{\includegraphics[width=0.9\textwidth]{bayes_gun_01.png}}
@@ -1117,7 +1117,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 吸毒者检测}
   \begin{block}{吸毒者检测}
     假设一个常规的检测结果的敏感度与可靠度均为99\%，即吸毒者每次检测呈阳性（+）的概率为99\%。而不吸毒者每次检测呈阴性（-）的概率为99\%。假设某公司对全体雇员进行吸毒检测，已知0.5\%的雇员吸毒。请问每位检测结果呈阳性的雇员吸毒的概率有多高？
   \end{block}
@@ -1132,7 +1132,38 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 乳腺癌检测}
+  \begin{block}{乳腺癌检测}
+一名女性如果患有乳腺癌，钼靶X光成像会显示她患乳腺癌的概率大约是90\%；而如果没有患乳腺癌，钼靶X光成像也会有大约9\%的概率显示她患有乳腺癌。在我国，乳腺癌在45岁以上城市女性中的发病率大约是0.1\%。在知道阳性检测结果后，被检测人有多大概率真的患病呢？\\
+\vspace{0.8em}
+P(患病)即是发病率0.001，那P(无患病)就是0.999；P(阳性|患病)是钼靶X光成像检测的真阳性率0.90，而P(阳性|无患病)是该检测的假阳性率0.09。
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{bayes_breast_01.png}\\
+    \vspace{1em}
+    \includegraphics[width=0.6\textwidth]{bayes_breast_02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 乳腺癌检测}
+  \begin{block}{乳腺癌检测——频数描述}
+    \begin{itemize}
+      \item 每10000名45岁以上城市女性中就有10人患有乳腺癌
+      \item 在10名患有乳腺癌的女性中，有9名的筛查结果会为阳性
+      \item 在9990名无乳腺癌的女性中，也有899名的筛查结果会为阳性
+      \item 那么，当一名45岁以上城市女性筛查结果为阳性，而该女性确实患有乳腺癌的概率是多少？
+    \end{itemize}
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{bayes_breast_03.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 专业}
   \begin{block}{胰腺癌检测}
 即使100\%的胰腺癌症患者都有某症状，而某人有同样的症状，绝对不代表该人有100\%的概率得胰腺癌，还需要考虑先验概率，假设胰腺癌的发病率是十万分之一，而全球有同样症状的人有万分之一，则此人得胰腺癌的概率只有十分之一，90\%的可能是假阳性。
   \end{block}
@@ -1143,7 +1174,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 生活}
   \begin{block}{女/男神到底爱不爱我}
     我发给女神/男神的微信，只有一半会收到回复，她/他是喜欢我还是讨厌我？我们有发展的可能吗……
   \end{block}
@@ -1155,7 +1186,7 @@ PWMs are often derived from a set of aligned sequences that are thought to be fu
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用}
+  \frametitle{序列分析中的算法 | 贝叶斯定理 | 应用 | 生活}
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{bayes_love_03.jpg}
