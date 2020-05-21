@@ -11,3 +11,4 @@
 * [德国坦克问题](https://www.wikiwand.com/zh-hans/%E5%BE%B7%E5%9B%BD%E5%9D%A6%E5%85%8B%E9%97%AE%E9%A2%98)
 * [德国坦克问题 - 再谈贝叶斯](http://blog.sciencenet.cn/blog-677221-1103595.html)
 * [跟着刘小泽一起探索可变剪切分析](https://www.jianshu.com/p/ecef1d9e53e7)
+* [经典动态规划：编辑距离](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247488896&idx=2&sn=160162456e0306018d498cd00e8920f8&chksm=fa0e7a01cd79f3174702b5c3e71b1d5ca715a9a05e414a29d5e50ccdeb160a8e891f92a3d30f&mpshare=1&scene=1&srcid=&sharer_sharetime=1590052107194&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0&key=89d850d4a03ade580bcb508c66112c132180c65c0121c9e0988887f65a6008a8471e4ee6e9b730a81a9c0fa979031ffaecc1a5fca4e4ff8976a87e0740fba309945f71f1e1f758821d04a36a7eab6799&ascene=1&uin=MjEyMzUzNDk2MQ%3D%3D&devicetype=Windows+XP&version=62060841&lang=zh_CN&exportkey=AX09Ydrk1s9CnoIILOlFmBM%3D&pass_ticket=UvVrdoRGUUD0gRJlE9fwcmp3HWg%2BCY651fV6f2uUFyXBAp%2FCfv2euFXjftsZklkP)
