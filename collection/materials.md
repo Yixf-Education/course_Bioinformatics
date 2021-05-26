@@ -32,4 +32,5 @@
 * [量“话”密码子使用偏性](https://mp.weixin.qq.com/s/AV6YCVtSNE5wLcazbzq0ig)
 * [生物信息就该这么学（22）：不同版本人参考序列的差别](https://mp.weixin.qq.com/s/4uMzzD2Ct2mMVQpx6Kpjxg)
 * [Get to Know Your Reference Genome (GRCh37 vs GRCh38)](https://bitesizebio.com/38335/get-to-know-your-reference-genome-grch37-vs-grch38/)
+* [Human genome reference builds - GRCh38 or hg38 - b37 - hg19 – GATK](https://gatk.broadinstitute.org/hc/en-us/articles/360035890951)
 
