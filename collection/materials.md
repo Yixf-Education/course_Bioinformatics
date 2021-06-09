@@ -37,4 +37,5 @@
 * [首个完整人类基因序列发布：端粒到端粒联盟小组T2T发布人类基因组的第一个完整序列，以及表观遗传模式](https://mp.weixin.qq.com/s/3mdNcauYrmhuSz59cfhG3Q)
 * [生物信息就该这么学（24）：下载人全基因组序列](https://mp.weixin.qq.com/s/EsibaVv1S6N1OllUbM0xvQ)
 * [生信分析过程中这些常见文件的格式以及查看方式你都知道吗？](https://mp.weixin.qq.com/s/udnHlbTYvsp_xrhh5aYA9Q)
+* [Motif可视化——从PFM矩阵到sequence logo](https://mp.weixin.qq.com/s/K-Aw77S7PbX1mXQhQ6Oj1A)
 
