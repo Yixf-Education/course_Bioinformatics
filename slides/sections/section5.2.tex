@@ -292,6 +292,95 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
 \end{frame}
 
 \begin{frame}
+  \frametitle{序列标识 | 绘制}
+  \begin{block}{Conversion of sequence to PCM/PFM to PPM}
+    {\small A basic position frequency matrix (PFM, also known as position count matrix, PCM) is created by counting the occurrences of each nucleotide at each position. From the PFM, a position probability matrix (PPM) can now be created by dividing that former nucleotide count at each position by the number of sequences, thereby normalising the values.}
+  \end{block}
+  \vspace{-0.5em}
+  \begin{block}{PWM}
+    {\small A position weight matrix (PWM) has one row for each symbol of the alphabet (4 rows for nucleotides in DNA sequences or 20 rows for amino acids in protein sequences) and one column for each position in the pattern. Most often the elements in PWMs are calculated as log likelihoods. That is, the elements of a PPM are transformed using a background model.}
+  \end{block}
+  \vspace{-0.5em}
+  \begin{block}{ICM}
+    {\small The information content (IC) of a PWM says something about how different a given PWM is from a uniform distribution.}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 绘制 | Sequences to PCM}
+  \begin{center}
+    \includegraphics[width=4cm]{motif_seq.png}
+    \hspace{1em}
+    \includegraphics[width=6cm]{motif_pcm.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 绘制 | PCM to PPM}
+  \begin{center}
+    \includegraphics[width=4cm]{motif_pcm.png}\\
+    \vspace{1em}
+    \includegraphics[width=5cm]{motif_ppm.png}
+    \hspace{1em}
+    \includegraphics[width=6cm]{motif_ppm_pseudo.png}\\
+    \includegraphics[width=2cm]{motif_pcm2ppm.png}
+    \hspace{8em}
+    \includegraphics[width=3.2cm]{motif_pcm2ppm_pseudo.png}
+  \end{center}
+  \vspace{-1em}
+  \begin{block}{Probability for AAGAAA}
+    $1.00\times 0.67\times 0.50\times 0.83\times 0.83\times 0.66 = 0.1523$
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 绘制 | PPM to PWM}
+  \begin{center}
+    \includegraphics[width=5cm]{motif_ppm.png}
+    \hspace{1em}
+    \includegraphics[width=6cm]{motif_pwm.png}\\
+    \vspace{1em}
+    \includegraphics[width=6cm]{motif_pwm_pseudo.png}\\
+    \vspace{1em}
+    \includegraphics[width=3cm]{motif_ppm2pwm.png}
+  \end{center}
+  \vspace{-1em}
+  \begin{block}{Score for AAGAAA: how different from a random sequence}
+    $2 + 1.425 + 1.000 + 1.737 + 1.737 + 1.415 = 9.314$
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 绘制 | PWM to ICM}
+  \begin{center}
+    \includegraphics[width=7cm]{motif_pwm.png}\\
+    \vspace{0.5em}
+    \includegraphics[width=7cm]{motif_icm.png}\\
+    \vspace{0.5em}
+    \includegraphics[width=3cm]{motif_ic_total.png}
+    \hspace{1em}
+    \includegraphics[width=4.5cm]{motif_uncertainty.png}\\
+    \vspace{0.5em}
+    \includegraphics[width=4cm]{motif_ic_final.png}
+    \hspace{1em}
+    \includegraphics[width=4cm]{motif_ic_height.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列标识 | 绘制 | PPM vs. ICM}
+  \begin{center}
+    \includegraphics[width=5cm]{motif_ppm.png}
+    \hspace{0.5em}
+    \includegraphics[width=5cm]{motif_logo_ppm.png}\\
+    \vspace{1em}
+    \includegraphics[width=5cm]{motif_icm.png}
+    \hspace{0.5em}
+    \includegraphics[width=5cm]{motif_logo_icm.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
   \frametitle{序列标识 | 着色 | WebLogo2}
   \begin{center}
     \includegraphics[width=10cm]{weblogo2_01.png}\\
