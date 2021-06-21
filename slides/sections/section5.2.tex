@@ -297,11 +297,11 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
     {\small A basic position frequency matrix (PFM, also known as position count matrix, PCM) is created by counting the occurrences of each nucleotide at each position. From the PFM, a position probability matrix (PPM) can now be created by dividing that former nucleotide count at each position by the number of sequences, thereby normalising the values.}
   \end{block}
   \vspace{-0.5em}
-  \begin{block}{PWM}
+  \begin{block}{PPM to PWM}
     {\small A position weight matrix (PWM) has one row for each symbol of the alphabet (4 rows for nucleotides in DNA sequences or 20 rows for amino acids in protein sequences) and one column for each position in the pattern. Most often the elements in PWMs are calculated as log likelihoods. That is, the elements of a PPM are transformed using a background model.}
   \end{block}
   \vspace{-0.5em}
-  \begin{block}{ICM}
+  \begin{block}{PPM to ICM}
     {\small The information content (IC) of a PWM says something about how different a given PWM is from a uniform distribution.}
   \end{block}
 \end{frame}
@@ -351,17 +351,17 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
 \end{frame}
 
 \begin{frame}
-  \frametitle{序列标识 | 绘制 | PWM to ICM}
+  \frametitle{序列标识 | 绘制 | PPM to ICM}
   \begin{center}
-    \includegraphics[width=7cm]{motif_pwm.png}\\
+    \includegraphics[width=7cm]{motif_ppm.png}\\
     \vspace{0.5em}
     \includegraphics[width=7cm]{motif_icm.png}\\
     \vspace{0.5em}
-    \includegraphics[width=3cm]{motif_ic_total.png}
+    \includegraphics[width=2.8cm]{motif_ic_total.png}
     \hspace{1em}
-    \includegraphics[width=4.5cm]{motif_uncertainty.png}\\
+    \includegraphics[width=4cm]{motif_uncertainty.png}\\
     \vspace{0.5em}
-    \includegraphics[width=4cm]{motif_ic_final.png}
+    \includegraphics[width=3.5cm]{motif_ic_final.png}
     \hspace{1em}
     \includegraphics[width=4cm]{motif_ic_height.png}
   \end{center}
@@ -531,8 +531,8 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
 \begin{frame}
   \frametitle{Box plot | \alert{图解}}
   \begin{center}
-    \includegraphics[width=10cm]{bp2.jpg}
-    \vspace{1cm}
+    \includegraphics[width=10cm]{bp2.jpg}\\
+    \vspace{0.8cm}
     \includegraphics[width=11cm]{bp3.jpg}
   \end{center}
 \end{frame}
@@ -543,7 +543,7 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
   \begin{center}
     \includegraphics[width=2.5cm]{bp4.png}
     \hspace{1.5cm}
-    \includegraphics[width=3cm]{bp5.png}
+    \includegraphics[width=3cm]{bp5.png}\\
     \vspace{0.8cm}
     \includegraphics[width=8cm]{bp6.png}
   \end{center}
@@ -629,7 +629,7 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
   \frametitle{解析图表 | 图形的语法 | ggplot2}
   \begin{center}
     % \includegraphics[width=11cm]{ggplot2_01.jpg}
-    \includegraphics[width=11cm]{gapminder_2015.png}
+    \includegraphics[width=11cm]{gapminder_2019.png}
   \end{center}
 \end{frame}
 
@@ -654,14 +654,14 @@ This diagram shows a small portion of the Biological Process ontology.  Terms at
     \begin{itemize}
       \item 变异位点的注释——用途，注释内容，注释工具
       \item 基因集富集分析——功能，分析工具
-      \item 序列标识——含义，制作工具
+      \item 序列标识——含义，制作工具，计算过程
       \item Box plot——理解，绘制
     \end{itemize}
   \end{block}
   \begin{block}{技能——解析图表}
     \begin{itemize}
       \item 表——行列，缩写，数值
-      \item 图——数据，横纵轴，图元素，元素属性
+      \item 图——数据，横纵轴，图元素，元素属性，图例标注
     \end{itemize}
   \end{block}
 \end{frame}
