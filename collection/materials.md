@@ -42,4 +42,5 @@
 * [Motif可视化——从PFM矩阵到sequence logo](https://mp.weixin.qq.com/s/K-Aw77S7PbX1mXQhQ6Oj1A)
 * https://www.wikiwand.com/en/Position_weight_matrix
 * [Introduction to sequence motifs](https://bioconductor.org/packages/release/bioc/vignettes/universalmotif/inst/doc/IntroductionToSequenceMotifs.pdf)
+* [看懂算你狠，不懂没关系](https://mp.weixin.qq.com/s/v1vq9w08-_Xq4IJJaWkJnw)
 
