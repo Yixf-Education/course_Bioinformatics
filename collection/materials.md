@@ -44,4 +44,5 @@
 * [Introduction to sequence motifs](https://bioconductor.org/packages/release/bioc/vignettes/universalmotif/inst/doc/IntroductionToSequenceMotifs.pdf)
 * [看懂算你狠，不懂没关系](https://mp.weixin.qq.com/s/v1vq9w08-_Xq4IJJaWkJnw)
 * [他们用一页论文拿到诺奖，只因看到一张照片](https://mp.weixin.qq.com/s/qEsDSYZbbpLzA-LDlVOKoA)
+* [最新调查：因为Excel出错的论文，不减反增](https://mp.weixin.qq.com/s/0ewYnnkB7sNRGlfJY3w7ow)
 
