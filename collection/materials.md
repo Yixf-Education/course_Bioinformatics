@@ -46,4 +46,5 @@
 * [他们用一页论文拿到诺奖，只因看到一张照片](https://mp.weixin.qq.com/s/qEsDSYZbbpLzA-LDlVOKoA)
 * [最新调查：因为Excel出错的论文，不减反增](https://mp.weixin.qq.com/s/0ewYnnkB7sNRGlfJY3w7ow)
 * [大失所望！顶刊CNS发表的重磅癌症研究论文，大半不能被重复](https://mp.weixin.qq.com/s/1-2CHjsmZP2PFf0QsCU9dw)
+* [Jalview | 多序列比对图中显示序列标识](https://mp.weixin.qq.com/s/_H6mEEhMSIf_Nh7UsLmyng)
 
