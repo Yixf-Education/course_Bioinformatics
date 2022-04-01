@@ -48,4 +48,5 @@
 * [大失所望！顶刊CNS发表的重磅癌症研究论文，大半不能被重复](https://mp.weixin.qq.com/s/1-2CHjsmZP2PFf0QsCU9dw)
 * [Jalview | 多序列比对图中显示序列标识](https://mp.weixin.qq.com/s/_H6mEEhMSIf_Nh7UsLmyng)
 * [利用gff文件提取序列](https://mp.weixin.qq.com/s/KHYAwduCwwW26lWG1Zrqyw)
+* [新的里程碑！《科学》封面重磅：迄今最完整的人类基因组测序结果公布](https://mp.weixin.qq.com/s/gGNMS0d2j8tZQrkzL566sw)
 
